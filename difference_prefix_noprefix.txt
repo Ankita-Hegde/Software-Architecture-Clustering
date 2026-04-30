@@ -1,0 +1,966 @@
+18,22d17
+< depends org.apache.tika.detect.AutoDetectReader java.io.InputStreamReader
+< depends org.apache.tika.detect.AutoDetectReader java.io.InputStream
+< depends org.apache.tika.detect.AutoDetectReader java.nio.charset.Charset
+< depends org.apache.tika.detect.AutoDetectReader java.io.BufferedReader
+< depends org.apache.tika.detect.AutoDetectReader java.io.Reader
+28,29d22
+< depends org.apache.tika.detect.AutoDetectReader java.lang.Class
+< depends org.apache.tika.detect.AutoDetectReader java.util.List
+31d23
+< depends org.apache.tika.detect.AutoDetectReader java.lang.Object
+36d27
+< depends org.apache.tika.detect.AutoDetectReader java.lang.String
+38d28
+< depends org.apache.tika.detect.AutoDetectReader java.util.Map
+40d29
+< depends org.apache.tika.detect.AutoDetectReader java.lang.IllegalArgumentException
+42,45d30
+< depends org.apache.tika.detect.AutoDetectReader org.xml.sax.InputSource
+< depends org.apache.tika.detect.AutoDetectReader java.lang.ClassLoader
+< depends org.apache.tika.detect.AutoDetectReader java.io.IOException
+< depends org.apache.tika.detect.BOMDetector java.lang.Object
+47,53d31
+< depends org.apache.tika.detect.BOMDetector org.apache.commons.io.IOUtils
+< depends org.apache.tika.detect.BOMDetector java.io.InputStream
+< depends org.apache.tika.detect.BOMDetector java.util.Collections
+< depends org.apache.tika.detect.BOMDetector java.util.List
+< depends org.apache.tika.detect.BOMDetector java.lang.System
+< depends org.apache.tika.detect.BOMDetector org.apache.commons.io.ByteOrderMark
+< depends org.apache.tika.detect.BOMDetector java.nio.charset.Charset
+55d32
+< depends org.apache.tika.detect.BOMDetector java.lang.String
+57d33
+< depends org.apache.tika.detect.BOMDetector java.nio.charset.UnsupportedCharsetException
+61,62d36
+< depends org.apache.tika.detect.BOMDetector java.lang.Throwable
+< depends org.apache.tika.detect.BOMDetector java.io.IOException
+64,75d37
+< depends org.apache.tika.detect.CharsetSupersets java.lang.Object
+< depends org.apache.tika.detect.CharsetSupersets java.util.Map
+< depends org.apache.tika.detect.CharsetSupersets java.nio.charset.Charset
+< depends org.apache.tika.detect.CharsetSupersets java.lang.String
+< depends org.apache.tika.detect.CharsetSupersets java.lang.IllegalArgumentException
+< depends org.apache.tika.detect.CharsetSupersets java.util.HashMap
+< depends org.apache.tika.detect.CharsetSupersets java.util.Collections
+< depends org.apache.tika.detect.CompositeDetector java.lang.Object
+< depends org.apache.tika.detect.CompositeDetector java.util.Collection
+< depends org.apache.tika.detect.CompositeDetector java.util.List
+< depends org.apache.tika.detect.CompositeDetector java.util.ArrayList
+< depends org.apache.tika.detect.CompositeDetector java.util.Iterator
+77d38
+< depends org.apache.tika.detect.CompositeDetector java.lang.Class
+79d39
+< depends org.apache.tika.detect.CompositeDetector java.util.Arrays
+86d45
+< depends org.apache.tika.detect.CompositeDetector java.lang.String
+88,93d46
+< depends org.apache.tika.detect.CompositeDetector java.util.Collections
+< depends org.apache.tika.detect.CompositeDetector java.io.IOException
+< depends org.apache.tika.detect.CompositeEncodingDetector java.lang.Object
+< depends org.apache.tika.detect.CompositeEncodingDetector java.util.ArrayList
+< depends org.apache.tika.detect.CompositeEncodingDetector java.util.List
+< depends org.apache.tika.detect.CompositeEncodingDetector java.util.Iterator
+95,96d47
+< depends org.apache.tika.detect.CompositeEncodingDetector java.lang.Class
+< depends org.apache.tika.detect.CompositeEncodingDetector java.util.Collection
+98,99d48
+< depends org.apache.tika.detect.CompositeEncodingDetector org.slf4j.Logger
+< depends org.apache.tika.detect.CompositeEncodingDetector java.lang.String
+104d52
+< depends org.apache.tika.detect.CompositeEncodingDetector java.nio.charset.Charset
+107d54
+< depends org.apache.tika.detect.CompositeEncodingDetector java.util.Collections
+110d56
+< depends org.apache.tika.detect.CompositeEncodingDetector java.lang.StringBuilder
+112,117d57
+< depends org.apache.tika.detect.CompositeEncodingDetector java.util.Locale
+< depends org.apache.tika.detect.CompositeEncodingDetector java.lang.Float
+< depends org.apache.tika.detect.CompositeEncodingDetector org.slf4j.LoggerFactory
+< depends org.apache.tika.detect.CompositeEncodingDetector java.io.Serializable
+< depends org.apache.tika.detect.CompositeEncodingDetector java.io.IOException
+< depends org.apache.tika.detect.CompositeEncodingDetector java.lang.Throwable
+121,122d60
+< depends org.apache.tika.detect.DefaultDetector java.util.Collection
+< depends org.apache.tika.detect.DefaultDetector java.util.List
+125,128d62
+< depends org.apache.tika.detect.DefaultDetector java.util.ArrayList
+< depends org.apache.tika.detect.DefaultDetector java.util.Collections
+< depends org.apache.tika.detect.DefaultDetector java.util.Set
+< depends org.apache.tika.detect.DefaultDetector java.lang.ClassLoader
+130d63
+< depends org.apache.tika.detect.DefaultDetector java.lang.Class
+132,133d64
+< depends org.apache.tika.detect.DefaultDetector java.util.Iterator
+< depends org.apache.tika.detect.DefaultDetector java.lang.Object
+141,142d71
+< depends org.apache.tika.detect.DefaultDetector java.lang.String
+< depends org.apache.tika.detect.DefaultDetector java.io.IOException
+145,146d73
+< depends org.apache.tika.detect.DefaultEncodingDetector java.lang.Class
+< depends org.apache.tika.detect.DefaultEncodingDetector java.lang.ClassLoader
+148d74
+< depends org.apache.tika.detect.DefaultEncodingDetector java.util.List
+150,154d75
+< depends org.apache.tika.detect.DefaultEncodingDetector java.util.Collection
+< depends org.apache.tika.detect.DefaultEncodingDetector java.util.function.Function
+< depends org.apache.tika.detect.DefaultEncodingDetector java.util.Comparator
+< depends org.apache.tika.detect.DefaultEncodingDetector java.lang.Object
+< depends org.apache.tika.detect.DefaultEncodingDetector java.lang.String
+156,162d76
+< depends org.apache.tika.detect.DefaultEncodingDetector java.lang.Integer
+< depends org.apache.tika.detect.DefaultEncodingDetector java.lang.invoke.LambdaMetafactory
+< depends org.apache.tika.detect.DefaultEncodingDetector java.lang.invoke.MethodHandles$Lookup
+< depends org.apache.tika.detect.DefaultEncodingDetector java.lang.invoke.MethodType
+< depends org.apache.tika.detect.DefaultEncodingDetector java.lang.invoke.MethodHandle
+< depends org.apache.tika.detect.DefaultEncodingDetector java.lang.invoke.CallSite
+< depends org.apache.tika.detect.DefaultEncodingDetector java.lang.invoke.MethodHandles
+166d79
+< depends org.apache.tika.detect.DefaultProbDetector java.util.List
+168d80
+< depends org.apache.tika.detect.DefaultProbDetector java.lang.ClassLoader
+171d82
+< depends org.apache.tika.detect.DefaultProbDetector java.lang.Class
+173,175d83
+< depends org.apache.tika.detect.DefaultProbDetector java.lang.Object
+< depends org.apache.tika.detect.DefaultProbDetector java.util.Collection
+< depends org.apache.tika.detect.DetectHelper java.lang.Object
+177,179d84
+< depends org.apache.tika.detect.DetectHelper java.io.InputStream
+< depends org.apache.tika.detect.DetectHelper java.io.ByteArrayOutputStream
+< depends org.apache.tika.detect.DetectHelper java.lang.Math
+184,189d88
+< depends org.apache.tika.detect.DetectHelper java.lang.String
+< depends org.apache.tika.detect.DetectHelper java.lang.Boolean
+< depends org.apache.tika.detect.DetectHelper java.lang.Integer
+< depends org.apache.tika.detect.DetectHelper java.io.IOException
+< depends org.apache.tika.detect.Detector java.lang.Object
+< depends org.apache.tika.detect.Detector java.io.Serializable
+195,196d93
+< depends org.apache.tika.detect.Detector java.io.IOException
+< depends org.apache.tika.detect.EmptyDetector java.lang.Object
+202d98
+< depends org.apache.tika.detect.EmptyDetector java.io.IOException
+204,205d99
+< depends org.apache.tika.detect.EncodingDetector java.lang.Object
+< depends org.apache.tika.detect.EncodingDetector java.io.Serializable
+210,211d103
+< depends org.apache.tika.detect.EncodingDetector java.util.List
+< depends org.apache.tika.detect.EncodingDetector java.io.IOException
+213,215d104
+< depends org.apache.tika.detect.EncodingDetectorContext java.lang.Object
+< depends org.apache.tika.detect.EncodingDetectorContext java.util.ArrayList
+< depends org.apache.tika.detect.EncodingDetectorContext java.util.List
+217,220d105
+< depends org.apache.tika.detect.EncodingDetectorContext java.lang.String
+< depends org.apache.tika.detect.EncodingDetectorContext java.util.Collections
+< depends org.apache.tika.detect.EncodingDetectorContext java.util.LinkedHashSet
+< depends org.apache.tika.detect.EncodingDetectorContext java.util.Iterator
+222,229d106
+< depends org.apache.tika.detect.EncodingDetectorContext java.nio.charset.Charset
+< depends org.apache.tika.detect.EncodingDetectorContext java.util.Set
+< depends org.apache.tika.detect.EncodingDetectorContext$Result java.lang.Object
+< depends org.apache.tika.detect.EncodingDetectorContext$Result java.util.ArrayList
+< depends org.apache.tika.detect.EncodingDetectorContext$Result java.util.Collection
+< depends org.apache.tika.detect.EncodingDetectorContext$Result java.util.Collections
+< depends org.apache.tika.detect.EncodingDetectorContext$Result java.util.List
+< depends org.apache.tika.detect.EncodingDetectorContext$Result java.lang.String
+231d107
+< depends org.apache.tika.detect.EncodingDetectorContext$Result java.nio.charset.Charset
+234,240d109
+< depends org.apache.tika.detect.EncodingDetectorContext$Result java.lang.invoke.StringConcatFactory
+< depends org.apache.tika.detect.EncodingDetectorContext$Result java.lang.invoke.MethodHandles$Lookup
+< depends org.apache.tika.detect.EncodingDetectorContext$Result java.lang.invoke.MethodType
+< depends org.apache.tika.detect.EncodingDetectorContext$Result java.lang.invoke.CallSite
+< depends org.apache.tika.detect.EncodingDetectorContext$Result java.lang.invoke.MethodHandles
+< depends org.apache.tika.detect.EncodingResult java.nio.charset.Charset
+< depends org.apache.tika.detect.EncodingResult java.lang.String
+242,255d110
+< depends org.apache.tika.detect.EncodingResult java.lang.Object
+< depends org.apache.tika.detect.EncodingResult java.lang.IllegalArgumentException
+< depends org.apache.tika.detect.EncodingResult java.lang.Math
+< depends org.apache.tika.detect.EncodingResult java.util.Locale
+< depends org.apache.tika.detect.EncodingResult java.lang.Float
+< depends org.apache.tika.detect.EncodingResult java.lang.invoke.StringConcatFactory
+< depends org.apache.tika.detect.EncodingResult java.lang.invoke.MethodHandles$Lookup
+< depends org.apache.tika.detect.EncodingResult java.lang.invoke.MethodType
+< depends org.apache.tika.detect.EncodingResult java.lang.invoke.CallSite
+< depends org.apache.tika.detect.EncodingResult java.lang.invoke.MethodHandles
+< depends org.apache.tika.detect.EncodingResult$ResultType java.lang.Object
+< depends org.apache.tika.detect.EncodingResult$ResultType java.lang.Enum
+< depends org.apache.tika.detect.EncodingResult$ResultType java.lang.Class
+< depends org.apache.tika.detect.EncodingResult$ResultType java.lang.String
+257,259d111
+< depends org.apache.tika.detect.FileCommandDetector java.lang.Object
+< depends org.apache.tika.detect.FileCommandDetector java.lang.Boolean
+< depends org.apache.tika.detect.FileCommandDetector java.lang.String
+261d112
+< depends org.apache.tika.detect.FileCommandDetector org.slf4j.Logger
+264d114
+< depends org.apache.tika.detect.FileCommandDetector java.nio.file.Path
+266d115
+< depends org.apache.tika.detect.FileCommandDetector java.lang.ProcessBuilder
+271,272d119
+< depends org.apache.tika.detect.FileCommandDetector org.slf4j.LoggerFactory
+< depends org.apache.tika.detect.FileCommandDetector java.lang.Class
+275d121
+< depends org.apache.tika.detect.FileCommandDetector java.io.IOException
+277,281d122
+< depends org.apache.tika.detect.FileCommandDetector java.lang.invoke.StringConcatFactory
+< depends org.apache.tika.detect.FileCommandDetector java.lang.invoke.MethodHandles$Lookup
+< depends org.apache.tika.detect.FileCommandDetector java.lang.invoke.MethodType
+< depends org.apache.tika.detect.FileCommandDetector java.lang.invoke.CallSite
+< depends org.apache.tika.detect.FileCommandDetector java.lang.invoke.MethodHandles
+283,294d123
+< depends org.apache.tika.detect.MagicDetector java.lang.Object
+< depends org.apache.tika.detect.MagicDetector java.lang.IllegalArgumentException
+< depends org.apache.tika.detect.MagicDetector java.lang.String
+< depends org.apache.tika.detect.MagicDetector java.lang.Math
+< depends org.apache.tika.detect.MagicDetector java.lang.Integer
+< depends org.apache.tika.detect.MagicDetector java.util.Locale
+< depends org.apache.tika.detect.MagicDetector java.nio.charset.StandardCharsets
+< depends org.apache.tika.detect.MagicDetector java.nio.charset.Charset
+< depends org.apache.tika.detect.MagicDetector java.lang.Long
+< depends org.apache.tika.detect.MagicDetector java.io.CharArrayWriter
+< depends org.apache.tika.detect.MagicDetector java.lang.Character
+< depends org.apache.tika.detect.MagicDetector java.lang.Short
+296,301d124
+< depends org.apache.tika.detect.MagicDetector java.util.regex.Pattern
+< depends org.apache.tika.detect.MagicDetector java.nio.ByteBuffer
+< depends org.apache.tika.detect.MagicDetector java.nio.CharBuffer
+< depends org.apache.tika.detect.MagicDetector java.lang.CharSequence
+< depends org.apache.tika.detect.MagicDetector java.util.regex.Matcher
+< depends org.apache.tika.detect.MagicDetector java.util.Arrays
+305,306d127
+< depends org.apache.tika.detect.MagicDetector java.lang.Throwable
+< depends org.apache.tika.detect.MagicDetector java.io.IOException
+308,313d128
+< depends org.apache.tika.detect.MagicDetector java.lang.invoke.StringConcatFactory
+< depends org.apache.tika.detect.MagicDetector java.lang.invoke.MethodHandles$Lookup
+< depends org.apache.tika.detect.MagicDetector java.lang.invoke.MethodType
+< depends org.apache.tika.detect.MagicDetector java.lang.invoke.CallSite
+< depends org.apache.tika.detect.MagicDetector java.lang.invoke.MethodHandles
+< depends org.apache.tika.detect.MetaEncodingDetector java.lang.Object
+315d129
+< depends org.apache.tika.detect.MetadataCharsetDetector java.lang.Object
+317,319d130
+< depends org.apache.tika.detect.MetadataCharsetDetector java.nio.charset.Charset
+< depends org.apache.tika.detect.MetadataCharsetDetector java.util.Collections
+< depends org.apache.tika.detect.MetadataCharsetDetector java.util.List
+321d131
+< depends org.apache.tika.detect.MetadataCharsetDetector java.lang.String
+324,326d133
+< depends org.apache.tika.detect.MetadataCharsetDetector java.util.Map
+< depends org.apache.tika.detect.MetadataCharsetDetector java.lang.IllegalArgumentException
+< depends org.apache.tika.detect.MetadataCharsetDetector java.nio.charset.StandardCharsets
+330d136
+< depends org.apache.tika.detect.MetadataCharsetDetector java.io.IOException
+333,340d138
+< depends org.apache.tika.detect.NNExampleModelDetector java.nio.file.Path
+< depends org.apache.tika.detect.NNExampleModelDetector java.io.File
+< depends org.apache.tika.detect.NNExampleModelDetector java.io.BufferedReader
+< depends org.apache.tika.detect.NNExampleModelDetector java.io.InputStreamReader
+< depends org.apache.tika.detect.NNExampleModelDetector java.nio.charset.StandardCharsets
+< depends org.apache.tika.detect.NNExampleModelDetector java.nio.charset.Charset
+< depends org.apache.tika.detect.NNExampleModelDetector java.io.InputStream
+< depends org.apache.tika.detect.NNExampleModelDetector java.io.Reader
+342d139
+< depends org.apache.tika.detect.NNExampleModelDetector java.lang.String
+346,364d142
+< depends org.apache.tika.detect.NNExampleModelDetector java.io.IOException
+< depends org.apache.tika.detect.NNExampleModelDetector java.lang.RuntimeException
+< depends org.apache.tika.detect.NNExampleModelDetector java.lang.Throwable
+< depends org.apache.tika.detect.NNExampleModelDetector java.lang.Class
+< depends org.apache.tika.detect.NNExampleModelDetector java.lang.ClassLoader
+< depends org.apache.tika.detect.NNExampleModelDetector java.lang.Package
+< depends org.apache.tika.detect.NNExampleModelDetector java.net.URL
+< depends org.apache.tika.detect.NNExampleModelDetector java.util.Objects
+< depends org.apache.tika.detect.NNExampleModelDetector java.lang.Object
+< depends org.apache.tika.detect.NNExampleModelDetector java.lang.Integer
+< depends org.apache.tika.detect.NNExampleModelDetector java.lang.Exception
+< depends org.apache.tika.detect.NNExampleModelDetector org.slf4j.Logger
+< depends org.apache.tika.detect.NNExampleModelDetector java.lang.Float
+< depends org.apache.tika.detect.NNExampleModelDetector org.slf4j.LoggerFactory
+< depends org.apache.tika.detect.NNExampleModelDetector java.lang.invoke.StringConcatFactory
+< depends org.apache.tika.detect.NNExampleModelDetector java.lang.invoke.MethodHandles$Lookup
+< depends org.apache.tika.detect.NNExampleModelDetector java.lang.invoke.MethodType
+< depends org.apache.tika.detect.NNExampleModelDetector java.lang.invoke.CallSite
+< depends org.apache.tika.detect.NNExampleModelDetector java.lang.invoke.MethodHandles
+366,367d143
+< depends org.apache.tika.detect.NNTrainedModel java.lang.Math
+< depends org.apache.tika.detect.NNTrainedModelBuilder java.lang.Object
+370,371d145
+< depends org.apache.tika.detect.NameDetector java.lang.Object
+< depends org.apache.tika.detect.NameDetector java.util.Map
+375,387d148
+< depends org.apache.tika.detect.NameDetector java.lang.String
+< depends org.apache.tika.detect.NameDetector java.nio.charset.StandardCharsets
+< depends org.apache.tika.detect.NameDetector java.nio.charset.Charset
+< depends org.apache.tika.detect.NameDetector java.net.URLDecoder
+< depends org.apache.tika.detect.NameDetector java.io.UnsupportedEncodingException
+< depends org.apache.tika.detect.NameDetector java.lang.IllegalStateException
+< depends org.apache.tika.detect.NameDetector java.lang.Throwable
+< depends org.apache.tika.detect.NameDetector java.util.Set
+< depends org.apache.tika.detect.NameDetector java.util.Iterator
+< depends org.apache.tika.detect.NameDetector java.util.Map$Entry
+< depends org.apache.tika.detect.NameDetector java.util.regex.Pattern
+< depends org.apache.tika.detect.NameDetector java.lang.CharSequence
+< depends org.apache.tika.detect.NameDetector java.util.regex.Matcher
+392d152
+< depends org.apache.tika.detect.OverrideDetector java.lang.Object
+396d155
+< depends org.apache.tika.detect.OverrideDetector java.lang.String
+401,404d159
+< depends org.apache.tika.detect.OverrideDetector java.io.IOException
+< depends org.apache.tika.detect.OverrideDetector java.lang.Deprecated
+< depends org.apache.tika.detect.OverrideEncodingDetector java.lang.Object
+< depends org.apache.tika.detect.OverrideEncodingDetector java.nio.charset.Charset
+406d160
+< depends org.apache.tika.detect.OverrideEncodingDetector java.lang.String
+409d162
+< depends org.apache.tika.detect.OverrideEncodingDetector java.lang.Class
+412,413d164
+< depends org.apache.tika.detect.OverrideEncodingDetector java.util.List
+< depends org.apache.tika.detect.OverrideEncodingDetector java.nio.charset.StandardCharsets
+418d168
+< depends org.apache.tika.detect.OverrideEncodingDetector java.io.IOException
+420,421d169
+< depends org.apache.tika.detect.OverrideEncodingDetector$Config java.lang.Object
+< depends org.apache.tika.detect.OverrideEncodingDetector$Config java.lang.String
+423d170
+< depends org.apache.tika.detect.TextDetector java.lang.Object
+427,428d173
+< depends org.apache.tika.detect.TextDetector java.lang.Math
+< depends org.apache.tika.detect.TextDetector java.util.Arrays
+432,443d176
+< depends org.apache.tika.detect.TextDetector java.lang.Throwable
+< depends org.apache.tika.detect.TextDetector java.io.IOException
+< depends org.apache.tika.detect.TextStatistics java.lang.Object
+< depends org.apache.tika.detect.TextStatistics java.lang.AssertionError
+< depends org.apache.tika.detect.TextStatistics java.lang.Class
+< depends org.apache.tika.detect.TrainedModel java.lang.Object
+< depends org.apache.tika.detect.TrainedModelDetector java.lang.Object
+< depends org.apache.tika.detect.TrainedModelDetector java.util.HashMap
+< depends org.apache.tika.detect.TrainedModelDetector java.util.Map
+< depends org.apache.tika.detect.TrainedModelDetector java.lang.Class
+< depends org.apache.tika.detect.TrainedModelDetector java.lang.ClassLoader
+< depends org.apache.tika.detect.TrainedModelDetector java.lang.Integer
+445d177
+< depends org.apache.tika.detect.TrainedModelDetector java.io.InputStream
+447,449d178
+< depends org.apache.tika.detect.TrainedModelDetector java.util.Set
+< depends org.apache.tika.detect.TrainedModelDetector java.util.Iterator
+< depends org.apache.tika.detect.TrainedModelDetector java.util.Map$Entry
+451,455d179
+< depends org.apache.tika.detect.TrainedModelDetector java.nio.channels.Channels
+< depends org.apache.tika.detect.TrainedModelDetector java.nio.channels.ReadableByteChannel
+< depends org.apache.tika.detect.TrainedModelDetector java.nio.ByteBuffer
+< depends org.apache.tika.detect.TrainedModelDetector java.nio.Buffer
+< depends org.apache.tika.detect.TrainedModelDetector java.lang.Math
+457,468d180
+< depends org.apache.tika.detect.TrainedModelDetector java.nio.file.Path
+< depends org.apache.tika.detect.TrainedModelDetector java.nio.charset.StandardCharsets
+< depends org.apache.tika.detect.TrainedModelDetector java.nio.charset.Charset
+< depends org.apache.tika.detect.TrainedModelDetector java.nio.file.OpenOption
+< depends org.apache.tika.detect.TrainedModelDetector java.nio.file.Files
+< depends org.apache.tika.detect.TrainedModelDetector java.io.BufferedWriter
+< depends org.apache.tika.detect.TrainedModelDetector java.lang.String
+< depends org.apache.tika.detect.TrainedModelDetector java.io.Writer
+< depends org.apache.tika.detect.TrainedModelDetector java.lang.Throwable
+< depends org.apache.tika.detect.TrainedModelDetector java.io.IOException
+< depends org.apache.tika.detect.TrainedModelDetector java.lang.RuntimeException
+< depends org.apache.tika.detect.TrainedModelDetector java.io.File
+472,477d183
+< depends org.apache.tika.detect.TrainedModelDetector java.lang.invoke.StringConcatFactory
+< depends org.apache.tika.detect.TrainedModelDetector java.lang.invoke.MethodHandles$Lookup
+< depends org.apache.tika.detect.TrainedModelDetector java.lang.invoke.MethodType
+< depends org.apache.tika.detect.TrainedModelDetector java.lang.invoke.CallSite
+< depends org.apache.tika.detect.TrainedModelDetector java.lang.invoke.MethodHandles
+< depends org.apache.tika.detect.TypeDetector java.lang.Object
+479d184
+< depends org.apache.tika.detect.TypeDetector java.lang.String
+484,487d188
+< depends org.apache.tika.detect.XmlRootExtractor java.lang.Object
+< depends org.apache.tika.detect.XmlRootExtractor org.apache.commons.io.input.UnsynchronizedByteArrayInputStream
+< depends org.apache.tika.detect.XmlRootExtractor java.io.InputStream
+< depends org.apache.tika.detect.XmlRootExtractor javax.xml.namespace.QName
+489d189
+< depends org.apache.tika.detect.XmlRootExtractor java.util.Arrays
+491d190
+< depends org.apache.tika.detect.XmlRootExtractor org.apache.commons.io.input.CloseShieldInputStream
+494,503d192
+< depends org.apache.tika.detect.XmlRootExtractor org.xml.sax.ContentHandler
+< depends org.apache.tika.detect.XmlRootExtractor java.lang.SecurityException
+< depends org.apache.tika.detect.XmlRootExtractor java.lang.Exception
+< depends org.apache.tika.detect.XmlRootExtractor java.io.CharConversionException
+< depends org.apache.tika.detect.XmlRootExtractor java.lang.Throwable
+< depends org.apache.tika.detect.XmlRootExtractor$ExtractorHandler org.xml.sax.helpers.DefaultHandler
+< depends org.apache.tika.detect.XmlRootExtractor$ExtractorHandler javax.xml.namespace.QName
+< depends org.apache.tika.detect.XmlRootExtractor$ExtractorHandler java.lang.String
+< depends org.apache.tika.detect.XmlRootExtractor$ExtractorHandler org.xml.sax.SAXException
+< depends org.apache.tika.detect.XmlRootExtractor$ExtractorHandler org.xml.sax.Attributes
+505,507d193
+< depends org.apache.tika.detect.XmlRootExtractor$MalformedCharException java.lang.RuntimeException
+< depends org.apache.tika.detect.XmlRootExtractor$MalformedCharException java.lang.Throwable
+< depends org.apache.tika.detect.XmlRootExtractor$MalformedCharException java.lang.Exception
+509d194
+< depends org.apache.tika.detect.ZeroSizeFileDetector java.lang.Object
+515,518d199
+< depends org.apache.tika.detect.ZeroSizeFileDetector java.lang.Throwable
+< depends org.apache.tika.detect.ZeroSizeFileDetector java.io.IOException
+< depends org.apache.tika.detect.package-info java.lang.Object
+< depends org.apache.tika.detect.package-info aQute.bnd.annotation.Version
+567d247
+< depends org.apache.tika.parser.AbstractEncodingDetectorParser java.lang.Object
+571d250
+< depends org.apache.tika.parser.AbstractEncodingDetectorParser java.lang.Class
+573,581d251
+< depends org.apache.tika.parser.AbstractExternalProcessParser java.lang.Object
+< depends org.apache.tika.parser.AbstractExternalProcessParser java.util.UUID
+< depends org.apache.tika.parser.AbstractExternalProcessParser java.lang.String
+< depends org.apache.tika.parser.AbstractExternalProcessParser java.util.concurrent.ConcurrentHashMap
+< depends org.apache.tika.parser.AbstractExternalProcessParser java.lang.Process
+< depends org.apache.tika.parser.AbstractExternalProcessParser java.util.function.Consumer
+< depends org.apache.tika.parser.AbstractExternalProcessParser java.lang.Runtime
+< depends org.apache.tika.parser.AbstractExternalProcessParser java.lang.Thread
+< depends org.apache.tika.parser.AbstractExternalProcessParser java.lang.Runnable
+583,589d252
+< depends org.apache.tika.parser.AbstractExternalProcessParser java.lang.invoke.LambdaMetafactory
+< depends org.apache.tika.parser.AbstractExternalProcessParser java.lang.invoke.MethodHandles$Lookup
+< depends org.apache.tika.parser.AbstractExternalProcessParser java.lang.invoke.MethodType
+< depends org.apache.tika.parser.AbstractExternalProcessParser java.lang.invoke.MethodHandle
+< depends org.apache.tika.parser.AbstractExternalProcessParser java.lang.invoke.CallSite
+< depends org.apache.tika.parser.AbstractExternalProcessParser java.lang.invoke.MethodHandles
+< depends org.apache.tika.parser.AbstractParser java.lang.Object
+592d254
+< depends org.apache.tika.parser.AbstractParser org.xml.sax.ContentHandler
+595,596d256
+< depends org.apache.tika.parser.AbstractParser java.io.IOException
+< depends org.apache.tika.parser.AbstractParser org.xml.sax.SAXException
+598d257
+< depends org.apache.tika.parser.AbstractParser java.lang.Deprecated
+612,613d270
+< depends org.apache.tika.parser.AutoDetectParser java.lang.Class
+< depends org.apache.tika.parser.AutoDetectParser java.lang.Object
+615d271
+< depends org.apache.tika.parser.AutoDetectParser java.lang.String
+618d273
+< depends org.apache.tika.parser.AutoDetectParser org.xml.sax.ContentHandler
+620d274
+< depends org.apache.tika.parser.AutoDetectParser org.xml.sax.SAXException
+627d280
+< depends org.apache.tika.parser.AutoDetectParser java.io.IOException
+630d282
+< depends org.apache.tika.parser.AutoDetectParserConfig java.lang.Object
+632d283
+< depends org.apache.tika.parser.AutoDetectParserConfig java.lang.String
+634d284
+< depends org.apache.tika.parser.AutoDetectParserConfig java.io.Serializable
+636,641d285
+< depends org.apache.tika.parser.AutoDetectParserConfig java.lang.invoke.StringConcatFactory
+< depends org.apache.tika.parser.AutoDetectParserConfig java.lang.invoke.MethodHandles$Lookup
+< depends org.apache.tika.parser.AutoDetectParserConfig java.lang.invoke.MethodType
+< depends org.apache.tika.parser.AutoDetectParserConfig java.lang.invoke.CallSite
+< depends org.apache.tika.parser.AutoDetectParserConfig java.lang.invoke.MethodHandles
+< depends org.apache.tika.parser.AutoDetectParserConfig$1 java.lang.Object
+643d286
+< depends org.apache.tika.parser.AutoDetectParserConfig$1 org.xml.sax.ContentHandler
+647d289
+< depends org.apache.tika.parser.CompositeParser java.lang.Object
+650,654d291
+< depends org.apache.tika.parser.CompositeParser java.util.Collection
+< depends org.apache.tika.parser.CompositeParser java.util.List
+< depends org.apache.tika.parser.CompositeParser java.util.ArrayList
+< depends org.apache.tika.parser.CompositeParser java.util.Iterator
+< depends org.apache.tika.parser.CompositeParser java.lang.Class
+656,657d292
+< depends org.apache.tika.parser.CompositeParser java.util.Arrays
+< depends org.apache.tika.parser.CompositeParser java.util.HashMap
+659d293
+< depends org.apache.tika.parser.CompositeParser java.util.Set
+661,663d294
+< depends org.apache.tika.parser.CompositeParser java.util.Map
+< depends org.apache.tika.parser.CompositeParser java.util.Collections
+< depends org.apache.tika.parser.CompositeParser java.util.Map$Entry
+668d298
+< depends org.apache.tika.parser.CompositeParser java.lang.String
+671d300
+< depends org.apache.tika.parser.CompositeParser org.xml.sax.ContentHandler
+674,676d302
+< depends org.apache.tika.parser.CompositeParser java.lang.SecurityException
+< depends org.apache.tika.parser.CompositeParser java.io.IOException
+< depends org.apache.tika.parser.CompositeParser java.lang.Throwable
+678d303
+< depends org.apache.tika.parser.CompositeParser org.xml.sax.SAXException
+680,681d304
+< depends org.apache.tika.parser.CompositeParser java.lang.Exception
+< depends org.apache.tika.parser.CompositeParser java.lang.RuntimeException
+683,687d305
+< depends org.apache.tika.parser.CompositeParser java.lang.invoke.StringConcatFactory
+< depends org.apache.tika.parser.CompositeParser java.lang.invoke.MethodHandles$Lookup
+< depends org.apache.tika.parser.CompositeParser java.lang.invoke.MethodType
+< depends org.apache.tika.parser.CompositeParser java.lang.invoke.CallSite
+< depends org.apache.tika.parser.CompositeParser java.lang.invoke.MethodHandles
+689,693d306
+< depends org.apache.tika.parser.CryptoParser java.lang.String
+< depends org.apache.tika.parser.CryptoParser java.security.Provider
+< depends org.apache.tika.parser.CryptoParser java.util.Set
+< depends org.apache.tika.parser.CryptoParser javax.crypto.Cipher
+< depends org.apache.tika.parser.CryptoParser java.security.Key
+695,696d307
+< depends org.apache.tika.parser.CryptoParser java.lang.Class
+< depends org.apache.tika.parser.CryptoParser java.lang.Object
+698,701d308
+< depends org.apache.tika.parser.CryptoParser java.security.AlgorithmParameters
+< depends org.apache.tika.parser.CryptoParser java.security.SecureRandom
+< depends org.apache.tika.parser.CryptoParser javax.crypto.CipherInputStream
+< depends org.apache.tika.parser.CryptoParser java.io.InputStream
+703d309
+< depends org.apache.tika.parser.CryptoParser org.xml.sax.ContentHandler
+705,706d310
+< depends org.apache.tika.parser.CryptoParser java.lang.Throwable
+< depends org.apache.tika.parser.CryptoParser java.security.GeneralSecurityException
+709,710d312
+< depends org.apache.tika.parser.CryptoParser java.io.IOException
+< depends org.apache.tika.parser.CryptoParser org.xml.sax.SAXException
+714,715d315
+< depends org.apache.tika.parser.DefaultParser java.util.Collection
+< depends org.apache.tika.parser.DefaultParser java.util.List
+718,720d317
+< depends org.apache.tika.parser.DefaultParser java.util.ArrayList
+< depends org.apache.tika.parser.DefaultParser java.util.Collections
+< depends org.apache.tika.parser.DefaultParser java.util.Set
+723d319
+< depends org.apache.tika.parser.DefaultParser java.lang.ClassLoader
+725,727d320
+< depends org.apache.tika.parser.DefaultParser java.lang.Class
+< depends org.apache.tika.parser.DefaultParser java.util.Iterator
+< depends org.apache.tika.parser.DefaultParser java.lang.Object
+733d325
+< depends org.apache.tika.parser.DefaultParser java.util.Map
+736d327
+< depends org.apache.tika.parser.DelegatingParser java.lang.Object
+740,741d330
+< depends org.apache.tika.parser.DelegatingParser java.lang.Class
+< depends org.apache.tika.parser.DelegatingParser java.util.Set
+743d331
+< depends org.apache.tika.parser.DelegatingParser org.xml.sax.ContentHandler
+746,747d333
+< depends org.apache.tika.parser.DelegatingParser org.xml.sax.SAXException
+< depends org.apache.tika.parser.DelegatingParser java.io.IOException
+749,751d334
+< depends org.apache.tika.parser.EmptyParser java.lang.Object
+< depends org.apache.tika.parser.EmptyParser java.util.Collections
+< depends org.apache.tika.parser.EmptyParser java.util.Set
+753d335
+< depends org.apache.tika.parser.EmptyParser org.xml.sax.ContentHandler
+759d340
+< depends org.apache.tika.parser.EmptyParser org.xml.sax.SAXException
+761,763d341
+< depends org.apache.tika.parser.ErrorParser java.lang.Object
+< depends org.apache.tika.parser.ErrorParser java.util.Collections
+< depends org.apache.tika.parser.ErrorParser java.util.Set
+765d342
+< depends org.apache.tika.parser.ErrorParser java.lang.String
+770d346
+< depends org.apache.tika.parser.ErrorParser org.xml.sax.ContentHandler
+773,775d348
+< depends org.apache.tika.parser.NetworkParser java.lang.Object
+< depends org.apache.tika.parser.NetworkParser java.net.URI
+< depends org.apache.tika.parser.NetworkParser java.util.Set
+777,779d349
+< depends org.apache.tika.parser.NetworkParser java.util.Collections
+< depends org.apache.tika.parser.NetworkParser java.lang.String
+< depends org.apache.tika.parser.NetworkParser java.net.Socket
+782d351
+< depends org.apache.tika.parser.NetworkParser java.io.OutputStream
+784,785d352
+< depends org.apache.tika.parser.NetworkParser java.io.InputStream
+< depends org.apache.tika.parser.NetworkParser org.xml.sax.ContentHandler
+788,791d354
+< depends org.apache.tika.parser.NetworkParser java.lang.Throwable
+< depends org.apache.tika.parser.NetworkParser java.net.URL
+< depends org.apache.tika.parser.NetworkParser java.net.URLConnection
+< depends org.apache.tika.parser.NetworkParser org.apache.commons.io.input.CloseShieldInputStream
+793,794d355
+< depends org.apache.tika.parser.NetworkParser java.io.IOException
+< depends org.apache.tika.parser.NetworkParser org.xml.sax.SAXException
+798,801d358
+< depends org.apache.tika.parser.NetworkParser$1 java.net.Socket
+< depends org.apache.tika.parser.NetworkParser$1 java.io.FilterOutputStream
+< depends org.apache.tika.parser.NetworkParser$1 java.io.OutputStream
+< depends org.apache.tika.parser.NetworkParser$1 java.io.IOException
+803d359
+< depends org.apache.tika.parser.NetworkParser$1 org.xml.sax.ContentHandler
+806d361
+< depends org.apache.tika.parser.NetworkParser$MetaHandler org.xml.sax.helpers.DefaultHandler
+808,811d362
+< depends org.apache.tika.parser.NetworkParser$MetaHandler java.lang.String
+< depends org.apache.tika.parser.NetworkParser$MetaHandler java.lang.Object
+< depends org.apache.tika.parser.NetworkParser$MetaHandler org.xml.sax.Attributes
+< depends org.apache.tika.parser.NetworkParser$MetaHandler org.xml.sax.SAXException
+813,814d363
+< depends org.apache.tika.parser.NetworkParser$ParsingTask java.lang.Object
+< depends org.apache.tika.parser.NetworkParser$ParsingTask java.lang.Exception
+816,819d364
+< depends org.apache.tika.parser.NetworkParser$ParsingTask java.io.OutputStream
+< depends org.apache.tika.parser.NetworkParser$ParsingTask java.lang.Thread
+< depends org.apache.tika.parser.NetworkParser$ParsingTask java.lang.Runnable
+< depends org.apache.tika.parser.NetworkParser$ParsingTask java.lang.String
+821d365
+< depends org.apache.tika.parser.NetworkParser$ParsingTask org.xml.sax.ContentHandler
+826d369
+< depends org.apache.tika.parser.NetworkParser$ParsingTask java.io.InputStream
+828d370
+< depends org.apache.tika.parser.NetworkParser$ParsingTask java.lang.InterruptedException
+830,833d371
+< depends org.apache.tika.parser.NetworkParser$ParsingTask java.lang.Throwable
+< depends org.apache.tika.parser.NetworkParser$ParsingTask org.xml.sax.SAXException
+< depends org.apache.tika.parser.NetworkParser$ParsingTask java.io.IOException
+< depends org.apache.tika.parser.NetworkParser$ParsingTask org.apache.commons.io.IOUtils
+835,839d372
+< depends org.apache.tika.parser.ParseContext java.lang.Object
+< depends org.apache.tika.parser.ParseContext java.util.HashMap
+< depends org.apache.tika.parser.ParseContext java.util.Map
+< depends org.apache.tika.parser.ParseContext java.lang.Class
+< depends org.apache.tika.parser.ParseContext java.lang.String
+842,845d374
+< depends org.apache.tika.parser.ParseContext java.util.Collections
+< depends org.apache.tika.parser.ParseContext java.util.Set
+< depends org.apache.tika.parser.ParseContext java.util.Iterator
+< depends org.apache.tika.parser.ParseContext java.util.Map$Entry
+847,855d375
+< depends org.apache.tika.parser.ParseContext java.io.Serializable
+< depends org.apache.tika.parser.ParseContext java.lang.invoke.StringConcatFactory
+< depends org.apache.tika.parser.ParseContext java.lang.invoke.MethodHandles$Lookup
+< depends org.apache.tika.parser.ParseContext java.lang.invoke.MethodType
+< depends org.apache.tika.parser.ParseContext java.lang.invoke.CallSite
+< depends org.apache.tika.parser.ParseContext java.lang.invoke.MethodHandles
+< depends org.apache.tika.parser.ParseContext$StringJsonConfig java.lang.Record
+< depends org.apache.tika.parser.ParseContext$StringJsonConfig java.lang.String
+< depends org.apache.tika.parser.ParseContext$StringJsonConfig java.lang.Object
+857d376
+< depends org.apache.tika.parser.ParseContext$StringJsonConfig java.io.Serializable
+859,869d377
+< depends org.apache.tika.parser.ParseContext$StringJsonConfig java.lang.runtime.ObjectMethods
+< depends org.apache.tika.parser.ParseContext$StringJsonConfig java.lang.invoke.MethodHandles$Lookup
+< depends org.apache.tika.parser.ParseContext$StringJsonConfig java.lang.invoke.TypeDescriptor
+< depends org.apache.tika.parser.ParseContext$StringJsonConfig java.lang.Class
+< depends org.apache.tika.parser.ParseContext$StringJsonConfig java.lang.invoke.MethodHandle
+< depends org.apache.tika.parser.ParseContext$StringJsonConfig java.lang.invoke.MethodHandles
+< depends org.apache.tika.parser.ParseRecord java.lang.Object
+< depends org.apache.tika.parser.ParseRecord java.util.LinkedHashSet
+< depends org.apache.tika.parser.ParseRecord java.util.Set
+< depends org.apache.tika.parser.ParseRecord java.util.ArrayList
+< depends org.apache.tika.parser.ParseRecord java.util.List
+872,873d379
+< depends org.apache.tika.parser.ParseRecord java.lang.String
+< depends org.apache.tika.parser.ParseRecord java.lang.Exception
+875,876d380
+< depends org.apache.tika.parser.Parser java.lang.Object
+< depends org.apache.tika.parser.Parser java.io.Serializable
+879d382
+< depends org.apache.tika.parser.Parser java.util.Set
+882d384
+< depends org.apache.tika.parser.Parser org.xml.sax.ContentHandler
+884,885d385
+< depends org.apache.tika.parser.Parser java.io.IOException
+< depends org.apache.tika.parser.Parser org.xml.sax.SAXException
+887d386
+< depends org.apache.tika.parser.ParserDecorator java.lang.Object
+890d388
+< depends org.apache.tika.parser.ParserDecorator java.util.Set
+894d391
+< depends org.apache.tika.parser.ParserDecorator java.util.Collection
+897d393
+< depends org.apache.tika.parser.ParserDecorator org.xml.sax.ContentHandler
+900,902d395
+< depends org.apache.tika.parser.ParserDecorator java.lang.Deprecated
+< depends org.apache.tika.parser.ParserDecorator java.io.IOException
+< depends org.apache.tika.parser.ParserDecorator org.xml.sax.SAXException
+904d396
+< depends org.apache.tika.parser.ParserDecorator java.lang.String
+908,911d399
+< depends org.apache.tika.parser.ParserDecorator$MimeFilteringDecorator java.util.HashSet
+< depends org.apache.tika.parser.ParserDecorator$MimeFilteringDecorator java.util.Collection
+< depends org.apache.tika.parser.ParserDecorator$MimeFilteringDecorator java.util.Collections
+< depends org.apache.tika.parser.ParserDecorator$MimeFilteringDecorator java.util.Set
+914d401
+< depends org.apache.tika.parser.ParserDecorator$MimeFilteringDecorator java.lang.String
+919d405
+< depends org.apache.tika.parser.ParserPostProcessor org.xml.sax.ContentHandler
+923,925d408
+< depends org.apache.tika.parser.ParserPostProcessor java.lang.Object
+< depends org.apache.tika.parser.ParserPostProcessor java.lang.String
+< depends org.apache.tika.parser.ParserPostProcessor java.lang.Math
+927,930d409
+< depends org.apache.tika.parser.ParserPostProcessor java.util.List
+< depends org.apache.tika.parser.ParserPostProcessor java.util.Iterator
+< depends org.apache.tika.parser.ParserPostProcessor java.io.IOException
+< depends org.apache.tika.parser.ParserPostProcessor org.xml.sax.SAXException
+932d410
+< depends org.apache.tika.parser.ParsingIntent java.lang.Object
+936,937d413
+< depends org.apache.tika.parser.ParsingReader java.io.InputStream
+< depends org.apache.tika.parser.ParsingReader java.lang.String
+939,954d414
+< depends org.apache.tika.parser.ParsingReader java.lang.Class
+< depends org.apache.tika.parser.ParsingReader java.lang.Object
+< depends org.apache.tika.parser.ParsingReader java.nio.file.OpenOption
+< depends org.apache.tika.parser.ParsingReader java.nio.file.Files
+< depends org.apache.tika.parser.ParsingReader java.nio.file.Path
+< depends org.apache.tika.parser.ParsingReader java.io.FileInputStream
+< depends org.apache.tika.parser.ParsingReader java.io.File
+< depends org.apache.tika.parser.ParsingReader java.util.concurrent.Executor
+< depends org.apache.tika.parser.ParsingReader java.io.Reader
+< depends org.apache.tika.parser.ParsingReader java.io.PipedReader
+< depends org.apache.tika.parser.ParsingReader java.io.BufferedReader
+< depends org.apache.tika.parser.ParsingReader java.io.PipedWriter
+< depends org.apache.tika.parser.ParsingReader java.io.Writer
+< depends org.apache.tika.parser.ParsingReader java.io.IOException
+< depends org.apache.tika.parser.ParsingReader java.lang.IllegalStateException
+< depends org.apache.tika.parser.ParsingReader java.lang.Throwable
+956d415
+< depends org.apache.tika.parser.ParsingReader java.lang.Runnable
+960,968d418
+< depends org.apache.tika.parser.ParsingReader java.lang.Thread
+< depends org.apache.tika.parser.ParsingReader java.io.FileNotFoundException
+< depends org.apache.tika.parser.ParsingReader java.lang.invoke.LambdaMetafactory
+< depends org.apache.tika.parser.ParsingReader java.lang.invoke.MethodHandles$Lookup
+< depends org.apache.tika.parser.ParsingReader java.lang.invoke.MethodType
+< depends org.apache.tika.parser.ParsingReader java.lang.invoke.MethodHandle
+< depends org.apache.tika.parser.ParsingReader java.lang.invoke.CallSite
+< depends org.apache.tika.parser.ParsingReader java.lang.invoke.StringConcatFactory
+< depends org.apache.tika.parser.ParsingReader java.lang.invoke.MethodHandles
+970,971d419
+< depends org.apache.tika.parser.ParsingReader$ParsingTask java.lang.Object
+< depends org.apache.tika.parser.ParsingReader$ParsingTask java.io.InputStream
+974d421
+< depends org.apache.tika.parser.ParsingReader$ParsingTask java.io.Writer
+978,982d424
+< depends org.apache.tika.parser.ParsingReader$ParsingTask org.xml.sax.ContentHandler
+< depends org.apache.tika.parser.ParsingReader$ParsingTask java.lang.Throwable
+< depends org.apache.tika.parser.ParsingReader$ParsingTask java.lang.Runnable
+< depends org.apache.tika.parser.PasswordProvider java.lang.Object
+< depends org.apache.tika.parser.PasswordProvider java.io.Serializable
+984d425
+< depends org.apache.tika.parser.PasswordProvider java.lang.String
+988d428
+< depends org.apache.tika.parser.RecursiveParserWrapper java.util.Set
+991,992d430
+< depends org.apache.tika.parser.RecursiveParserWrapper java.lang.IllegalStateException
+< depends org.apache.tika.parser.RecursiveParserWrapper java.lang.String
+994,997d431
+< depends org.apache.tika.parser.RecursiveParserWrapper java.lang.Class
+< depends org.apache.tika.parser.RecursiveParserWrapper java.lang.Object
+< depends org.apache.tika.parser.RecursiveParserWrapper org.xml.sax.ContentHandler
+< depends org.apache.tika.parser.RecursiveParserWrapper java.lang.System
+1006,1007d439
+< depends org.apache.tika.parser.RecursiveParserWrapper java.lang.Long
+< depends org.apache.tika.parser.RecursiveParserWrapper java.lang.Throwable
+1013d444
+< depends org.apache.tika.parser.RecursiveParserWrapper java.util.concurrent.atomic.AtomicInteger
+1016,1017d446
+< depends org.apache.tika.parser.RecursiveParserWrapper java.io.IOException
+< depends org.apache.tika.parser.RecursiveParserWrapper org.xml.sax.SAXException
+1019,1023d447
+< depends org.apache.tika.parser.RecursiveParserWrapper java.lang.invoke.StringConcatFactory
+< depends org.apache.tika.parser.RecursiveParserWrapper java.lang.invoke.MethodHandles$Lookup
+< depends org.apache.tika.parser.RecursiveParserWrapper java.lang.invoke.MethodType
+< depends org.apache.tika.parser.RecursiveParserWrapper java.lang.invoke.CallSite
+< depends org.apache.tika.parser.RecursiveParserWrapper java.lang.invoke.MethodHandles
+1027d450
+< depends org.apache.tika.parser.RecursiveParserWrapper$EmbeddedParserDecorator java.lang.String
+1029d451
+< depends org.apache.tika.parser.RecursiveParserWrapper$EmbeddedParserDecorator java.util.concurrent.atomic.AtomicInteger
+1033d454
+< depends org.apache.tika.parser.RecursiveParserWrapper$EmbeddedParserDecorator java.lang.Object
+1035d455
+< depends org.apache.tika.parser.RecursiveParserWrapper$EmbeddedParserDecorator org.xml.sax.ContentHandler
+1037,1038d456
+< depends org.apache.tika.parser.RecursiveParserWrapper$EmbeddedParserDecorator java.lang.Class
+< depends org.apache.tika.parser.RecursiveParserWrapper$EmbeddedParserDecorator java.lang.System
+1043,1044d460
+< depends org.apache.tika.parser.RecursiveParserWrapper$EmbeddedParserDecorator java.lang.Long
+< depends org.apache.tika.parser.RecursiveParserWrapper$EmbeddedParserDecorator org.xml.sax.SAXException
+1046d461
+< depends org.apache.tika.parser.RecursiveParserWrapper$EmbeddedParserDecorator java.lang.Throwable
+1053,1060d467
+< depends org.apache.tika.parser.RecursiveParserWrapper$EmbeddedParserDecorator java.io.IOException
+< depends org.apache.tika.parser.RecursiveParserWrapper$EmbeddedParserDecorator java.lang.invoke.StringConcatFactory
+< depends org.apache.tika.parser.RecursiveParserWrapper$EmbeddedParserDecorator java.lang.invoke.MethodHandles$Lookup
+< depends org.apache.tika.parser.RecursiveParserWrapper$EmbeddedParserDecorator java.lang.invoke.MethodType
+< depends org.apache.tika.parser.RecursiveParserWrapper$EmbeddedParserDecorator java.lang.invoke.CallSite
+< depends org.apache.tika.parser.RecursiveParserWrapper$EmbeddedParserDecorator java.lang.invoke.MethodHandles
+< depends org.apache.tika.parser.RecursiveParserWrapper$ParserState java.lang.Object
+< depends org.apache.tika.parser.RecursiveParserWrapper$ParserState java.util.concurrent.atomic.AtomicInteger
+1064d470
+< depends org.apache.tika.parser.RecursiveParserWrapper$RecursivelySecureContentHandler org.xml.sax.ContentHandler
+1066d471
+< depends org.apache.tika.parser.RecursiveParserWrapper$RecursivelySecureContentHandler java.util.concurrent.atomic.AtomicInteger
+1069,1070d473
+< depends org.apache.tika.parser.RecursiveParserWrapper$RecursivelySecureContentHandler java.lang.String
+< depends org.apache.tika.parser.RecursiveParserWrapper$RecursivelySecureContentHandler org.xml.sax.Attributes
+1073,1075d475
+< depends org.apache.tika.parser.RecursiveParserWrapper$RecursivelySecureContentHandler java.lang.Class
+< depends org.apache.tika.parser.RecursiveParserWrapper$RecursivelySecureContentHandler java.lang.Object
+< depends org.apache.tika.parser.RecursiveParserWrapper$RecursivelySecureContentHandler org.xml.sax.SAXException
+1077,1078d476
+< depends org.apache.tika.parser.RecursiveParserWrapper$SecureHandlerCounter java.lang.Object
+< depends org.apache.tika.parser.RecursiveParserWrapper$SecureHandlerCounter java.lang.Math
+1081,1088d478
+< depends org.apache.tika.parser.RegexCaptureParser java.lang.Object
+< depends org.apache.tika.parser.RegexCaptureParser java.util.HashMap
+< depends org.apache.tika.parser.RegexCaptureParser java.util.Map
+< depends org.apache.tika.parser.RegexCaptureParser java.util.Set
+< depends org.apache.tika.parser.RegexCaptureParser java.util.Iterator
+< depends org.apache.tika.parser.RegexCaptureParser java.util.Map$Entry
+< depends org.apache.tika.parser.RegexCaptureParser java.lang.String
+< depends org.apache.tika.parser.RegexCaptureParser java.util.regex.Pattern
+1091,1100d480
+< depends org.apache.tika.parser.RegexCaptureParser java.lang.Class
+< depends org.apache.tika.parser.RegexCaptureParser java.io.BufferedReader
+< depends org.apache.tika.parser.RegexCaptureParser java.io.InputStreamReader
+< depends org.apache.tika.parser.RegexCaptureParser java.nio.charset.StandardCharsets
+< depends org.apache.tika.parser.RegexCaptureParser java.nio.charset.Charset
+< depends org.apache.tika.parser.RegexCaptureParser java.io.InputStream
+< depends org.apache.tika.parser.RegexCaptureParser java.io.Reader
+< depends org.apache.tika.parser.RegexCaptureParser java.lang.CharSequence
+< depends org.apache.tika.parser.RegexCaptureParser java.util.regex.Matcher
+< depends org.apache.tika.parser.RegexCaptureParser java.util.LinkedHashSet
+1102,1103d481
+< depends org.apache.tika.parser.RegexCaptureParser org.xml.sax.ContentHandler
+< depends org.apache.tika.parser.RegexCaptureParser java.lang.Throwable
+1105d482
+< depends org.apache.tika.parser.RegexCaptureParser java.util.Collections
+1109,1110d485
+< depends org.apache.tika.parser.RegexCaptureParser java.io.IOException
+< depends org.apache.tika.parser.RegexCaptureParser org.xml.sax.SAXException
+1113,1118d487
+< depends org.apache.tika.parser.RegexCaptureParserConfig java.lang.Object
+< depends org.apache.tika.parser.RegexCaptureParserConfig java.util.HashMap
+< depends org.apache.tika.parser.RegexCaptureParserConfig java.util.Map
+< depends org.apache.tika.parser.RegexCaptureParserConfig java.io.Serializable
+< depends org.apache.tika.parser.RegexCaptureParserConfig java.lang.String
+< depends org.apache.tika.parser.RenderingParser java.lang.Object
+1120,1121d488
+< depends org.apache.tika.parser.SimplePasswordProvider java.lang.Object
+< depends org.apache.tika.parser.SimplePasswordProvider java.lang.String
+1128,1133d494
+< depends org.apache.tika.parser.external.ExternalParser java.lang.Object
+< depends org.apache.tika.parser.external.ExternalParser java.util.HashSet
+< depends org.apache.tika.parser.external.ExternalParser java.util.Set
+< depends org.apache.tika.parser.external.ExternalParser java.util.List
+< depends org.apache.tika.parser.external.ExternalParser java.util.Iterator
+< depends org.apache.tika.parser.external.ExternalParser java.lang.String
+1135,1136d495
+< depends org.apache.tika.parser.external.ExternalParser java.util.ArrayList
+< depends org.apache.tika.parser.external.ExternalParser java.util.Collection
+1138,1141d496
+< depends org.apache.tika.parser.external.ExternalParser java.util.stream.Stream
+< depends org.apache.tika.parser.external.ExternalParser java.util.function.ToIntFunction
+< depends org.apache.tika.parser.external.ExternalParser java.util.stream.IntStream
+< depends org.apache.tika.parser.external.ExternalParser java.lang.Boolean
+1144d498
+< depends org.apache.tika.parser.external.ExternalParser java.lang.Class
+1146d499
+< depends org.apache.tika.parser.external.ExternalParser java.util.Collections
+1149,1152d501
+< depends org.apache.tika.parser.external.ExternalParser java.nio.file.Path
+< depends org.apache.tika.parser.external.ExternalParser java.util.regex.Pattern
+< depends org.apache.tika.parser.external.ExternalParser java.lang.CharSequence
+< depends org.apache.tika.parser.external.ExternalParser java.util.regex.Matcher
+1155d503
+< depends org.apache.tika.parser.external.ExternalParser java.lang.ProcessBuilder
+1162,1163d509
+< depends org.apache.tika.parser.external.ExternalParser org.xml.sax.ContentHandler
+< depends org.apache.tika.parser.external.ExternalParser java.lang.Throwable
+1165,1173d510
+< depends org.apache.tika.parser.external.ExternalParser java.nio.charset.StandardCharsets
+< depends org.apache.tika.parser.external.ExternalParser java.nio.charset.Charset
+< depends org.apache.tika.parser.external.ExternalParser java.nio.file.Files
+< depends org.apache.tika.parser.external.ExternalParser java.io.BufferedReader
+< depends org.apache.tika.parser.external.ExternalParser org.slf4j.LoggerFactory
+< depends org.apache.tika.parser.external.ExternalParser org.slf4j.Logger
+< depends org.apache.tika.parser.external.ExternalParser org.xml.sax.helpers.DefaultHandler
+< depends org.apache.tika.parser.external.ExternalParser java.io.IOException
+< depends org.apache.tika.parser.external.ExternalParser org.xml.sax.SAXException
+1176,1185d512
+< depends org.apache.tika.parser.external.ExternalParser java.lang.invoke.LambdaMetafactory
+< depends org.apache.tika.parser.external.ExternalParser java.lang.invoke.MethodHandles$Lookup
+< depends org.apache.tika.parser.external.ExternalParser java.lang.invoke.MethodType
+< depends org.apache.tika.parser.external.ExternalParser java.lang.invoke.MethodHandle
+< depends org.apache.tika.parser.external.ExternalParser java.lang.invoke.CallSite
+< depends org.apache.tika.parser.external.ExternalParser java.lang.Integer
+< depends org.apache.tika.parser.external.ExternalParser java.lang.invoke.MethodHandles
+< depends org.apache.tika.parser.external.ExternalParserConfig java.lang.Object
+< depends org.apache.tika.parser.external.ExternalParserConfig java.util.ArrayList
+< depends org.apache.tika.parser.external.ExternalParserConfig java.util.List
+1188,1193d514
+< depends org.apache.tika.parser.external.ExternalParserConfig java.lang.String
+< depends org.apache.tika.parser.external.ExternalParserConfig java.io.Serializable
+< depends org.apache.tika.parser.external.ExternalParserConfig java.lang.Integer
+< depends org.apache.tika.parser.multiple.AbstractMultipleParser java.util.Arrays
+< depends org.apache.tika.parser.multiple.AbstractMultipleParser java.lang.Object
+< depends org.apache.tika.parser.multiple.AbstractMultipleParser java.util.List
+1196,1199d516
+< depends org.apache.tika.parser.multiple.AbstractMultipleParser java.util.Collection
+< depends org.apache.tika.parser.multiple.AbstractMultipleParser java.util.HashSet
+< depends org.apache.tika.parser.multiple.AbstractMultipleParser java.util.Set
+< depends org.apache.tika.parser.multiple.AbstractMultipleParser java.util.Iterator
+1203d519
+< depends org.apache.tika.parser.multiple.AbstractMultipleParser java.lang.String
+1208,1209d523
+< depends org.apache.tika.parser.multiple.AbstractMultipleParser java.util.ArrayList
+< depends org.apache.tika.parser.multiple.AbstractMultipleParser java.util.Collections
+1211d524
+< depends org.apache.tika.parser.multiple.AbstractMultipleParser org.xml.sax.ContentHandler
+1214,1217d526
+< depends org.apache.tika.parser.multiple.AbstractMultipleParser java.lang.Exception
+< depends org.apache.tika.parser.multiple.AbstractMultipleParser java.lang.Throwable
+< depends org.apache.tika.parser.multiple.AbstractMultipleParser java.io.IOException
+< depends org.apache.tika.parser.multiple.AbstractMultipleParser org.xml.sax.SAXException
+1220,1225d528
+< depends org.apache.tika.parser.multiple.AbstractMultipleParser java.lang.Deprecated
+< depends org.apache.tika.parser.multiple.AbstractMultipleParser java.lang.invoke.StringConcatFactory
+< depends org.apache.tika.parser.multiple.AbstractMultipleParser java.lang.invoke.MethodHandles$Lookup
+< depends org.apache.tika.parser.multiple.AbstractMultipleParser java.lang.invoke.MethodType
+< depends org.apache.tika.parser.multiple.AbstractMultipleParser java.lang.invoke.CallSite
+< depends org.apache.tika.parser.multiple.AbstractMultipleParser java.lang.invoke.MethodHandles
+1227,1228d529
+< depends org.apache.tika.parser.multiple.AbstractMultipleParser$1 java.lang.NoSuchFieldError
+< depends org.apache.tika.parser.multiple.AbstractMultipleParser$1 java.lang.Object
+1230,1233d530
+< depends org.apache.tika.parser.multiple.AbstractMultipleParser$MetadataPolicy java.lang.Object
+< depends org.apache.tika.parser.multiple.AbstractMultipleParser$MetadataPolicy java.lang.Enum
+< depends org.apache.tika.parser.multiple.AbstractMultipleParser$MetadataPolicy java.lang.Class
+< depends org.apache.tika.parser.multiple.AbstractMultipleParser$MetadataPolicy java.lang.String
+1238d534
+< depends org.apache.tika.parser.multiple.FallbackParser java.util.Collection
+1240,1242d535
+< depends org.apache.tika.parser.multiple.FallbackParser java.util.Arrays
+< depends org.apache.tika.parser.multiple.FallbackParser java.lang.Object
+< depends org.apache.tika.parser.multiple.FallbackParser java.util.List
+1244d536
+< depends org.apache.tika.parser.multiple.FallbackParser org.xml.sax.ContentHandler
+1246,1249d537
+< depends org.apache.tika.parser.multiple.FallbackParser java.lang.Exception
+< depends org.apache.tika.parser.multiple.SupplementingParser java.util.Arrays
+< depends org.apache.tika.parser.multiple.SupplementingParser java.lang.Object
+< depends org.apache.tika.parser.multiple.SupplementingParser java.util.List
+1252d539
+< depends org.apache.tika.parser.multiple.SupplementingParser java.util.Collection
+1254,1255d540
+< depends org.apache.tika.parser.multiple.SupplementingParser java.lang.IllegalArgumentException
+< depends org.apache.tika.parser.multiple.SupplementingParser java.lang.String
+1258d542
+< depends org.apache.tika.parser.multiple.SupplementingParser org.xml.sax.ContentHandler
+1260,1267d543
+< depends org.apache.tika.parser.multiple.SupplementingParser java.lang.Exception
+< depends org.apache.tika.parser.multiple.SupplementingParser java.lang.invoke.StringConcatFactory
+< depends org.apache.tika.parser.multiple.SupplementingParser java.lang.invoke.MethodHandles$Lookup
+< depends org.apache.tika.parser.multiple.SupplementingParser java.lang.invoke.MethodType
+< depends org.apache.tika.parser.multiple.SupplementingParser java.lang.invoke.CallSite
+< depends org.apache.tika.parser.multiple.SupplementingParser java.lang.invoke.MethodHandles
+< depends org.apache.tika.parser.package-info java.lang.Object
+< depends org.apache.tika.parser.package-info aQute.bnd.annotation.Version

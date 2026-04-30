@@ -1,0 +1,100 @@
+======================================================================
+Cluster: org.apache.tika.parser.ss
+Total classes: 80
+Sample classes:
+- org.apache.tika.parser.AutoDetectParserConfig
+- org.apache.tika.parser.AutoDetectParserConfig$1
+- org.apache.tika.sax.ContentHandlerDecoratorFactory
+- org.apache.tika.config.EmbeddedLimits
+- org.apache.tika.parser.ParseRecord
+- org.apache.tika.parser.ParseContext
+- org.apache.tika.parser.ParseContext$StringJsonConfig
+- org.apache.tika.config.ParseContextConfig
+- org.apache.tika.detect.EmptyDetector
+- org.apache.tika.detect.TypeDetector
+- org.apache.tika.detect.ZeroSizeFileDetector
+- org.apache.tika.digest.CompositeDigester
+- org.apache.tika.metadata.filter.NoOpFilter
+- org.apache.tika.parser.CryptoParser
+- org.apache.tika.utils.ConcurrentUtils
+
+======================================================================
+Cluster: org.apache.tika.sax.ss
+Total classes: 56
+Sample classes:
+- org.apache.tika.sax.ToMarkdownContentHandler$ListState
+- org.apache.tika.sax.ToMarkdownContentHandler
+- org.apache.tika.sax.TextContentHandler
+- org.apache.tika.sax.TextAndAttributeContentHandler
+- org.apache.tika.sax.ElementMappingContentHandler$TargetElement
+- org.apache.tika.sax.ElementMappingContentHandler
+- org.apache.tika.sax.TaggedSAXException
+- org.apache.tika.sax.TaggedContentHandler
+- org.apache.tika.sax.ToHTMLContentHandler
+- org.apache.tika.sax.BasicContentHandlerFactory$HANDLER_TYPE
+- org.apache.tika.sax.BasicContentHandlerFactory$1
+- org.apache.tika.sax.BasicContentHandlerFactory
+- org.apache.tika.sax.StreamingContentHandlerFactory
+- org.apache.tika.sax.ContentHandlerFactory
+- org.apache.tika.sax.WriteLimiter
+
+======================================================================
+Cluster: org.apache.tika.metadata.ss
+Total classes: 55
+Sample classes:
+- org.apache.tika.metadata.MachineMetadata$Endian
+- org.apache.tika.metadata.MachineMetadata
+- org.apache.tika.metadata.XMPDM$ChannelTypePropertyConverter
+- org.apache.tika.metadata.XMPDM
+- org.apache.tika.metadata.Photoshop
+- org.apache.tika.metadata.XMPRights
+- org.apache.tika.metadata.IPTC
+- org.apache.tika.metadata.OfficeOpenXMLExtended
+- org.apache.tika.metadata.Office
+- org.apache.tika.metadata.TikaCoreProperties
+- org.apache.tika.metadata.XMP
+- org.apache.tika.metadata.Property
+- org.apache.tika.metadata.DublinCore
+- org.apache.tika.metadata.Geographic
+- org.apache.tika.metadata.Property$PropertyType
+
+======================================================================
+Cluster: org.apache.tika.mime.ss
+Total classes: 30
+Sample classes:
+- org.apache.tika.mime.MimeType$RootXML
+- org.apache.tika.mime.MimeType
+- org.apache.tika.mime.Patterns$LengthComparator
+- org.apache.tika.mime.Patterns
+- org.apache.tika.mime.MimeTypesReaderMetKeys
+- org.apache.tika.mime.MimeTypesReader$MinShouldMatchVal
+- org.apache.tika.mime.MimeTypesReader
+- org.apache.tika.mime.Magic
+- org.apache.tika.mime.ProbabilisticMimeDetectionSelector
+- org.apache.tika.mime.ProbabilisticMimeDetectionSelector$Builder
+- org.apache.tika.mime.MimeTypesFactory
+- org.apache.tika.Tika
+- org.apache.tika.language.translate.DefaultTranslator
+- org.apache.tika.mime.MimeTypes
+- org.apache.tika.detect.Detector
+
+======================================================================
+Cluster: org.apache.tika.detect.ss
+Total classes: 26
+Sample classes:
+- org.apache.tika.detect.OverrideEncodingDetector$Config
+- org.apache.tika.detect.OverrideEncodingDetector
+- org.apache.tika.detect.XmlRootExtractor$ExtractorHandler
+- org.apache.tika.detect.XmlRootExtractor$MalformedCharException
+- org.apache.tika.detect.XmlRootExtractor
+- org.apache.tika.detect.NNTrainedModelBuilder
+- org.apache.tika.detect.NNExampleModelDetector
+- org.apache.tika.detect.TrainedModelDetector
+- org.apache.tika.detect.TrainedModel
+- org.apache.tika.detect.NNTrainedModel
+- org.apache.tika.io.BoundedInputStream
+- org.apache.tika.detect.DetectHelper
+- org.apache.tika.detect.TextStatistics
+- org.apache.tika.detect.TextDetector
+- org.apache.tika.detect.EncodingDetectorContext$Result
+

@@ -1,0 +1,56 @@
+RQ2: Prompting Techniques Experiment
+
+Cluster used:
+org.apache.tika.mime.ss
+Sample classes:
+MimeType, MimeTypes, Magic, MimeTypesFactory, Detector
+
+
+Prompt 1: Zero-shot
+Describe the architectural component represented by the following cluster. Identify its likely purpose and main responsibilities.
+
+Cluster:
+org.apache.tika.mime.ss
+Sample classes:
+MimeType, MimeTypes, Magic, MimeTypesFactory, Detector
+
+
+Prompt 2: Few-shot
+Example:
+Cluster classes: AutoDetectParser, ParseContext, ParserDecorator
+Answer: This cluster represents the parsing subsystem. It handles parser selection, parsing configuration, and document processing.
+
+Now describe this cluster:
+
+Cluster:
+org.apache.tika.mime.ss
+Sample classes:
+MimeType, MimeTypes, Magic, MimeTypesFactory, Detector
+
+
+Prompt 3: Role-based
+You are a senior software architect analyzing Apache Tika.
+
+Describe the architectural component represented by the following cluster, including its purpose and responsibilities.
+
+Cluster:
+org.apache.tika.mime.ss
+Sample classes:
+MimeType, MimeTypes, Magic, MimeTypesFactory, Detector
+
+
+Prompt 4: Step-by-step
+Analyze the following cluster step by step:
+
+1. Identify patterns in the class names.
+2. Infer the main subsystem functionality.
+3. Provide a concise architectural component name.
+4. Describe its purpose and responsibilities.
+
+Cluster:
+org.apache.tika.mime.ss
+Sample classes:
+MimeType, MimeTypes, Magic, MimeTypesFactory, Detector
+
+
+In this experiment, different prompting techniques were applied to describe architectural components from clustering results. Zero-shot prompting produced a correct but basic explanation. Few-shot prompting improved the answer by guiding the model with an example. Role-based prompting generated the most professional and detailed architectural description. Step-by-step prompting provided the clearest reasoning process. Overall, role-based and step-by-step prompting techniques were the most effective.

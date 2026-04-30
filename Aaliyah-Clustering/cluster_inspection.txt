@@ -1,0 +1,411 @@
+
+================================================================================
+ACDC - clustering-output/tika_core_ACDC.rsf
+================================================================================
+
+Cluster: org.apache.tika.parser.ss
+Size: 80
+Sample classes:
+  - org.apache.tika.parser.AutoDetectParserConfig
+  - org.apache.tika.parser.AutoDetectParserConfig$1
+  - org.apache.tika.sax.ContentHandlerDecoratorFactory
+  - org.apache.tika.config.EmbeddedLimits
+  - org.apache.tika.parser.ParseRecord
+  - org.apache.tika.parser.ParseContext
+  - org.apache.tika.parser.ParseContext$StringJsonConfig
+  - org.apache.tika.config.ParseContextConfig
+  - org.apache.tika.detect.EmptyDetector
+  - org.apache.tika.detect.TypeDetector
+  - org.apache.tika.detect.ZeroSizeFileDetector
+  - org.apache.tika.digest.CompositeDigester
+  - org.apache.tika.metadata.filter.NoOpFilter
+  - org.apache.tika.parser.CryptoParser
+  - org.apache.tika.utils.ConcurrentUtils
+
+Cluster: org.apache.tika.sax.ss
+Size: 56
+Sample classes:
+  - org.apache.tika.sax.ToMarkdownContentHandler$ListState
+  - org.apache.tika.sax.ToMarkdownContentHandler
+  - org.apache.tika.sax.TextContentHandler
+  - org.apache.tika.sax.TextAndAttributeContentHandler
+  - org.apache.tika.sax.ElementMappingContentHandler$TargetElement
+  - org.apache.tika.sax.ElementMappingContentHandler
+  - org.apache.tika.sax.TaggedSAXException
+  - org.apache.tika.sax.TaggedContentHandler
+  - org.apache.tika.sax.ToHTMLContentHandler
+  - org.apache.tika.sax.BasicContentHandlerFactory$HANDLER_TYPE
+  - org.apache.tika.sax.BasicContentHandlerFactory$1
+  - org.apache.tika.sax.BasicContentHandlerFactory
+  - org.apache.tika.sax.StreamingContentHandlerFactory
+  - org.apache.tika.sax.ContentHandlerFactory
+  - org.apache.tika.sax.WriteLimiter
+
+Cluster: org.apache.tika.metadata.ss
+Size: 55
+Sample classes:
+  - org.apache.tika.metadata.MachineMetadata$Endian
+  - org.apache.tika.metadata.MachineMetadata
+  - org.apache.tika.metadata.XMPDM$ChannelTypePropertyConverter
+  - org.apache.tika.metadata.XMPDM
+  - org.apache.tika.metadata.Photoshop
+  - org.apache.tika.metadata.XMPRights
+  - org.apache.tika.metadata.IPTC
+  - org.apache.tika.metadata.OfficeOpenXMLExtended
+  - org.apache.tika.metadata.Office
+  - org.apache.tika.metadata.TikaCoreProperties
+  - org.apache.tika.metadata.XMP
+  - org.apache.tika.metadata.Property
+  - org.apache.tika.metadata.DublinCore
+  - org.apache.tika.metadata.Geographic
+  - org.apache.tika.metadata.Property$PropertyType
+
+Cluster: org.apache.tika.mime.ss
+Size: 30
+Sample classes:
+  - org.apache.tika.mime.MimeType$RootXML
+  - org.apache.tika.mime.MimeType
+  - org.apache.tika.mime.Patterns$LengthComparator
+  - org.apache.tika.mime.Patterns
+  - org.apache.tika.mime.MimeTypesReaderMetKeys
+  - org.apache.tika.mime.MimeTypesReader$MinShouldMatchVal
+  - org.apache.tika.mime.MimeTypesReader
+  - org.apache.tika.mime.Magic
+  - org.apache.tika.mime.ProbabilisticMimeDetectionSelector
+  - org.apache.tika.mime.ProbabilisticMimeDetectionSelector$Builder
+  - org.apache.tika.mime.MimeTypesFactory
+  - org.apache.tika.Tika
+  - org.apache.tika.language.translate.DefaultTranslator
+  - org.apache.tika.mime.MimeTypes
+  - org.apache.tika.detect.Detector
+
+Cluster: org.apache.tika.detect.ss
+Size: 26
+Sample classes:
+  - org.apache.tika.detect.OverrideEncodingDetector$Config
+  - org.apache.tika.detect.OverrideEncodingDetector
+  - org.apache.tika.detect.XmlRootExtractor$ExtractorHandler
+  - org.apache.tika.detect.XmlRootExtractor$MalformedCharException
+  - org.apache.tika.detect.XmlRootExtractor
+  - org.apache.tika.detect.NNTrainedModelBuilder
+  - org.apache.tika.detect.NNExampleModelDetector
+  - org.apache.tika.detect.TrainedModelDetector
+  - org.apache.tika.detect.TrainedModel
+  - org.apache.tika.detect.NNTrainedModel
+  - org.apache.tika.io.BoundedInputStream
+  - org.apache.tika.detect.DetectHelper
+  - org.apache.tika.detect.TextStatistics
+  - org.apache.tika.detect.TextDetector
+  - org.apache.tika.detect.EncodingDetectorContext$Result
+
+Cluster: org.apache.tika.metadata.filter.ss
+Size: 22
+Sample classes:
+  - org.apache.tika.metadata.filter.GeoPointMetadataFilter
+  - org.apache.tika.metadata.filter.GeoPointMetadataFilter$Config
+  - org.apache.tika.metadata.filter.ExcludeFieldMetadataFilter$Config
+  - org.apache.tika.metadata.filter.ExcludeFieldMetadataFilter
+  - org.apache.tika.metadata.filter.IncludeFieldMetadataFilter
+  - org.apache.tika.metadata.filter.IncludeFieldMetadataFilter$Config
+  - org.apache.tika.metadata.filter.MetadataFilterBase
+  - org.apache.tika.metadata.filter.DateNormalizingMetadataFilter
+  - org.apache.tika.metadata.filter.DateNormalizingMetadataFilter$Config
+  - org.apache.tika.metadata.filter.CaptureGroupMetadataFilter
+  - org.apache.tika.metadata.filter.CaptureGroupMetadataFilter$Config
+  - org.apache.tika.config.Initializable
+  - org.apache.tika.exception.TikaConfigException
+  - org.apache.tika.metadata.filter.ClearByAttachmentTypeMetadataFilter
+  - org.apache.tika.metadata.filter.ClearByAttachmentTypeMetadataFilter$Config
+
+Cluster: org.apache.tika.utils.ss
+Size: 17
+Sample classes:
+  - org.apache.tika.utils.ProcessUtils
+  - org.apache.tika.utils.SystemUtils
+  - org.apache.tika.utils.StreamGobbler
+  - org.apache.tika.utils.StringUtils
+  - org.apache.tika.utils.FileProcessResult
+  - org.apache.tika.config.ConfigValidator
+  - org.apache.tika.detect.FileCommandDetector
+  - org.apache.tika.utils.XMLReaderUtils$BuiltInPoolSAXParser
+  - org.apache.tika.utils.XMLReaderUtils$1
+  - org.apache.tika.utils.XMLReaderUtils$2
+  - org.apache.tika.utils.XMLReaderUtils$Xerces2PoolSAXParser
+  - org.apache.tika.utils.XMLReaderUtils$UnrecognizedPoolSAXParser
+  - org.apache.tika.sax.OfflineContentHandler
+  - org.apache.tika.utils.XMLReaderUtils$XercesPoolSAXParser
+  - org.apache.tika.utils.XMLReaderUtils
+
+Cluster: org.apache.tika.io.ss
+Size: 12
+Sample classes:
+  - org.apache.tika.io.EndianUtils
+  - org.apache.tika.io.EndianUtils$BufferUnderrunException
+  - org.apache.tika.io.StreamCache$CacheInputStream
+  - org.apache.tika.io.StreamCache
+  - org.apache.tika.io.ByteArraySource
+  - org.apache.tika.io.FileSource
+  - org.apache.tika.io.TikaInputStream
+  - org.apache.tika.io.TikaInputSource
+  - org.apache.tika.io.TemporaryResources
+  - org.apache.tika.io.FilenameUtils
+  - org.apache.tika.io.CachingSource
+  - org.apache.tika.io.CachingInputStream
+
+Cluster: org.apache.tika.digest.ss
+Size: 11
+Sample classes:
+  - org.apache.tika.digest.DigestDef$Encoding
+  - org.apache.tika.digest.DigestDef
+  - org.apache.tika.digest.DigestDef$Algorithm
+  - org.apache.tika.digest.InputStreamDigester
+  - org.apache.tika.digest.Encoder
+  - org.apache.tika.digest.DigestHelper
+  - org.apache.tika.digest.SkipContainerDocumentDigest
+  - org.apache.tika.digest.DigesterFactory
+  - org.apache.tika.extractor.EmbeddedStreamTranslator
+  - org.apache.tika.extractor.DefaultEmbeddedStreamTranslator
+  - org.apache.tika.digest.Digester
+
+Cluster: org.apache.tika.extractor.ss
+Size: 10
+Sample classes:
+  - org.apache.tika.extractor.UnpackSelector
+  - org.apache.tika.extractor.UnpackSelector$AcceptAll
+  - org.apache.tika.extractor.EmbeddedResourceHandler
+  - org.apache.tika.extractor.ParserContainerExtractor
+  - org.apache.tika.extractor.ParserContainerExtractor$RecursiveParser
+  - org.apache.tika.extractor.ContainerExtractor
+  - org.apache.tika.sax.EmbeddedContentHandler
+  - org.apache.tika.extractor.ParsingEmbeddedDocumentExtractor
+  - org.apache.tika.extractor.DocumentSelector
+  - org.apache.tika.parser.DelegatingParser
+
+================================================================================
+WCA_UEM - clustering-output/tikacore-4.0.0_UEM_50_clusters.rsf
+================================================================================
+
+Cluster: 0
+Size: 306
+Sample classes:
+  - org.apache.tika.Tika
+  - org.apache.tika.annotation.KebabCaseConverter
+  - org.apache.tika.annotation.TikaComponentProcessor
+  - org.apache.tika.concurrent.ConfigurableThreadPoolExecutor
+  - org.apache.tika.concurrent.SimpleThreadPoolExecutor
+  - org.apache.tika.config.ConfigDeserializer
+  - org.apache.tika.config.ConfigValidator
+  - org.apache.tika.config.EmbeddedLimits
+  - org.apache.tika.config.Initializable
+  - org.apache.tika.config.JsonConfig
+  - org.apache.tika.config.OutputLimits
+  - org.apache.tika.config.ParseContextConfig
+  - org.apache.tika.config.SelfConfiguring
+  - org.apache.tika.config.ServiceLoader
+  - org.apache.tika.config.ServiceLoader$RankedService
+
+Cluster: 1
+Size: 2
+Sample classes:
+  - org.apache.tika.digest.DigestDef$Algorithm
+  - org.apache.tika.digest.DigestDef$Encoding
+
+Cluster: 25
+Size: 2
+Sample classes:
+  - org.apache.tika.quality.TextQualityComparison
+  - org.apache.tika.quality.TextQualityDetector
+
+Cluster: 2
+Size: 1
+Sample classes:
+  - org.apache.tika.io.EndianUtils
+
+Cluster: 3
+Size: 1
+Sample classes:
+  - org.apache.tika.io.TikaInputSource
+
+Cluster: 4
+Size: 1
+Sample classes:
+  - org.apache.tika.language.detect.LanguageConfidence
+
+Cluster: 5
+Size: 1
+Sample classes:
+  - org.apache.tika.language.detect.LanguageResult
+
+Cluster: 6
+Size: 1
+Sample classes:
+  - org.apache.tika.metadata.ClimateForcast
+
+Cluster: 7
+Size: 1
+Sample classes:
+  - org.apache.tika.metadata.CreativeCommons
+
+Cluster: 8
+Size: 1
+Sample classes:
+  - org.apache.tika.metadata.HttpHeaders
+
+================================================================================
+LIMBO_IL - clustering-output/tikacore-4.0.0_IL_50_clusters.rsf
+================================================================================
+
+Cluster: 1
+Size: 62
+Sample classes:
+  - org.apache.tika.annotation.KebabCaseConverter
+  - org.apache.tika.concurrent.ConfigurableThreadPoolExecutor
+  - org.apache.tika.config.JsonConfig
+  - org.apache.tika.config.SelfConfiguring
+  - org.apache.tika.config.TikaComponent
+  - org.apache.tika.detect.CharsetSupersets
+  - org.apache.tika.detect.OverrideEncodingDetector$Config
+  - org.apache.tika.detect.TextStatistics
+  - org.apache.tika.detect.TrainedModel
+  - org.apache.tika.digest.DigesterFactory
+  - org.apache.tika.digest.Encoder
+  - org.apache.tika.exception.TikaException
+  - org.apache.tika.exception.WriteLimitReachedException
+  - org.apache.tika.exception.ZeroByteFileException$IgnoreZeroByteFileException
+  - org.apache.tika.extractor.EmbeddedDocumentByteStoreExtractorFactory
+
+Cluster: 30
+Size: 21
+Sample classes:
+  - org.apache.tika.metadata.AccessPermissions
+  - org.apache.tika.metadata.DWG
+  - org.apache.tika.metadata.Database
+  - org.apache.tika.metadata.DublinCore
+  - org.apache.tika.metadata.Epub
+  - org.apache.tika.metadata.ExternalProcess
+  - org.apache.tika.metadata.Font
+  - org.apache.tika.metadata.HTML
+  - org.apache.tika.metadata.MAPI
+  - org.apache.tika.metadata.Message
+  - org.apache.tika.metadata.OfficeOpenXMLExtended
+  - org.apache.tika.metadata.PDF
+  - org.apache.tika.metadata.Photoshop
+  - org.apache.tika.metadata.QuattroPro
+  - org.apache.tika.metadata.RTFMetadata
+
+Cluster: 0
+Size: 12
+Sample classes:
+  - org.apache.tika.Tika
+  - org.apache.tika.extractor.EmbeddedDocumentUtil
+  - org.apache.tika.extractor.ParserContainerExtractor
+  - org.apache.tika.extractor.ParserContainerExtractor$RecursiveParser
+  - org.apache.tika.extractor.ParsingEmbeddedDocumentExtractor
+  - org.apache.tika.parser.AutoDetectParser
+  - org.apache.tika.parser.CompositeParser
+  - org.apache.tika.parser.ParsingReader
+  - org.apache.tika.parser.RecursiveParserWrapper
+  - org.apache.tika.parser.RecursiveParserWrapper$EmbeddedParserDecorator
+  - org.apache.tika.parser.multiple.AbstractMultipleParser
+  - org.apache.tika.utils.ParserUtils
+
+Cluster: 16
+Size: 12
+Sample classes:
+  - org.apache.tika.detect.XmlRootExtractor
+  - org.apache.tika.renderer.PageRangeRequest
+  - org.apache.tika.sax.BasicContentHandlerFactory
+  - org.apache.tika.sax.ElementMappingContentHandler$TargetElement
+  - org.apache.tika.sax.RichTextContentHandler
+  - org.apache.tika.sax.SecureContentHandler$SecureSAXException
+  - org.apache.tika.sax.StreamingContentHandlerFactory
+  - org.apache.tika.sax.TextAndAttributeContentHandler
+  - org.apache.tika.sax.ToMarkdownContentHandler
+  - org.apache.tika.sax.ToMarkdownContentHandler$ListState
+  - org.apache.tika.sax.ToXMLContentHandler
+  - org.apache.tika.utils.XMLReaderUtils
+
+Cluster: 31
+Size: 12
+Sample classes:
+  - org.apache.tika.metadata.FileSystem
+  - org.apache.tika.metadata.Geographic
+  - org.apache.tika.metadata.PST
+  - org.apache.tika.metadata.PagedText
+  - org.apache.tika.metadata.Property$PropertyType
+  - org.apache.tika.metadata.Property$ValueType
+  - org.apache.tika.metadata.Rendering
+  - org.apache.tika.metadata.TIFF
+  - org.apache.tika.metadata.TikaPagedText
+  - org.apache.tika.metadata.XMPIdq
+  - org.apache.tika.metadata.XMPMM
+  - org.apache.tika.metadata.XMPRights
+
+Cluster: 9
+Size: 11
+Sample classes:
+  - org.apache.tika.detect.AutoDetectReader
+  - org.apache.tika.detect.CompositeDetector
+  - org.apache.tika.detect.DetectHelper
+  - org.apache.tika.detect.NameDetector
+  - org.apache.tika.detect.OverrideDetector
+  - org.apache.tika.detect.TrainedModelDetector
+  - org.apache.tika.digest.DigestHelper
+  - org.apache.tika.embedder.ExternalEmbedder
+  - org.apache.tika.extractor.EmbeddedResourceHandler
+  - org.apache.tika.extractor.EmbeddedStreamTranslator
+  - org.apache.tika.renderer.CompositeRenderer
+
+Cluster: 14
+Size: 11
+Sample classes:
+  - org.apache.tika.detect.FileCommandDetector
+  - org.apache.tika.io.SpoolingStrategy
+  - org.apache.tika.metadata.filter.RemoveByMimeMetadataFilter
+  - org.apache.tika.parser.AbstractParser
+  - org.apache.tika.parser.DelegatingParser
+  - org.apache.tika.parser.EmptyParser
+  - org.apache.tika.parser.ErrorParser
+  - org.apache.tika.parser.NetworkParser
+  - org.apache.tika.parser.ParserDecorator
+  - org.apache.tika.parser.RegexCaptureParser
+  - org.apache.tika.parser.external.ExternalParser
+
+Cluster: 10
+Size: 9
+Sample classes:
+  - org.apache.tika.detect.BOMDetector
+  - org.apache.tika.detect.CompositeEncodingDetector
+  - org.apache.tika.detect.EncodingDetector
+  - org.apache.tika.detect.EncodingDetectorContext
+  - org.apache.tika.detect.EncodingDetectorContext$Result
+  - org.apache.tika.detect.EncodingResult
+  - org.apache.tika.detect.EncodingResult$ResultType
+  - org.apache.tika.detect.MetadataCharsetDetector
+  - org.apache.tika.detect.OverrideEncodingDetector
+
+Cluster: 17
+Size: 9
+Sample classes:
+  - org.apache.tika.digest.CompositeDigester
+  - org.apache.tika.digest.Digester
+  - org.apache.tika.digest.InputStreamDigester
+  - org.apache.tika.extractor.EmbeddedDocumentExtractor
+  - org.apache.tika.parser.NetworkParser$1
+  - org.apache.tika.parser.NetworkParser$MetaHandler
+  - org.apache.tika.parser.NetworkParser$ParsingTask
+  - org.apache.tika.parser.ParserPostProcessor
+  - org.apache.tika.parser.ParsingReader$ParsingTask
+
+Cluster: 19
+Size: 9
+Sample classes:
+  - org.apache.tika.digest.DigestDef
+  - org.apache.tika.metadata.IPTC
+  - org.apache.tika.metadata.Office
+  - org.apache.tika.metadata.OfficeOpenXMLCore
+  - org.apache.tika.metadata.TikaCoreProperties$EmbeddedResourceType
+  - org.apache.tika.sax.AbstractRecursiveParserWrapperHandler
+  - org.apache.tika.sax.RecursiveParserWrapperHandler
+  - org.apache.tika.sax.XHTMLContentHandler
+  - org.apache.tika.sax.XMPContentHandler

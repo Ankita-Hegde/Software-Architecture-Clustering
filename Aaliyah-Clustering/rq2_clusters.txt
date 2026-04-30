@@ -1,0 +1,7 @@
+Selected ACDC clusters for RQ2:
+
+1. org.apache.tika.parser.ss
+2. org.apache.tika.sax.ss
+3. org.apache.tika.metadata.ss
+4. org.apache.tika.mime.ss
+5. org.apache.tika.detect.ss

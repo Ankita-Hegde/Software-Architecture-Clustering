@@ -1,0 +1,25 @@
+### Semantic Summary
+
+#### Key Functionality
+The `TimeoutLimits` class provides configuration settings for managing timeouts in parsing tasks. It allows setting and retrieving two types of timeouts: `totalTaskTimeoutMillis` and `progressTimeoutMillis`. These timeouts help manage the duration of parsing tasks and ensure that tasks do not hang indefinitely.
+
+#### Core Logic
+1. **Configuration Settings**: The class defines default values for `totalTaskTimeoutMillis` and `progressTimeoutMillis`.
+2. **Timeout Retrieval**: It includes methods to retrieve these timeout values from a `ParseContext`, with fallbacks to default values if no configuration is found.
+3. **Process Timeout Calculation**: A helper method calculates a timeout for external process execution based on the `progressTimeoutMillis`.
+
+#### Inputs/Outputs
+- **Inputs**:
+  - `totalTaskTimeoutMillis`: Maximum wall-clock time for a parse task.
+  - `progressTimeoutMillis`: Maximum time between progress updates.
+  - `ParseContext`: Used to retrieve existing timeout configurations.
+- **Outputs**:
+  - `get(ParseContext context)`: Returns `TimeoutLimits` from `ParseContext` or a new instance with default values.
+  - `getProcessTimeoutMillis(ParseContext context, long defaultMs)`: Returns a timeout for external process execution based on `progressTimeoutMillis`.
+
+#### Dependencies
+- **Java Standard Library**: Uses `java.io.Serializable` and `java.util.Objects`.
+- **Apache Tika Framework**: The class is part of the Apache Tika project and uses `ParseContext` from the Tika framework.
+- **Jackson Deserialization**: The class has a no-arg constructor for Jackson deserialization.
+
+This class is designed to enhance the robustness of parsing tasks by providing configurable timeouts, ensuring that tasks do not exceed certain durations and helping to detect and handle hung processes.

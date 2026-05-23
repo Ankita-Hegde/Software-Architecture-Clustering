@@ -1,0 +1,24 @@
+### Key Functionality
+The `WriteOutContentHandler` class is designed to wrap another `ContentHandler` and limit the amount of text it processes to a specified character count. It can also throw an exception when the write limit is reached or log this condition without throwing an exception.
+
+### Core Logic
+1. **Character Limiting**: The handler tracks the number of characters processed and ensures that the total does not exceed the specified `writeLimit`.
+2. **Exception Handling**: If the write limit is exceeded, the handler can either throw a `SAXException` or log the condition without throwing an exception.
+3. **Decorating ContentHandler**: It extends `ContentHandlerDecorator` to delegate most of its methods to the underlying `ContentHandler`.
+
+### Inputs/Outputs
+- **Inputs**:
+  - A `ContentHandler` or `Writer` to which the handler delegates most operations.
+  - An integer `writeLimit` specifying the maximum number of characters to process.
+  - A `ParseContext` object, which can provide additional configuration like `OutputLimits`.
+  
+- **Outputs**:
+  - The handler can output text to a `Writer` or an internal `StringBuffer`, depending on how it is instantiated.
+  - If the `writeLimit` is exceeded, it can throw a `SAXException` or a `WriteLimitReachedException`.
+
+### Dependencies
+- **Apache Tika Framework**: This class is part of the Apache Tika project, which is a toolkit for analyzing and extracting metadata and text from various documents.
+- **Java Standard Library**: Uses classes like `ContentHandler`, `Writer`, and `SAXException`.
+- **Apache Commons Lang**: For handling exceptions (`WriteLimitReachedException`).
+
+This handler is particularly useful in scenarios where you need to limit the amount of text extracted from documents to avoid processing large volumes of data, which could be resource-intensive or unnecessary.

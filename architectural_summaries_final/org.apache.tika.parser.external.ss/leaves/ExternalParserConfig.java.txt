@@ -1,0 +1,28 @@
+### Semantic Summary
+
+#### Key Functionality
+The `ExternalParserConfig` class is designed to configure an external parser that can be used to parse documents using external tools or commands. It encapsulates various settings and parameters needed to customize how these external tools are invoked and how their outputs are handled.
+
+#### Core Logic
+The core logic involves setting up configurations such as the types of files that can be parsed, the command-line arguments to be passed to the external tool, handlers for standard output and error streams, and other parameters like timeouts and maximum buffer sizes for handling output.
+
+#### Inputs/Outputs
+- **Inputs**: 
+  - A list of supported file types (`supportedTypes`).
+  - Command-line arguments (`commandLine`).
+  - Handlers for standard output (`stdoutHandler`), standard error (`stderrHandler`), and output file (`outputFileHandler`).
+  - Additional command-line checks (`checkCommandLine`).
+  - Error codes to check for (`checkErrorCodes`).
+  - Flags to control whether to return standard output or error (`returnStdout`, `returnStderr`).
+  - Timeout value in milliseconds (`timeoutMs`).
+  - Maximum buffer sizes for standard output and error (`maxStdErr`, `maxStdOut`).
+
+- **Outputs**: 
+  - The class itself is the output, providing a configuration object that can be used to initialize an `ExternalParser`.
+
+#### Dependencies
+- The class depends on the `Parser` interface, which is used for handling different types of output streams (standard output, standard error, and output file).
+- It also depends on the `Serializable` interface, allowing instances of this class to be serialized and deserialized.
+- The class references `ExternalParser.DEFAULT_TIMEOUT_MS`, indicating that there is a default timeout value defined elsewhere in the `ExternalParser` class or its related classes.
+
+In essence, this class serves as a configuration holder for an external parser, ensuring that all necessary parameters are set before invoking an external tool to parse documents.

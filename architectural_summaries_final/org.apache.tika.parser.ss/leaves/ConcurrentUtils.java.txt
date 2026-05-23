@@ -1,0 +1,23 @@
+### Semantic Summary of the Provided Source Code
+
+#### Key Functionality
+The `ConcurrentUtils` class provides utility methods for managing concurrency in Apache Tika, specifically for executing tasks using an `ExecutorService` if available, or falling back to individual threads otherwise.
+
+#### Core Logic
+1. **Check for ExecutorService**: The method `execute` first checks if an `ExecutorService` is available in the provided `ParseContext`.
+2. **Fallback Mechanism**: If no `ExecutorService` is found, it creates a new `FutureTask` and executes it in a new thread.
+3. **Return Future**: Regardless of whether the task was executed using an `ExecutorService` or a new thread, the method returns a `Future` object representing the result of the task.
+
+#### Inputs/Outputs
+- **Inputs**:
+  - `context`: An instance of `ParseContext`, which is expected to contain an `ExecutorService` if available.
+  - `runnable`: A `Runnable` object that represents the task to be executed.
+  
+- **Outputs**:
+  - A `Future` object that can be used to check the status of the task execution and retrieve its result when it completes.
+
+#### Dependencies
+- **Java Concurrency Utilities**: The code uses classes from the `java.util.concurrent` package such as `ExecutorService`, `Future`, and `FutureTask`.
+- **Apache Tika Framework**: The `ParseContext` class is part of the Apache Tika framework, indicating that this utility class is designed to work within the Tika ecosystem.
+
+In essence, this utility class helps manage task execution in a concurrent manner, leveraging existing resources (like an `ExecutorService`) where available, and falling back to simpler threading mechanisms when necessary.

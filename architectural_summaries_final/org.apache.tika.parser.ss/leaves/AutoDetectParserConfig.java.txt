@@ -1,0 +1,29 @@
+### Semantic Summary
+
+#### Key Functionality
+The `AutoDetectParserConfig` class is a configuration object used to customize the behavior of the `AutoDetectParser` in Apache Tika. It allows setting parameters that control how the parser processes input documents.
+
+#### Core Logic
+1. **Content Handler Decorator Factory**: Configures how content handlers are wrapped before they are used to process the document. By default, it does nothing (`NOOP_CONTENT_HANDLER_DECORATOR_FACTORY`).
+2. **Throw On Zero Bytes**: Determines whether the parser should throw an exception if the input stream contains zero bytes. The default is `true`.
+
+#### Inputs/Outputs
+- **Inputs**:
+  - `ContentHandlerDecoratorFactory`: A factory that can modify the content handler before it is used.
+  - `boolean`: A boolean value indicating whether to throw an exception on zero-byte input streams.
+  
+- **Outputs**:
+  - The class itself, which can be serialized and deserialized using Jackson.
+  - The configuration settings (decorator factory and zero-byte handling flag).
+
+#### Dependencies
+- **Apache Tika Components**:
+  - `org.apache.tika.config.TikaComponent`: An annotation used for component registration.
+  - `org.apache.tika.metadata.Metadata`: Metadata associated with the parsed document.
+  - `org.apache.tika.sax.ContentHandlerDecoratorFactory`: Interface for factories that can decorate content handlers.
+  - `org.apache.tika.config.OutputLimits`: Configuration for security limits like zip bomb thresholds and XML depth.
+- **Java Standard Library**:
+  - `java.io.Serializable`: Indicates that the class can be serialized.
+- **Jackson Library**: Used for deserialization of the configuration object.
+
+This class is designed to be flexible and configurable, allowing users to tailor the parsing behavior according to their needs while maintaining a clean and simple interface.

@@ -1,0 +1,19 @@
+### Semantic Summary
+
+#### Key Functionality
+The `ParsingIntent` class serves as a marker to indicate the intention to parse content after detection. It is used within the Apache Tika framework to signal to content detectors that parsing should proceed after the initial detection phase.
+
+#### Core Logic
+- **Singleton Instance**: The class provides a single instance (`WILL_PARSE`) that is used to mark the intent to parse.
+- **Private Constructor**: Ensures that only one instance of `ParsingIntent` can be created, adhering to the singleton pattern.
+- **Marker Role**: The instance is intended to be placed in a `ParseContext` object before the detection process begins. This allows detectors to prepare for parsing if necessary.
+
+#### Inputs/Outputs
+- **Input**: None directly; it is meant to be set in a `ParseContext` object.
+- **Output**: None directly; it acts as a flag to influence the behavior of content detectors.
+
+#### Dependencies
+- **Apache Tika Framework**: The `ParsingIntent` class is part of the Apache Tika library, which is used for detecting and extracting metadata and text from various file formats.
+- **ParseContext**: The `ParseContext` object is where the `ParsingIntent` instance is stored. This object is used throughout the Tika parsing process to pass context-specific information between different components.
+
+In essence, this class helps coordinate the workflow between detection and parsing phases in the Tika parser, ensuring that detectors are aware of the upcoming parsing step and can prepare accordingly.

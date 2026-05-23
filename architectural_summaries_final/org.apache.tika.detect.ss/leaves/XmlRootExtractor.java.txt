@@ -1,0 +1,25 @@
+### Semantic Summary
+
+#### Key Functionality
+The `XmlRootExtractor` class is designed to determine the namespace URI and local name of the root element in an XML file. It handles cases where the XML might be malformed or truncated by attempting to parse the input multiple times with progressively smaller data sets.
+
+#### Core Logic
+1. **Byte Array Parsing**: The `extractRootElement(byte[])` method attempts to parse a byte array representing an XML file to find the root element.
+2. **Stream Parsing**: The `extractRootElement(InputStream)` method wraps around the `extractRootElement(byte[])` method, converting an `InputStream` into a byte array before parsing.
+3. **Error Handling**: If the XML is malformed or truncated, the method tries to parse it again with half the size of the previous data set until it successfully parses or exhausts the data.
+4. **Security Exception Handling**: Any `SecurityException` is re-thrown as-is.
+5. **Custom Exception**: A custom `MalformedCharException` is thrown when a `CharConversionException` occurs during parsing.
+
+#### Inputs/Outputs
+- **Inputs**:
+  - `byte[]`: An array of bytes representing the XML content.
+  - `InputStream`: An input stream containing the XML content.
+- **Outputs**:
+  - `QName`: An object representing the namespace URI and local name of the root element.
+
+#### Dependencies
+- **Apache Commons IO**: Used for creating a `CloseShieldInputStream`.
+- **Apache Tika**: Provides the `ParseContext` and `XMLReaderUtils` classes.
+- **Java Standard Library**: Uses `Arrays`, `CharConversionException`, `InputStream`, `QName`, `SAXException`, `String`, and `System`.
+
+This class is particularly useful for applications that need to quickly identify the structure of an XML document without fully parsing its contents, which can be computationally expensive.

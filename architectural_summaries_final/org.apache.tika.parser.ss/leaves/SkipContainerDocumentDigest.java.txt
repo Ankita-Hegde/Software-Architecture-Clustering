@@ -1,0 +1,44 @@
+### Semantic Summary
+
+#### Key Functionality
+The `SkipContainerDocumentDigest` class serves as a marker to indicate that the digesting of a container document should be skipped during a specific parse operation. This is particularly useful in scenarios where a document has already been digested by another system, such as a server, and there's no need to re-digest it.
+
+#### Core Logic
+The core logic of this class revolves around checking whether the digesting of a container document should be skipped based on the presence of a specific marker in the `ParseContext`.
+
+#### Inputs/Outputs
+- **Input**: A `ParseContext` object which contains various pieces of contextual information about the current parsing operation.
+- **Output**: A boolean value indicating whether the container document digesting should be skipped (`true`) or not (`false`).
+
+#### Dependencies
+- **Class Dependency**: The `SkipContainerDocumentDigest` class relies on the `ParseContext` class from the `org.apache.tika.parser` package to store and retrieve the marker.
+- **Usage Context**: This class is typically used within the Apache Tika framework, specifically in scenarios involving document parsing and digesting.
+
+### Detailed Explanation
+
+1. **Marker Class**:
+   - The `SkipContainerDocumentDigest` class is a singleton (`final class` with a static final instance) designed to act as a marker.
+   - It provides a static final instance (`INSTANCE`) that can be used to set a flag in the `ParseContext`.
+
+2. **Static Instance**:
+   - `INSTANCE`: A single instance of `SkipContainerDocumentDigest` that can be shared across different parts of the application.
+
+3. **Constructor**:
+   - The constructor is private, ensuring that the class cannot be instantiated from outside, making it a singleton.
+
+4. **Static Method: `shouldSkip`**:
+   - This method checks if the container document digesting should be skipped for the current parse operation.
+   - It does so by checking if the `ParseContext` contains the `SkipContainerDocumentDigest` instance.
+   - If the instance is found, it returns `true`, indicating that digesting should be skipped; otherwise, it returns `false`.
+
+5. **Usage**:
+   - To skip digesting, the `ParseContext` is modified by setting the `SkipContainerDocumentDigest` instance:
+     ```java
+     parseContext.set(SkipContainerDocumentDigest.class, SkipContainerDocumentDigest.INSTANCE);
+     ```
+   - The `shouldSkip` method is then used to check this condition during the parsing process:
+     ```java
+     boolean skipDigesting = SkipContainerDocumentDigest.shouldSkip(parseContext);
+     ```
+
+This class is part of a larger system for managing document parsing and digesting, ensuring that unnecessary operations are avoided when appropriate.

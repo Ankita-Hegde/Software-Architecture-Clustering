@@ -1,0 +1,45 @@
+### Semantic Summary
+
+#### Key Functionality
+The `SecureContentHandler` class is designed to protect against denial of service (DoS) attacks, specifically targeting "zip bombs" — files that appear to be small but decompress into extremely large files, overwhelming the system resources.
+
+#### Core Logic
+1. **Input Stream Monitoring**: The class monitors the input stream to detect if the output is excessively large compared to the input size.
+2. **Character Counting**: It counts the number of output characters generated during the parsing process.
+3. **XML Nesting Levels**: It tracks the depth of XML nesting to ensure it does not exceed a certain limit.
+4. **Threshold Checks**: If the number of output characters significantly exceeds the input size or if the XML nesting depth exceeds the allowed limit, it throws an exception indicating a potential zip bomb.
+
+#### Inputs/Outputs
+- **Inputs**:
+  - A `ContentHandler` to handle the SAX events.
+  - A `TikaInputStream` representing the input stream to be parsed.
+  - A `ParseContext` which may contain `OutputLimits` to configure the security thresholds.
+  
+- **Outputs**:
+  - The class decorates the original `ContentHandler`, meaning it passes through most of the SAX events unchanged.
+  - If a zip bomb is detected, it throws a `TikaException`.
+
+#### Dependencies
+- **Apache Tika Libraries**: The class relies on various classes from the Apache Tika library such as `TikaInputStream`, `ParseContext`, and `OutputLimits`.
+- **Java Standard Library**: Uses standard Java classes like `LinkedList`, `Attributes`, and `IOException`.
+- **Apache Commons Lang**: For serializable handling in the `SecureSAXException` class.
+
+### Detailed Explanation
+
+1. **Initialization**:
+   - The constructor initializes the `SecureContentHandler` with a `ContentHandler` and a `TikaInputStream`.
+   - It also sets up default limits for output characters, compression ratio, and XML nesting levels.
+
+2. **Configuration**:
+   - The `newInstance` method allows configuring the handler using `OutputLimits` from a `ParseContext`.
+
+3. **Monitoring**:
+   - The `advance` method updates the character count and checks if the output is excessively large compared to the input.
+   - The `startElement` and `endElement` methods track the depth of XML nesting.
+   - The `characters` and `ignorableWhitespace` methods update the character count when text content is encountered.
+
+4. **Exception Handling**:
+   - The `throwIfCauseOf` method converts a `SAXException` into a `TikaException` if it is caused by the zip bomb detection mechanism.
+   - The `SecureSAXException` class is used internally to indicate that a zip bomb was detected.
+
+This class effectively ensures that Tika parsers do not become vulnerable to zip bombs by limiting the amount of output relative to the input and controlling the depth of XML nesting.

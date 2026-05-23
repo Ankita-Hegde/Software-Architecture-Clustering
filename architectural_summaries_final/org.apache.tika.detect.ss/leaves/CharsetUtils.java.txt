@@ -1,0 +1,25 @@
+### Semantic Summary
+
+#### Key Functionality
+The `CharsetUtils` class provides utilities for handling character sets, including checking their support, cleaning up malformed names, and resolving common aliases.
+
+#### Core Logic
+1. **Initialization**: The class initializes a map of common character sets and attempts to load ICU4J classes for extended charset support.
+2. **Character Set Support Check**: The `isSupported` method checks if a given character set is supported, using ICU4J if available, otherwise falling back to the JDK's built-in support.
+3. **Character Set Cleaning**: The `clean` method processes and normalizes character set names, handling common errors and returning a valid charset name.
+4. **Character Set Resolution**: The `forName` method resolves a given character set name to its corresponding `Charset` object, handling various naming conventions and fallbacks.
+
+#### Inputs/Outputs
+- **Inputs**:
+  - `isSupported`: Takes a string representing a character set name.
+  - `clean`: Takes a string representing a character set name.
+  - `forName`: Takes a string representing a character set name.
+- **Outputs**:
+  - `isSupported`: Returns a boolean indicating whether the character set is supported.
+  - `clean`: Returns a cleaned-up version of the character set name or `null` if invalid.
+  - `forName`: Returns a `Charset` object representing the character set or `null` if not found.
+
+#### Dependencies
+- **Java Standard Library**: Uses `java.nio.charset.Charset`, `java.util.Locale`, and `java.util.regex.Pattern`.
+- **ICU4J Library**: Optionally uses `com.ibm.icu.charset.CharsetICU` for extended charset support, which needs to be available on the classpath.
+- **Apache Tika Framework**: Part of the Apache Tika project, which is used for metadata extraction from various file formats.

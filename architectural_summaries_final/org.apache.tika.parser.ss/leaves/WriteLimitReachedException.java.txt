@@ -1,0 +1,42 @@
+### Semantic Summary
+
+#### Key Functionality
+This Java class, `WriteLimitReachedException`, is part of the Apache Tika project and is designed to handle situations where a document being processed exceeds a specified character limit during the writing process.
+
+#### Core Logic
+The core logic revolves around managing exceptions related to exceeding a write limit. It includes:
+1. **Custom Exception Handling**: Extends `SAXException` to create a custom exception that can be thrown when the write limit is exceeded.
+2. **Message Customization**: Provides a customized error message indicating the reason for the exception.
+3. **Recursive Exception Checking**: Includes methods to check if a given exception or its root cause is a `WriteLimitReachedException`.
+
+#### Inputs/Outputs
+- **Inputs**:
+  - `int writeLimit`: The maximum number of characters allowed before throwing an exception.
+  - `Throwable t`: An exception object to check if it or its root cause is a `WriteLimitReachedException`.
+- **Outputs**:
+  - `String`: A detailed error message when the exception is thrown.
+  - `boolean`: Indicates whether the given exception is a `WriteLimitReachedException`.
+
+#### Dependencies
+- **Apache Tika Project**: This class is part of the Apache Tika library, which is used for extracting metadata and text from various types of files.
+- **org.xml.sax.SAXException**: Inherits from this superclass to provide XML-specific exception handling.
+- **java.lang.Throwable**: Utilizes this base class for exception handling in Java.
+
+### Detailed Explanation
+
+1. **Class Definition and Inheritance**:
+   - The class `WriteLimitReachedException` extends `SAXException`, inheriting its behavior and adding custom functionality.
+   - It includes a constant `MAX_DEPTH` to prevent infinite recursion when checking for the exception.
+
+2. **Constructor**:
+   - The constructor takes an integer `writeLimit` and stores it as an instance variable.
+   - It overrides the `getMessage()` method to provide a user-friendly error message indicating the character limit exceeded.
+
+3. **Static Methods**:
+   - `isWriteLimitReached(Throwable t)`: Checks if the given exception or any of its root causes is a `WriteLimitReachedException`.
+   - `throwIfWriteLimitReached(Exception ex)`: Throws a `SAXException` if the given exception is a `WriteLimitReachedException`.
+
+4. **Recursive Exception Checking**:
+   - The methods `isWriteLimitReached` and `throwIfWriteLimitReached` use recursion to traverse through the exception chain (`getCause()`) until they find the `WriteLimitReachedException` or reach the `MAX_DEPTH` limit.
+
+This class is particularly useful in scenarios where large documents need to be processed, ensuring that the system does not crash due to excessive data and providing clear feedback to users about the limitation.

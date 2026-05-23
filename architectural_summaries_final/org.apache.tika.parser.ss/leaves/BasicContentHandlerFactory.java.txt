@@ -1,0 +1,28 @@
+### Semantic Summary
+
+#### Key Functionality
+The `BasicContentHandlerFactory` class is designed to create different types of `ContentHandler` objects based on specified parameters. It supports both in-memory content extraction and streaming output to an `OutputStream`. The factory can handle various types of content such as text, HTML, XML, and Markdown.
+
+#### Core Logic
+1. **Configuration**: The factory can be configured with different settings like the type of handler (`HANDLER_TYPE`), write limit, and behavior when the write limit is reached.
+2. **Content Handling**: Depending on the configuration, it creates appropriate `ContentHandler` instances. For example, if the type is `BODY`, it wraps another handler to capture only the body content.
+3. **Streaming Support**: It supports streaming output to an `OutputStream` while respecting the write limit.
+4. **Error Handling**: It can throw exceptions or silently stop when the write limit is reached, depending on the configuration.
+
+#### Inputs/Outputs
+- **Inputs**:
+  - `HANDLER_TYPE`: Specifies the type of content handler to create.
+  - `int writeLimit`: Maximum number of characters to store; if negative, no limit.
+  - `boolean throwOnWriteLimitReached`: Whether to throw an exception when the write limit is reached.
+  - `ParseContext`: Context for handling write limit warnings.
+  - `OutputStream`: For streaming output.
+  - `Charset`: Character encoding for output streams.
+
+- **Outputs**:
+  - `ContentHandler`: An instance of a content handler tailored to the specified requirements.
+
+#### Dependencies
+- **Apache Tika Components**: Uses classes from the Apache Tika library such as `ContentHandler`, `DefaultHandler`, `OutputLimits`, and `ParseContext`.
+- **Java Standard Library**: Utilizes standard Java classes like `OutputStream`, `OutputStreamWriter`, and `Charset`.
+
+This class provides flexibility in handling different types of content and managing the amount of data processed, making it suitable for various parsing and extraction tasks.

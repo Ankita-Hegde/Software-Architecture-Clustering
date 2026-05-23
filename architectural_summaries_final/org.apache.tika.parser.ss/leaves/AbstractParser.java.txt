@@ -1,0 +1,24 @@
+### Semantic Summary
+
+#### Key Functionality
+The `AbstractParser` class serves as an abstract base class for implementing new parsers in the Apache Tika framework. It provides a fallback mechanism for the deprecated `parse` method, ensuring that existing implementations can still be used without modification.
+
+#### Core Logic
+- **Fallback Method**: The core logic involves providing a fallback implementation for the `parse` method that takes four parameters: `TikaInputStream`, `ContentHandler`, `Metadata`, and `ParseContext`. The fallback method internally calls the newer version of the `parse` method which includes the `ParseContext` parameter.
+- **Deprecation Handling**: The class is marked as deprecated, indicating that it will be removed in future versions of the library. It also provides a deprecation warning for the `parse` method, suggesting users to use the newer method with `ParseContext`.
+
+#### Inputs/Outputs
+- **Inputs**:
+  - `TikaInputStream`: A stream of data to be parsed.
+  - `ContentHandler`: An object that handles the content being parsed, typically used for XML parsing.
+  - `Metadata`: An object that holds metadata about the parsed document.
+  - `ParseContext`: An optional context object that can hold additional information during the parsing process.
+- **Outputs**: None directly; the outputs are handled through the `ContentHandler` and `Metadata` objects.
+
+#### Dependencies
+- **Apache Tika Framework**: The class is part of the Apache Tika project, which is a toolkit for analyzing and extracting metadata and text from various types of files.
+- **Java Standard Library**: Uses standard Java classes like `IOException`, `SAXException`, and `TikaException`.
+- **Apache Tika Metadata**: Utilizes the `Metadata` class from the Tika library to store metadata.
+- **Apache Tika IO**: Relies on `TikaInputStream` for handling input streams.
+
+This summary provides a clear understanding of what the `AbstractParser` class does, how it works, and its place within the broader context of the Apache Tika framework.

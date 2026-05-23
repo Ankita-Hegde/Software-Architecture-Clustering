@@ -1,0 +1,34 @@
+### Title
+File Type Detection Module Using Magic Numbers
+
+### High-Level Descriptive Summary
+
+The File Type Detection Module, composed of `MagicDetector.java` and `MagicMatch.java`, is designed to identify the media type of documents based on specific byte sequences known as "magic numbers." This module leverages a flexible and extensible approach to detect file types by comparing the initial bytes of an input stream against predefined patterns.
+
+#### Architecture and Component Interaction
+
+1. **MagicDetector Class**:
+   - **Role**: The `MagicDetector` class is the core component responsible for detecting the media type of a document based on byte patterns.
+   - **Initialization**: It is initialized with a media type, a byte pattern, and optional parameters such as a bitmask, offset range, and flags indicating whether the pattern is a regular expression or case-insensitive.
+   - **Pattern Matching**: 
+     - **Exact Byte Matching**: Compares a fixed sequence of bytes from the input stream against the provided pattern.
+     - **Regular Expression Matching**: Uses Java's `Pattern` and `Matcher` classes to find a match within the input stream.
+   - **Buffer Handling**: Reads and processes a buffer of bytes from the input stream to perform the matching operation.
+   - **Offset Range**: Allows specifying a range within the input stream where the pattern should be searched.
+   - **Dependencies**: Relies on Apache Tika libraries for `TikaInputStream`, `Metadata`, `MediaType`, and `ParseContext`, and uses standard Java libraries for handling byte arrays and regular expressions.
+
+2. **MagicMatch Class**:
+   - **Role**: The `MagicMatch` class is used to define and evaluate magic matches for file types.
+   - **Core Logic**: 
+     - **Evaluation**: Uses the `MagicDetector` to check if a given byte array matches the specified magic pattern.
+     - **Size Calculation**: Returns the length of the expected match.
+   - **Inputs/Outputs**:
+     - **Inputs**: Byte array, media type, type of the magic pattern, offset, value, and mask.
+     - **Outputs**: Boolean result indicating a match and the length of the expected match.
+   - **Dependencies**: Depends on the `MagicDetector` class for performing the actual matching and is part of the Apache Tika project.
+
+#### Interaction Between Components
+- **MagicDetector** is instantiated and configured by the `MagicMatch` class to handle the specific byte pattern matching logic.
+- **MagicMatch** uses the `MagicDetector` to evaluate whether a given byte array matches the defined magic pattern, providing a clear interface for defining and checking these patterns.
+
+Overall, this module provides a robust and flexible mechanism for identifying file types based on their initial byte sequences, making it suitable for various content analysis and processing tasks.

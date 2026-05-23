@@ -1,0 +1,40 @@
+### Semantic Summary of `ProcessUtils` Class
+
+#### Key Functionality
+The `ProcessUtils` class provides utility methods for managing and executing external processes in Java. It includes functionalities for escaping and unescaping command-line arguments, executing processes with timeouts, and checking if commands are available.
+
+#### Core Logic
+1. **Process Management**:
+   - **Registering Processes**: The `register` method assigns a unique ID to each process and stores it in a `ConcurrentHashMap`.
+   - **Releasing Processes**: The `release` method removes a process from the map using its ID.
+   - **Shutdown Hook**: A shutdown hook ensures that all registered processes are destroyed when the JVM exits.
+
+2. **Command Line Argument Handling**:
+   - **Escaping Arguments**: The `escapeCommandLine` method adds double quotes around arguments containing spaces on Windows systems.
+   - **Unescaping Arguments**: The `unescapeCommandLine` method removes double quotes from arguments that were previously escaped.
+
+3. **Executing Processes**:
+   - **Standard Execution**: The `execute` method runs a `ProcessBuilder` with specified timeouts and buffers for standard output and error streams.
+   - **Redirected Output**: The second `execute` method redirects the standard output to a specified file while capturing the error stream.
+
+4. **Command Availability Check**:
+   - **Check Command**: The `checkCommand` method verifies if a given command can be executed by running it and checking the exit code.
+
+#### Inputs/Outputs
+- **Inputs**:
+  - **ProcessBuilder**: Used to configure and start processes.
+  - **String Arrays**: For command-line arguments.
+  - **Paths**: For redirecting output to files.
+  - **Timeouts**: In milliseconds.
+  - **Error Values**: Exit codes indicating errors.
+
+- **Outputs**:
+  - **FileProcessResult**: Contains details about the process execution such as exit value, time taken, and captured output/error streams.
+  - **Boolean**: Indicates whether a command was successfully executed.
+
+#### Dependencies
+- **Java Standard Library**: Utilizes classes like `Process`, `ProcessBuilder`, `Thread`, `IOException`, `TimeoutException`, etc.
+- **Apache Commons Lang**: Used for string operations via `StringUtils`.
+- **SLF4J**: For logging through `Logger` and `LoggerFactory`.
+
+This class is particularly useful in scenarios where you need to manage external processes in a robust manner, ensuring they are properly tracked and cleaned up, especially during application shutdown.

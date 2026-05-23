@@ -1,0 +1,29 @@
+### Semantic Summary
+
+#### Key Functionality
+The `AutoDetectReader` class is designed to automatically detect the character encoding of an input stream and wrap it in a `BufferedReader`. This is particularly useful when dealing with text files where the encoding might not be known beforehand.
+
+#### Core Logic
+1. **Initialization**: The constructor initializes the `BufferedReader` with an input stream and a detected character encoding.
+2. **Character Encoding Detection**: The `detect` method uses a list of `EncodingDetector` instances to determine the character encoding of the input stream.
+3. **Metadata Handling**: If the encoding cannot be determined from the stream itself, it tries to infer the encoding from the document metadata.
+4. **BOM Handling**: The constructor removes any Byte Order Mark (BOM) from the stream if present.
+
+#### Inputs/Outputs
+- **Inputs**:
+  - `InputStream`: The input stream from which data is read.
+  - `Metadata`: Additional metadata about the document, which can help in detecting the encoding.
+  - `EncodingDetector`: A service provider interface for encoding detection.
+- **Outputs**:
+  - `BufferedReader`: A wrapped `BufferedReader` that uses the detected character encoding.
+  - `Charset`: The detected character encoding.
+
+#### Dependencies
+- **Apache Tika Libraries**: The class relies on various components from the Apache Tika library, such as `TikaInputStream`, `Metadata`, `ParseContext`, and `CharsetUtils`.
+- **ServiceLoader**: Used to load multiple `EncodingDetector` implementations.
+- **CompositeEncodingDetector**: A composite detector that combines multiple `EncodingDetector` instances.
+- **CharsetSupersets**: A utility class for finding the superset of a given charset.
+- **TikaException**: Thrown when the encoding cannot be detected.
+- **MediaType**: Used to parse the content type metadata to extract the charset parameter.
+
+This class is part of the Apache Tika project, which is a powerful toolkit for extracting metadata and text from various documents.

@@ -1,0 +1,52 @@
+### Semantic Summary
+
+#### Key Functionality
+The `LanguageDetector` class is designed to detect the language(s) of a given text. It provides a framework for various language detection algorithms and allows for customization through methods like setting priors and loading specific models.
+
+#### Core Logic
+1. **Initialization**: The class initializes with default settings and can be configured to handle mixed languages or short texts.
+2. **Loading Models**: It supports loading language models dynamically, either globally or for specific languages.
+3. **Text Processing**: Text is processed in chunks to ensure efficient handling of large documents.
+4. **Detection**: After processing, the most likely language(s) are detected based on the accumulated statistics.
+
+#### Inputs/Outputs
+- **Inputs**:
+  - **Text**: The text to be analyzed for language detection.
+  - **Configuration**: Settings like `mixedLanguages` and `shortText` can be set to tailor the detection process.
+  - **Language Models**: Specific language models can be loaded for targeted detection.
+  - **Prior Probabilities**: A map of language probabilities can be provided to influence the detection process.
+
+- **Outputs**:
+  - **Language Results**: A list of detected languages with their respective confidences.
+  - **Boolean Values**: Indicators like `hasEnoughText()` to determine if more text is needed for reliable detection.
+
+#### Dependencies
+- **ServiceLoader**: Used to load language detection services dynamically.
+- **ParseContext**: Optional context for parser-specific configurations.
+- **CompareUtils**: Used for sorting service providers.
+- **LanguageResult**: Represents the result of language detection, including the detected language and its confidence level.
+
+### Detailed Explanation
+
+1. **Class Structure**:
+   - The class is abstract, meaning it cannot be instantiated directly. Instead, it serves as a blueprint for concrete language detection implementations.
+   - It includes methods for configuring the detector (`setMixedLanguages`, `setShortText`), loading models, and performing detection.
+
+2. **Loading Models**:
+   - `getLanguageDetectors`: Loads all available language detectors using a service loader.
+   - `loadModels`: Loads models for specific languages or all available models.
+   - `hasModel`: Checks if a model exists for a given language.
+
+3. **Text Processing**:
+   - `addText`: Adds text to the current statistics in chunks to manage large inputs efficiently.
+   - `reset`: Resets the internal state for a new document or with a given context.
+
+4. **Detection**:
+   - `detectAll`: Returns a list of all possible languages with at least medium confidence, sorted by confidence.
+   - `detect`: Simplified method to get the top detected language.
+   - `detectAll(String text)` and `detect(CharSequence text)`: Convenience methods to detect languages from a given text.
+
+5. **Configuration**:
+   - The class allows setting whether the text is expected to be a mix of languages or short, which influences the detection process.
+
+This class provides a flexible and extensible framework for implementing various language detection strategies, making it suitable for integration into larger text processing systems.

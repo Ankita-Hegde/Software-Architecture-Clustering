@@ -1,0 +1,22 @@
+### Semantic Summary
+
+#### Key Functionality
+The `ErrorParser` class is a dummy parser designed to simulate a parsing error. It does not attempt to parse any document but instead throws a `TikaException` when called.
+
+#### Core Logic
+- **Singleton Instance**: The class has a singleton instance (`INSTANCE`) which is used to ensure only one instance of this parser exists.
+- **Unsupported Types**: The `getSupportedTypes` method returns an empty set, indicating that this parser does not support any document types.
+- **Throwing Exception**: The `parse` method throws a `TikaException` with the message "Parse error" whenever it is called.
+
+#### Inputs/Outputs
+- **Inputs**:
+  - `TikaInputStream tis`: A stream of the document to be parsed.
+  - `ContentHandler handler`: An object that handles the content of the document being parsed.
+  - `Metadata metadata`: Metadata associated with the document.
+  - `ParseContext context`: A context object that can be used to pass additional information during parsing.
+- **Output**: The method does not return any value; instead, it throws a `TikaException`.
+
+#### Dependencies
+- **Apache Tika Libraries**: This class depends on the Apache Tika library, specifically the `org.apache.tika` package, which includes classes like `TikaInputStream`, `ContentHandler`, `Metadata`, and `TikaException`.
+- **SPI (Service Provider Interface)**: The `@TikaComponent` annotation indicates that this class is part of the SPI mechanism in Apache Tika, allowing it to be registered and discovered by the framework.
+- **Java Standard Library**: The class uses standard Java collections like `Set` and `Collections`.

@@ -1,0 +1,30 @@
+### Semantic Summary
+
+#### Key Functionality
+This code defines a simple detector class named `EmptyDetector` which is part of the Apache Tika project. The primary function of this detector is to always return a specific media type (`application/octet-stream`) regardless of the input document.
+
+#### Core Logic
+The core logic of the `EmptyDetector` class lies within its `detect` method. This method takes three parameters:
+1. **TikaInputStream tis**: A stream representing the input document.
+2. **Metadata metadata**: Metadata associated with the input document.
+3. **ParseContext parseContext**: Contextual information about the parsing process.
+
+The `detect` method simply returns `MediaType.OCTET_STREAM`, indicating that the input document should be treated as binary data without any specific MIME type information.
+
+#### Inputs/Outputs
+- **Inputs**:
+  - `TikaInputStream tis`: The input document stream.
+  - `Metadata metadata`: Additional metadata about the document.
+  - `ParseContext parseContext`: Parsing context.
+
+- **Output**:
+  - `MediaType`: Always returns `MediaType.OCTET_STREAM`.
+
+#### Dependencies
+- **Apache Tika Framework**: The code relies on the Apache Tika library, specifically the `org.apache.tika` package.
+- **TikaInputStream**: Used to handle the input document stream.
+- **Metadata**: Used to pass metadata about the document.
+- **ParseContext**: Used to provide parsing context.
+- **MediaType**: Represents the media type of the document.
+
+In essence, this detector is a placeholder or a dummy implementation that can be used when no other detection logic is available or appropriate.

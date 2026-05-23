@@ -1,0 +1,30 @@
+### Semantic Summary
+
+#### Key Functionality
+The `ParsingReader` class is designed to read text content from a binary stream using a background parsing task. It leverages a `Parser` (by default, `AutoDetectParser`) to extract text content from the binary stream and converts the resulting SAX events into a character stream that can be read using a `Reader`.
+
+#### Core Logic
+1. **Initialization**: The constructor initializes the necessary components such as the `Parser`, `InputStream`, `Metadata`, and `ParseContext`. It also sets up a pipe (`PipedReader` and `PipedWriter`) to facilitate communication between the main thread and the parsing thread.
+
+2. **Background Parsing Task**: A background thread is created to perform the actual parsing. This thread uses a `BodyContentHandler` to capture the text content and writes it to the pipe. Any exceptions during parsing are caught and stored in the `throwable` field.
+
+3. **Reading Text Content**: The `read` method reads text content from the pipe. If the parsing thread encounters an error, it throws an appropriate exception.
+
+4. **Closing Resources**: The `close` method ensures that the read end of the pipe is closed, which stops the parsing thread and closes the underlying `InputStream`.
+
+#### Inputs/Outputs
+- **Inputs**:
+  - `InputStream`: The binary stream from which text content needs to be extracted.
+  - `String` (optional): Document name.
+  - `ParseContext` (optional): Additional context for parsing.
+  - `Executor` (optional): For asynchronous execution of the parsing task.
+
+- **Outputs**:
+  - `Reader`: A character stream representing the parsed text content.
+
+#### Dependencies
+- **Apache Tika Libraries**: The class depends on various classes from the Apache Tika library, including `Parser`, `ContentHandler`, `Metadata`, `TikaInputStream`, and `BodyContentHandler`.
+- **Java Standard Library**: Uses standard Java classes like `InputStream`, `Reader`, `Writer`, `BufferedReader`, `PipedReader`, `PipedWriter`, and `Thread`.
+- **Apache Commons IO**: Used for handling file streams (`TikaInputStream`).
+
+This class provides a flexible way to parse and extract text content from binary files, making it suitable for integration into larger applications where text extraction from various file formats is required.

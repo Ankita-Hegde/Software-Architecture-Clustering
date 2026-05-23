@@ -1,0 +1,22 @@
+### Semantic Summary
+
+#### Key Functionality
+The provided code defines a marker interface named `MetaEncodingDetector` within the `org.apache.tika.detect` package. This interface is part of the Apache Tika project, which is used for content analysis and metadata extraction from various file formats.
+
+#### Core Logic
+- **Role**: The `MetaEncodingDetector` interface is designed to be implemented by classes that act as arbiters among multiple encoding detection results. It allows for a more sophisticated approach to determining the correct character encoding of a document by collecting and analyzing results from multiple base detectors.
+- **Behavior**: When a `MetaEncodingDetector` is included in a `CompositeEncodingDetector`, the composite detector switches from a "first-match-wins" strategy to a "collect-all" strategy. In this mode, all base detectors are allowed to run, and their results are stored in an `EncodingDetectorContext`. The `MetaEncodingDetector` then uses its `detect` method to determine the final encoding based on these collected results.
+
+#### Inputs/Outputs
+- **Inputs**:
+  - **Base Detectors**: Multiple instances of `EncodingDetector` that provide initial encoding guesses.
+  - **ParseContext**: An object that holds contextual information during parsing, including the `EncodingDetectorContext` where intermediate results are stored.
+- **Outputs**:
+  - **Final Encoding**: The result of the `detect` method call, which determines the most appropriate encoding based on the collected data.
+
+#### Dependencies
+- **Apache Tika Framework**: The code is part of the Apache Tika project, which requires the full Tika framework to be available.
+- **Other Interfaces**: The `MetaEncodingDetector` interface extends the `EncodingDetector` interface, which means any implementation must also adhere to the methods defined in `EncodingDetector`.
+- **CompositeEncodingDetector**: The `MetaEncodingDetector` works in conjunction with `CompositeEncodingDetector`, which manages the collection and arbitration of encoding detection results.
+
+In essence, this interface enables a more nuanced and accurate determination of document encodings by leveraging the collective output of multiple detection mechanisms.

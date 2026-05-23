@@ -1,0 +1,25 @@
+### Semantic Summary of the Provided Source Code
+
+#### Key Functionality
+The provided code defines an interface named `Embedder` which is part of the Apache Tika project. This interface is designed to handle the embedding of metadata from one document into another, typically during the process of parsing documents.
+
+#### Core Logic
+The core logic revolves around two main methods:
+1. **getSupportedEmbedTypes**: This method returns a set of media types that the embedder supports based on the provided parse context.
+2. **embed**: This method takes document metadata, an input stream of the original document, and an output stream where the embedded metadata will be written. It processes the metadata according to certain rules and writes the updated metadata back into the output stream.
+
+#### Inputs/Outputs
+- **Inputs**:
+  - `ParseContext`: Provides context information for parsing.
+  - `Metadata`: Contains the document metadata to be embedded.
+  - `InputStream originalStream`: The input stream representing the original document.
+  - `OutputStream outputStream`: The output stream where the embedded metadata will be written.
+  
+- **Outputs**:
+  - The `outputStream` is modified to include the embedded metadata.
+
+#### Dependencies
+- **Apache Tika Framework**: The code is part of the Apache Tika project, which is a powerful toolkit for content analysis. It depends on other components of the Tika framework such as `Parser`, `Metadata`, and `MediaType`.
+- **Java Standard Library**: The code uses standard Java classes like `Set`, `IOException`, and `TikaException`.
+
+This interface allows for flexible and extensible metadata embedding capabilities, making it suitable for various document processing tasks within the Tika ecosystem.

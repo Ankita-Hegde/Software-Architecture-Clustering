@@ -1,0 +1,33 @@
+### Title
+Document Parsing Framework with Multiple Parser Integration and Metadata Handling
+
+### High-Level Descriptive Summary
+
+The module described here is a comprehensive framework for integrating and utilizing multiple parsers to process document streams in Apache Tika. The key components and their interactions are as follows:
+
+1. **AbstractMultipleParser.java**:
+   - **Functionality**: Provides a base class for creating parser wrappers that can process an input stream multiple times, merging results from various parsers into a single output.
+   - **Architecture**: The class initializes parsers, manages metadata merging, and processes the input stream through each parser sequentially. It ensures that the stream is reset between parsers and metadata is merged according to a specified policy.
+   - **Components Interaction**: The `AbstractMultipleParser` class leverages the `TemporaryResources` class for managing temporary resources and the `ParserUtils` class for handling metadata cloning and recording parser details. It also interacts with the `ContentHandlerFactory` interface to create content handlers for parsing.
+
+2. **TemporaryResources.java**:
+   - **Functionality**: Manages a collection of temporary resources, such as files, ensuring they are properly closed or disposed of when no longer needed.
+   - **Architecture**: It maintains a list of resources and provides methods for creating and managing temporary files. The class ensures that resources are closed in reverse order of their addition and handles exceptions during closure.
+   - **Components Interaction**: This class is used by the `AbstractMultipleParser` to manage temporary files created during the parsing process, ensuring that these files are cleaned up properly.
+
+3. **ParserUtils.java**:
+   - **Functionality**: Provides utility methods to manage and manipulate `Parser` objects in Apache Tika, including metadata cloning, extracting parser classnames, and recording parser details and failures.
+   - **Architecture**: The class includes methods for deep cloning metadata, determining the actual class name of a parser, and logging parser details and failures into the metadata.
+   - **Components Interaction**: `ParserUtils` is utilized by the `AbstractMultipleParser` to manage metadata and record parser details, enhancing the debugging and tracking capabilities of the parsing process.
+
+4. **ContentHandlerFactory.java**:
+   - **Functionality**: Defines an interface for creating `ContentHandler` instances, which are used for parsing and extracting content from various document formats.
+   - **Architecture**: The interface specifies methods for creating a `ContentHandler` and returning its type name.
+   - **Components Interaction**: This interface is used by the `AbstractMultipleParser` to create content handlers for parsing, facilitating dynamic content extraction based on document type.
+
+5. **SupplementingParser.java**:
+   - **Functionality**: Processes an input stream using multiple parsers and merges metadata from these parsers based on a specified policy.
+   - **Architecture**: The class initializes with a `MediaTypeRegistry`, a `MetadataPolicy`, and a list of parsers. It iterates over each parser, processes the input stream, and merges metadata according to the specified policy.
+   - **Components Interaction**: `SupplementingParser` interacts with the `AbstractMultipleParser` to integrate and manage multiple parsers, and it leverages the `ParserUtils` class for metadata management.
+
+Overall, this module provides a flexible and robust framework for integrating multiple parsers in Apache Tika, ensuring that the parsing process is efficient, error-tolerant, and metadata-rich. The components work together to manage resources, handle metadata, and execute parsing tasks in a coordinated manner.

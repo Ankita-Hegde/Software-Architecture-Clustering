@@ -1,0 +1,23 @@
+### Semantic Summary of the Provided Source Code
+
+#### Key Functionality
+The `ServiceLoaderUtils` class provides utility methods for loading and ordering classes using the Apache Tika framework's `ServiceLoader`. It includes methods to instantiate classes and sort a list of loaded classes.
+
+#### Core Logic
+1. **Sorting Classes**: The `sortLoadedClasses` method sorts a list of loaded classes such that non-Tika classes come before Tika classes, and the rest are sorted in reverse alphabetical order.
+2. **Instantiating Classes**: The `newInstance` method attempts to create an instance of a given class. It first tries to find a constructor that takes a `ServiceLoader` as a parameter. If such a constructor is not found, it uses the default no-argument constructor.
+
+#### Inputs/Outputs
+- **Inputs**:
+  - `sortLoadedClasses`: A list of objects (`List<T>`).
+  - `newInstance`: A `Class` object representing the class to instantiate and a `ServiceLoader` object.
+- **Outputs**:
+  - `sortLoadedClasses`: The input list sorted according to the specified criteria.
+  - `newInstance`: An instance of the requested class.
+
+#### Dependencies
+- **Java Reflection API**: Used for creating instances of classes and handling constructors.
+- **Apache Tika Framework**: Specifically, the `ServiceLoader` class is used for loading services.
+- **Custom Utility Class**: The `CompareUtils` class, which contains the `compareClassName` method used for sorting the list of classes.
+
+This summary provides a clear understanding of what the code does, how it works, and its dependencies.

@@ -1,0 +1,29 @@
+### Semantic Summary of the Provided Source Code
+
+#### Key Functionality
+This Java class, `ParserPostProcessor`, acts as a decorator for another parser. Its primary function is to enhance the output of the decorated parser by adding metadata entries such as "fulltext", "summary", and "outlinks". These metadata entries are derived from the full text content processed by the decorated parser.
+
+#### Core Logic
+1. **Initialization**: The constructor initializes the `ParserPostProcessor` with a reference to the decorated parser.
+2. **Parsing Process**:
+   - It forwards the parsing request to the decorated parser using a `TeeContentHandler` which captures both the original handler's output and the body content.
+   - After the parsing is complete, it extracts the full text content from the `BodyContentHandler`.
+   - It then sets the extracted content as the "fulltext" metadata entry.
+   - A summary of the content (up to 500 characters) is set as the "summary" metadata entry.
+   - Any URLs found within the content are extracted and added to the "outlinks" metadata entry.
+
+#### Inputs/Outputs
+- **Inputs**:
+  - `TikaInputStream tis`: The input stream containing the document to be parsed.
+  - `ContentHandler handler`: The handler to which the parsed content will be written.
+  - `Metadata metadata`: Metadata object to store additional information about the parsed content.
+  - `ParseContext context`: Context object for the parsing process.
+- **Outputs**:
+  - The parsed content is written to the `handler`.
+  - Additional metadata entries ("fulltext", "summary", and "outlinks") are set in the `metadata` object.
+
+#### Dependencies
+- **Apache Tika Libraries**: This class relies on various classes from the Apache Tika library, including `TikaInputStream`, `Metadata`, `ContentHandler`, `SAXException`, `IOException`, `TikaException`, `BodyContentHandler`, `TeeContentHandler`, and `RegexUtils`.
+- **Java Standard Library**: Uses standard Java classes and exceptions like `IOException` and `SAXException`.
+
+This summary provides a clear understanding of what the `ParserPostProcessor` does, how it works, and its dependencies.

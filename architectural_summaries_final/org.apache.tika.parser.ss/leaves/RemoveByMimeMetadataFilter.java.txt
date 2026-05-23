@@ -1,0 +1,24 @@
+### Semantic Summary
+
+#### Key Functionality
+This Java class, `RemoveByMimeMetadataFilter`, is part of the Apache Tika project and is designed to remove all metadata from a document if its MIME type matches any of the specified MIME types.
+
+#### Core Logic
+1. **Initialization**: The class can be initialized with a set of MIME types that should trigger the removal of metadata.
+2. **Filtering**: During the filtering process, it checks each metadata entry against the specified MIME types. If the MIME type of the content matches any of the specified types, the entire metadata object is removed.
+3. **Configuration**: The class supports multiple ways to configure which MIME types should trigger the removal, including through a constructor, a configuration object, or JSON configuration.
+
+#### Inputs/Outputs
+- **Inputs**:
+  - A `List<Metadata>` containing metadata entries to be filtered.
+  - A `ParseContext` object, which is used internally but does not directly affect the filtering logic.
+  - Optionally, a list of MIME types during initialization.
+- **Outputs**:
+  - The same `List<Metadata>` after filtering, where metadata entries corresponding to the specified MIME types have been removed.
+
+#### Dependencies
+- **Apache Tika Components**: The class relies on other components of the Apache Tika library, such as `Metadata`, `MediaType`, and `ParseContext`.
+- **Jackson Library**: For JSON configuration support, the class requires the Jackson library to deserialize JSON configurations into a `Config` object.
+- **Java Standard Libraries**: Uses standard Java libraries like `java.util.ArrayList` and `java.util.HashSet`.
+
+This class provides flexibility in configuring which MIME types should trigger the removal of metadata, making it useful for scenarios where certain types of files should not have their metadata stored or transmitted.

@@ -1,0 +1,25 @@
+### Semantic Summary
+
+#### Key Functionality
+The `BOMDetector` class is designed to identify the character encoding of a file based on the presence of a Byte Order Mark (BOM) at the beginning of the file. It prioritizes the BOM as a definitive indicator of the encoding, which can override other methods of determining the encoding.
+
+#### Core Logic
+1. **Initialization**: The class initializes a list of possible BOMs and their corresponding charsets.
+2. **Reading Input**: It reads up to 4 bytes from the input stream to check for a BOM.
+3. **Checking BOM**: For each BOM type, it checks if the read bytes match the BOM's signature.
+4. **Returning Result**: If a matching BOM is found, it returns an `EncodingResult` indicating the charset and the type of result (declarative).
+
+#### Inputs/Outputs
+- **Inputs**:
+  - `TikaInputStream tis`: A stream from which the input bytes are read.
+  - `Metadata metadata`: Metadata associated with the input stream.
+  - `ParseContext parseContext`: Context for parsing operations.
+- **Outputs**:
+  - `List<EncodingResult>`: A list containing the detected encoding result if a BOM is found, otherwise an empty list.
+
+#### Dependencies
+- **Apache Commons IO**: Used for reading bytes from the input stream (`IOUtils.read`).
+- **Apache Tika Components**: The class extends `EncodingDetector` and uses `TikaInputStream` and `Metadata`.
+- **Charsets**: Utilizes various charsets from the `java.nio.charset` package to compare against the BOMs.
+
+This class plays a crucial role in the encoding detection process by ensuring that if a BOM is present, it is used as the definitive encoding, which can be particularly useful for files where the encoding might not be correctly inferred through other means.

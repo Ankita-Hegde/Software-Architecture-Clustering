@@ -1,0 +1,30 @@
+### Key Functionality
+The `ParseRecord` class is designed to track various aspects of the parsing process, including the types of parsers used, any exceptions or warnings encountered, and metadata associated with the parsed content. It also manages limits on the depth and count of embedded documents to prevent excessive resource consumption.
+
+### Core Logic
+- **Tracking Parsers**: Keeps a record of different parsers used during the parsing process.
+- **Handling Exceptions and Warnings**: Logs exceptions and warnings that occur during parsing.
+- **Managing Metadata**: Stores metadata related to the parsed content.
+- **Embedded Document Limits**: Tracks the depth and count of embedded documents to ensure parsing does not exceed predefined limits.
+
+### Inputs/Outputs
+- **Inputs**:
+  - `ParseContext`: Used to configure the `ParseRecord` with embedded document processing limits.
+  - `Exception`: Added to the list of exceptions.
+  - `String`: Added as a warning message.
+  - `Metadata`: Added to the metadata list.
+  - `int`: Used to set the maximum depth and count for embedded documents.
+
+- **Outputs**:
+  - `String[]`: Array of parser classes used.
+  - `List<Exception>`: List of exceptions encountered.
+  - `List<String>`: List of warning messages.
+  - `List<Metadata>`: List of metadata entries.
+  - `boolean`: Flags indicating whether certain limits have been reached.
+
+### Dependencies
+- **Java Collections Framework**: Uses `Set`, `List`, and `ArrayList` for managing collections of data.
+- **Apache Tika Metadata**: Utilizes the `Metadata` class from the Apache Tika library for storing metadata.
+- **Apache Tika Configuration**: Relies on `EmbeddedLimits` from the `org.apache.tika.config` package to configure parsing limits based on the `ParseContext`.
+
+In summary, the `ParseRecord` class provides a structured way to monitor and manage the parsing process, ensuring that it adheres to specified limits and captures important information for further analysis or logging.

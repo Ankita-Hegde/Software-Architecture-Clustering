@@ -1,0 +1,46 @@
+### Semantic Summary
+
+#### Key Functionality
+The `DetectHelper` class provides utility methods for creating a `TikaInputStream` that can be used for content detection purposes. It ensures that only a specified amount of data is read from an input stream, which is useful for handling large files without loading the entire file into memory.
+
+#### Core Logic
+1. **Reading Data**: The core logic involves reading a specified number of bytes from an input stream into a byte array.
+2. **Handling Truncation**: If the input stream contains more data than the specified limit, the metadata is updated to indicate that the content was truncated.
+3. **Creating TikaInputStream**: A `TikaInputStream` is created using the buffered byte array, which can then be used by content detectors.
+
+#### Inputs/Outputs
+- **Inputs**:
+  - `InputStream stream`: The input stream from which data is read.
+  - `int maxLength`: The maximum number of bytes to read from the input stream.
+  - `Metadata metadata`: An optional metadata object to store information about the truncation status.
+- **Outputs**:
+  - `TikaInputStream`: A `TikaInputStream` backed by the buffered bytes, which can be used for content detection.
+
+#### Dependencies
+- **Apache Tika Libraries**: The class relies on several classes from the Apache Tika library, including `BoundedInputStream`, `ByteArrayOutputStream`, and `TikaInputStream`.
+- **Apache Commons Lang**: Used for parsing the boolean value from metadata.
+- **Java Standard Library**: Utilizes standard Java classes like `InputStream`, `ByteArrayOutputStream`, and `Integer`.
+
+### Detailed Explanation
+
+1. **getStreamForDetectionOnly Method**:
+   - **Purpose**: Reads up to `maxLength` bytes from the input stream and returns a `TikaInputStream` suitable for content detection.
+   - **Logic**:
+     - Uses a `BoundedInputStream` to limit the number of bytes read.
+     - Buffers the read bytes into a `ByteArrayOutputStream`.
+     - Checks if the input stream has more data after the specified length; if so, sets the `TRUNCATED_CONTENT_FOR_DETECTION` metadata flag.
+     - Returns a `TikaInputStream` backed by the buffered bytes.
+
+2. **Overloaded getStreamForDetectionOnly Method**:
+   - **Purpose**: Similar to the first method but automatically creates a new `Metadata` object if none is provided.
+   - **Logic**: Calls the first method with a default `Metadata` object.
+
+3. **isContentTruncatedForDetection Method**:
+   - **Purpose**: Checks if the content was truncated during detection.
+   - **Logic**: Retrieves the `TRUNCATED_CONTENT_FOR_DETECTION` metadata value and parses it as a boolean.
+
+4. **getDetectionContentLength Method**:
+   - **Purpose**: Retrieves the number of bytes buffered for detection.
+   - **Logic**: Retrieves the `DETECTION_CONTENT_LENGTH` metadata value and converts it to an integer.
+
+These methods collectively provide a flexible way to handle large files for content detection while ensuring that the process is efficient and does not require loading the entire file into memory.

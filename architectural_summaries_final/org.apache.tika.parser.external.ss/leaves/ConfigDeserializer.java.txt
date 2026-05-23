@@ -1,0 +1,38 @@
+### Semantic Summary
+
+#### Key Functionality
+The `ConfigDeserializer` class provides a utility for deserializing JSON configurations into Java objects without requiring a compile-time dependency on the Jackson library. It dynamically checks if Jackson is available on the classpath and uses it for deserialization if present.
+
+#### Core Logic
+1. **Reflection-based Initialization**: The class initializes itself during static initialization using reflection to find and instantiate the `ObjectMapper` class from the Jackson library.
+2. **Fallback Mechanism**: If `tika-serialization` is available, it uses the configured `ObjectMapper` from `TikaObjectMapperFactory`. If not, it falls back to a plain `ObjectMapper`.
+3. **Deserialization**: The `buildConfig` method deserializes a JSON string into a specified configuration object using the `ObjectMapper`.
+
+#### Inputs/Outputs
+- **Inputs**:
+  - `JsonConfig`: A JSON configuration string.
+  - `configClass`: The class of the configuration object to be deserialized.
+- **Outputs**:
+  - A deserialized configuration object of type `T`.
+
+#### Dependencies
+- **Jackson Library**: The class relies on the Jackson library for JSON processing. Specifically, it needs `com.fasterxml.jackson.core:jackson-databind`.
+- **tika-serialization**: If available, it uses the `TikaObjectMapperFactory` to ensure consistent behavior with `ParseContext` serialization.
+
+### Detailed Explanation
+
+1. **Static Initialization Block**:
+   - The class uses reflection to check if the `ObjectMapper` class from the Jackson library is available.
+   - If `tika-serialization` is available, it attempts to use the configured `ObjectMapper` from `TikaObjectMapperFactory`.
+   - If `tika-serialization` is not available, it falls back to a plain `ObjectMapper`.
+
+2. **Deserialization Method (`buildConfig`)**:
+   - This method takes a `JsonConfig` object (which contains the JSON string) and a `configClass` (the class of the configuration object to be deserialized).
+   - It first checks if the `ObjectMapper` is available. If not, it throws a runtime exception indicating that Jackson is missing.
+   - It then uses the `readValue` method of the `ObjectMapper` to deserialize the JSON string into the specified configuration object.
+
+3. **Utility Method (`isJacksonAvailable`)**:
+   - This method returns a boolean indicating whether the `ObjectMapper` is available on the classpath.
+
+### Usage Pattern
+The `ConfigDeserializer` is typically used in Tika components like parsers and detectors where configuration settings need to be read from JSON strings. The usage pattern involves creating a configuration class and using the `ConfigDeserializer` to convert JSON strings into instances of these classes.

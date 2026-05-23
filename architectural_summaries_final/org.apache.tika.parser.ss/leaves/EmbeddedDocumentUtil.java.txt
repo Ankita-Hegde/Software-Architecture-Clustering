@@ -1,0 +1,30 @@
+### Key Functionality
+The `EmbeddedDocumentUtil` class provides utilities for handling embedded documents within a larger document. It includes methods to extract embedded documents, manage parsers, and handle metadata related to these operations.
+
+### Core Logic
+1. **Initialization**: The class initializes with a `ParseContext`, which is used to manage various aspects of document parsing, including embedded documents.
+2. **Parser Management**: It ensures that an appropriate parser is available for handling embedded documents. If none is specified, it uses an `AutoDetectParser`.
+3. **Metadata Handling**: It provides methods to get MIME types, detect content types, and manage metadata associated with embedded resources.
+4. **Resource Naming**: It generates canonical resource names for embedded resources based on their type, counter, and media type.
+5. **Exception Recording**: It records exceptions during parsing into the metadata for later reference.
+
+### Inputs/Outputs
+- **Inputs**:
+  - `ParseContext`: Used to manage the parsing process, including embedded document extraction.
+  - `TikaInputStream`: Represents the input stream of the document.
+  - `ContentHandler`: Used to handle the parsed content.
+  - `Metadata`: Stores various metadata about the document and embedded resources.
+  - `Throwable`: Used to capture and store exceptions.
+  - `Class`: Used to identify specific parser classes.
+  
+- **Outputs**:
+  - Various metadata entries, such as resource names and exception warnings.
+  - Parsed content (if `ContentHandler` is provided).
+
+### Dependencies
+- **Apache Tika Libraries**: The class heavily relies on various components of the Apache Tika library, including `AutoDetectParser`, `CompositeParser`, `ParserDecorator`, and `DefaultDetector`.
+- **MIME Types**: Utilizes `MimeTypes` and `MimeType` classes for managing and detecting MIME types.
+- **Metadata Handling**: Uses `Metadata` and `TikaCoreProperties` for storing and retrieving metadata.
+- **Exception Handling**: Relies on `ExceptionUtils` for filtering and storing stack traces of exceptions.
+
+This utility class is designed to be flexible and can be used in various scenarios where embedded documents need to be extracted and processed, ensuring that the parsing process is robust and configurable.

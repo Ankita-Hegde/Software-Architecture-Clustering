@@ -1,0 +1,28 @@
+### Key Functionality
+The `ExternalParser` class is designed to leverage external programs (such as `ffmpeg`, `exiftool`, etc.) to extract text content and metadata from documents. It supports custom configurations via JSON, allowing users to define how different streams (stdout, stderr, and output files) should be processed.
+
+### Core Logic
+1. **Configuration Parsing**: The parser reads configuration details such as supported media types, command-line arguments, and handlers for different streams.
+2. **Lazy Command Check**: Before processing any files, it checks if the specified external tools are available. This check is optional and can be configured.
+3. **File Processing**: For each file to be parsed, it replaces placeholders (`${INPUT_FILE}` and `${OUTPUT_FILE}`) in the command-line arguments with actual file paths.
+4. **Stream Handling**: It captures and processes stdout, stderr, and output files using the specified handlers. If no handler is defined, it writes the content directly into the document structure.
+5. **Metadata Collection**: It collects various metadata about the process execution, such as exit value, timeout status, and stream lengths.
+
+### Inputs/Outputs
+- **Inputs**:
+  - A `TikaInputStream` representing the document to be parsed.
+  - A `Metadata` object to store extracted metadata.
+  - A `ParseContext` for additional parsing context.
+  - Configuration details (JSON format) specifying the external tool, command-line arguments, and handlers for different streams.
+
+- **Outputs**:
+  - Extracted text content and metadata are added to the `Metadata` object.
+  - The parsed content is written into the `ContentHandler` provided.
+
+### Dependencies
+- **Apache Tika Components**: The parser relies on several classes from the Apache Tika library, including `TikaInputStream`, `Metadata`, `ParseContext`, and `ContentHandler`.
+- **Java NIO**: Used for file operations like creating temporary files and reading from files.
+- **SAX Parsing**: Utilizes `XHTMLContentHandler` and `BodyContentHandler` for handling XML content.
+- **Process Utilities**: Uses `ProcessUtils` for executing external commands and capturing their output.
+- **Regular Expressions**: Uses `Pattern` and `Matcher` for token replacement in command-line arguments.
+- **Logging**: Uses SLF4J for logging purposes.

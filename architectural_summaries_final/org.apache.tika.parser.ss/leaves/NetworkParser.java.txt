@@ -1,0 +1,31 @@
+### Semantic Summary
+
+#### Key Functionality
+The `NetworkParser` class is designed to parse content from network resources such as URLs or sockets. It can handle both HTTP/HTTPS and Telnet protocols.
+
+#### Core Logic
+1. **Initialization**: The constructor initializes the URI and supported media types.
+2. **Parsing Logic**:
+   - Determines the protocol of the URI.
+   - For HTTP/HTTPS, it opens a connection, reads the input stream, and writes to the output stream.
+   - For Telnet, it establishes a socket connection and performs similar operations.
+   - Uses a `TeeContentHandler` to capture both the parsed content and metadata.
+   - Handles exceptions and ensures proper cleanup.
+
+#### Inputs/Outputs
+- **Inputs**:
+  - `URI`: The network resource to be parsed.
+  - `Set<MediaType>`: The set of media types that the parser supports.
+  - `TikaInputStream tis`: The input stream for the content to be parsed.
+  - `ContentHandler handler`: The handler to which the parsed content will be written.
+  - `Metadata metadata`: The metadata associated with the parsed content.
+  - `ParseContext context`: Additional context for parsing.
+- **Outputs**:
+  - Parsed content and metadata are written to the `ContentHandler`.
+
+#### Dependencies
+- **Apache Tika Libraries**: For handling metadata, media types, and content parsing.
+- **Apache Commons IO**: For utility functions like `IOUtils`.
+- **Java Standard Library**: For core Java functionalities like `Socket`, `URLConnection`, and `InputStream`.
+
+This parser is particularly useful for extracting structured data from web pages or other network resources, leveraging XML parsing and metadata extraction capabilities provided by Apache Tika.

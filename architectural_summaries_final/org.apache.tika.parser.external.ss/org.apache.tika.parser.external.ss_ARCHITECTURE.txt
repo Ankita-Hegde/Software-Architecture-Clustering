@@ -1,0 +1,44 @@
+### Title
+Document Parsing and Metadata Extraction Module
+
+### High-Level Descriptive Summary
+
+The Document Parsing and Metadata Extraction Module is a comprehensive suite of classes designed to handle the parsing and metadata extraction of various document formats using external tools and internal configurations. The module is built around several key components that work together to ensure robust and flexible document processing.
+
+#### Architecture Overview
+1. **Configuration Management**
+   - **ExternalParserConfig**: Configures external parsers using settings like supported file types, command-line arguments, and output handlers. It ensures that external tools are invoked correctly and their outputs are managed efficiently.
+   
+2. **Progress Tracking**
+   - **TikaProgressTracker**: Monitors the progress of parsing operations, particularly useful for detecting stalled parsers. It tracks the last known progress update and helps in managing long-running tasks like Optical Character Recognition (OCR).
+
+3. **Timeout Management**
+   - **TimeoutLimits**: Provides configurable timeouts for parsing tasks, ensuring that tasks do not exceed certain durations and helping to detect and handle hung processes.
+
+4. **External Process Execution**
+   - **ExternalParser**: Leverages external programs (like `ffmpeg`, `exiftool`, etc.) to extract text content and metadata from documents. It supports custom configurations and handles various streams (stdout, stderr, and output files) using specified handlers.
+   - **ProcessUtils**: Manages and executes external processes, including registering and releasing processes, handling command-line arguments, and executing processes with timeouts. It ensures that processes are properly tracked and cleaned up, especially during application shutdown.
+
+5. **Result Capture**
+   - **FileProcessResult**: Captures the results of file processing operations, including standard output, standard error, exit value, and timing details. It provides a structured way to store and access detailed information about the process execution.
+
+6. **Metadata Handling**
+   - **ExternalProcess**: Defines metadata properties related to external processes, such as stdout, stderr, exit value, and timeout status.
+   - **ConfigDeserializer**: Provides a utility for deserializing JSON configurations into Java objects, ensuring compatibility with the Jackson library and fallback mechanisms.
+
+7. **Content Handling**
+   - **XHTMLContentHandler**: Simplifies the process of generating XHTML output from parsed content, ensuring proper formatting and integration of metadata.
+   - **BodyContentHandler**: Filters out all XML content outside of the `<body>` tag within an XHTML document, ensuring only the content inside the `<body>` tag is passed through to the underlying content handler.
+
+8. **MIME Type Detection**
+   - **FileCommandDetector**: Identifies the MIME type of a file using the Unix `file` command, handling both `TikaInputStream` and regular `InputStream` types.
+
+#### Component Interactions
+- **ExternalParserConfig** and **ExternalParser** work together to configure and execute external parsers, ensuring that the correct settings and handlers are applied.
+- **TikaProgressTracker** and **TimeoutLimits** collaborate to monitor and manage the progress and timeouts of parsing tasks, enhancing the reliability and performance of the system.
+- **ProcessUtils** and **ExternalParser** interact to manage and execute external processes, providing a robust mechanism for handling command-line operations.
+- **FileProcessResult** and **ExternalProcess** are used to capture and store the results of file processing operations, providing detailed metadata for further analysis.
+- **ConfigDeserializer** ensures that configurations are correctly deserialized, facilitating the use of JSON settings in the system.
+- **XHTMLContentHandler** and **BodyContentHandler** handle the generation and filtering of XHTML content, ensuring that the output is well-formed and structured.
+
+Overall, the module provides a comprehensive solution for document parsing and metadata extraction, leveraging external tools and internal configurations to ensure efficient and reliable processing of various document formats.

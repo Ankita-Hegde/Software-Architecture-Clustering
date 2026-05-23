@@ -1,0 +1,26 @@
+### Semantic Summary
+
+#### Key Functionality
+The `DefaultEncodingDetector` class is designed to detect character encodings in text files using a composite approach. It leverages multiple `EncodingDetector` implementations that are registered as service providers.
+
+#### Core Logic
+1. **Initialization**: The constructor initializes the `DefaultEncodingDetector` with a `ServiceLoader` that loads all available `EncodingDetector` implementations.
+2. **Sorting Detectors**: The detectors are sorted into two tiers:
+   - **Base Detectors**: Non-`MetaEncodingDetector` instances are sorted by their full class names.
+   - **MetaDetectors**: These run last, after all base detectors have collected their candidates.
+3. **Handling Exclusions**: An optional parameter allows excluding certain `EncodingDetector` classes during initialization.
+
+#### Inputs/Outputs
+- **Inputs**:
+  - `ServiceLoader`: A mechanism to load service providers (in this case, `EncodingDetector` implementations).
+  - `Collection<Class<? extends EncodingDetector>> excludeEncodingDetectors`: Optional collection to exclude specific `EncodingDetector` classes.
+- **Outputs**:
+  - The class itself returns a `CompositeEncodingDetector` object configured with the sorted list of `EncodingDetector` instances.
+
+#### Dependencies
+- **Apache Tika Framework**: The class is part of the Apache Tika project, which is used for detecting metadata and content types of files.
+- **Java Standard Library**: Utilizes standard Java classes like `List`, `Comparator`, and `ServiceLoader`.
+- **Service Provider Mechanism**: Uses the Java SPI (Service Provider Interface) to discover and load `EncodingDetector` implementations.
+- **Custom Classes**: `EncodingDetector`, `MetaEncodingDetector`, and `CompositeEncodingDetector` are custom classes from the Tika framework.
+
+This summary provides a clear understanding of how the `DefaultEncodingDetector` works, its dependencies, and the inputs and outputs it handles.

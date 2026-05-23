@@ -1,0 +1,28 @@
+### Semantic Summary
+
+#### Key Functionality
+The `OutputLimits` class in the Apache Tika library is designed to manage and enforce output and security limits during document parsing. It provides configurable parameters to control the maximum amount of data written, the depth of XML and package structures, and the detection of potential zip bombs.
+
+#### Core Logic
+- **Output Limits**: Configures the maximum number of characters that can be written (`writeLimit`) and whether an exception should be thrown when this limit is reached (`throwOnWriteLimit`).
+- **XML Security Limits**: Sets the maximum depth of XML nesting (`maxXmlDepth`) and package entry nesting (`maxPackageEntryDepth`), which always trigger exceptions if exceeded.
+- **Zip Bomb Detection**: Configures thresholds for detecting zip bombs based on character count (`zipBombThreshold`) and output/input ratio (`zipBombRatio`).
+
+#### Inputs/Outputs
+- **Inputs**:
+  - `writeLimit`: An integer representing the maximum number of characters to write. `-1` indicates no limit.
+  - `throwOnWriteLimit`: A boolean indicating whether to throw an exception when the write limit is reached.
+  - `maxXmlDepth`: An integer representing the maximum depth of XML nesting.
+  - `maxPackageEntryDepth`: An integer representing the maximum depth of package entry nesting.
+  - `zipBombThreshold`: A long representing the number of characters before zip bomb detection is activated.
+  - `zipBombRatio`: A long representing the maximum output/input ratio for zip bomb detection.
+
+- **Outputs**:
+  - The class provides methods to get and set these parameters, as well as a `toString` method for debugging and logging purposes.
+
+#### Dependencies
+- **ParseContext**: The `get` method uses `ParseContext` to retrieve existing `OutputLimits` settings or create a new instance with default values.
+- **Apache Tika Library**: The class is part of the Apache Tika project, which is used for extracting metadata and text from various file formats.
+- **Java Serialization**: The class implements `Serializable`, allowing instances to be serialized and deserialized using tools like Jackson.
+
+This class is particularly useful in scenarios where controlling the output size and ensuring security against malicious input is critical, such as in web applications or systems handling untrusted file uploads.

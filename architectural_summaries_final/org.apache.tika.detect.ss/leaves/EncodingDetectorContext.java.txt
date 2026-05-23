@@ -1,0 +1,29 @@
+### Semantic Summary
+
+#### Key Functionality
+The `EncodingDetectorContext` class serves as a container for collecting and managing encoding detection results from various base detectors. It allows these results to be aggregated and provides methods for accessing and analyzing them.
+
+#### Core Logic
+1. **Result Collection**: The class collects ranked lists of `EncodingResult` objects from different detectors. Each `EncodingResult` contains a charset, confidence score, and other metadata.
+2. **Aggregation**: It aggregates these results to provide a comprehensive view of all possible charsets detected by different detectors.
+3. **Access Methods**: Provides methods to retrieve the top result from each detector, all unique charsets detected, and the highest confidence for a given charset across all detectors.
+4. **Arbitration Information**: Allows setting and retrieving information about how the final encoding decision was made, which can be useful for debugging and understanding the decision-making process.
+
+#### Inputs/Outputs
+- **Inputs**:
+  - `List<EncodingResult>`: Ranked list of encoding results from a detector.
+  - `String`: Name of the detector.
+  - `Charset`: Character set for which the highest confidence is being queried.
+  - `String`: Arbitration information string.
+
+- **Outputs**:
+  - `List<Result>`: Unmodifiable list of all per-detector results.
+  - `Set<Charset>`: Unique charsets from all results.
+  - `float`: Highest confidence for a given charset.
+  - `String`: Arbitration information.
+
+#### Dependencies
+- **Java Standard Library**: Uses classes like `List`, `Set`, `Collections`, and `Charset`.
+- **Apache Tika Framework**: Specifically designed to work within the Apache Tika framework, where it is used by `CompositeEncodingDetector` and `MetaEncodingDetector`.
+
+This class is crucial for integrating multiple encoding detection mechanisms and providing a unified interface for handling their results, making it easier to implement complex encoding arbitration strategies.

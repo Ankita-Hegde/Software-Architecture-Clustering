@@ -1,0 +1,28 @@
+### Semantic Summary
+
+#### Key Functionality
+The `ServiceLoader` class in the Apache Tika project is designed to dynamically load service providers based on the Java Service Provider mechanism. It supports both static and dynamic loading of services, making it flexible for different environments like OSGi.
+
+#### Core Logic
+1. **Initialization**: The `ServiceLoader` class is initialized with a `ClassLoader` and a flag indicating whether it should perform dynamic loading.
+2. **Service Discovery**: It discovers service providers by reading configuration files from the classpath (e.g., `META-INF/services/` directory).
+3. **Service Loading**: It loads the discovered service providers into a list, ensuring there are no duplicates.
+4. **Dynamic vs Static Loading**: It can switch between dynamic and static loading based on the environment and configuration.
+
+#### Inputs/Outputs
+- **Inputs**:
+  - `ClassLoader`: Used to load service providers.
+  - `String`: Resource name or pattern for discovering service providers.
+  - `Class<T>`: Interface or class type of the service provider.
+  - `Collection<Class<? extends T>>`: Classes to exclude during loading.
+- **Outputs**:
+  - `List<T>`: List of service providers that implement the specified interface.
+  - `InputStream`: Input stream for reading resources.
+
+#### Dependencies
+- **Java Standard Libraries**: Utilizes standard Java classes and interfaces such as `ClassLoader`, `URL`, `InputStream`, `BufferedReader`, etc.
+- **Apache Tika Libraries**: Depends on other Tika components like `Parser`, `Detector`, `EncodingDetector`, `LanguageDetector`, and `MetadataFilter`.
+- **OSGi Framework**: Supports dynamic loading through OSGi service tracking.
+- **aQute.bnd Annotation SPI**: Used for service consumer annotations.
+
+This class is crucial for Tika's ability to discover and utilize various parsers, detectors, and other components dynamically, enhancing its flexibility and adaptability across different environments.

@@ -1,0 +1,56 @@
+### Semantic Summary of the Provided Source Code
+
+#### Key Functionality
+The `ExceptionUtils` class provides utility methods for handling exceptions, specifically focusing on extracting and formatting stack traces.
+
+#### Core Logic
+1. **getFilteredStackTrace**: This method unwraps a `TikaException` to get its underlying cause if it exists. It then returns the stack trace of the cause.
+2. **getStackTrace**: This method captures the full stack trace of a given `Throwable` object.
+3. **trimMessage**: This method removes the message part from a stack trace string, leaving only the exception type and class name.
+
+#### Inputs/Outputs
+- **Inputs**:
+  - `Throwable t`: A `Throwable` object representing an exception or error.
+  - `String trace`: A string representation of a stack trace.
+- **Outputs**:
+  - `String`: A formatted stack trace string.
+
+#### Dependencies
+- **Java Standard Library**:
+  - `java.io.IOException`
+  - `java.io.PrintWriter`
+  - `java.io.StringWriter`
+  - `java.io.Writer`
+  - `java.util.regex.Matcher`
+  - `java.util.regex.Pattern`
+- **Apache Tika**:
+  - `org.apache.tika.exception.TikaException`
+
+### Detailed Explanation
+
+1. **Pattern Definition**:
+   - `MSG_PATTERN`: A regular expression pattern used to identify and remove messages from stack trace strings.
+
+2. **getFilteredStackTrace Method**:
+   - This method checks if the input `Throwable` is a `TikaException` and has a cause. If so, it returns the stack trace of the cause instead of the original exception.
+   - It uses `getStackTrace` to retrieve the stack trace of the unwrapped cause.
+
+3. **getStackTrace Method**:
+   - This method captures the stack trace of the given `Throwable` using `printStackTrace` and formats it into a string.
+   - It ensures that the stack trace is properly closed after capturing.
+
+4. **trimMessage Method**:
+   - This method takes a string representation of a stack trace and removes the message part, which typically includes the exception message and any additional context.
+   - It uses the defined `MSG_PATTERN` to find and replace the message part with an empty string.
+
+### Usage Example
+```java
+try {
+    // Some code that might throw an exception
+} catch (Exception e) {
+    String filteredStackTrace = ExceptionUtils.getFilteredStackTrace(e);
+    System.out.println(filteredStackTrace);
+}
+```
+
+This example demonstrates how to use `getFilteredStackTrace` to handle and print a filtered stack trace, which can be useful for logging or debugging purposes.

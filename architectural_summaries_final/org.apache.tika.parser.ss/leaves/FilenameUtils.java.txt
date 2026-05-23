@@ -1,0 +1,25 @@
+### Key Functionality
+The `FilenameUtils` class provides utilities for sanitizing and normalizing filenames extracted from various sources, particularly those embedded within documents. It ensures that filenames are safe to use across different operating systems and file systems.
+
+### Core Logic
+1. **Normalization**: The `normalize` method replaces reserved characters in filenames with their hexadecimal values, ensuring they are safe for use.
+2. **Filename Extraction**: The `getName` method extracts just the filename from a given path, removing any directory components.
+3. **Suffix Extraction**: The `getSuffixFromPath` method extracts the file extension from a path, ensuring it meets certain criteria (e.g., alphanumeric and no more than 5 characters).
+4. **Sanitization**: Methods like `getSanitizedEmbeddedFileName` and `getSanitizedEmbeddedFilePath` sanitize potentially dangerous filenames and paths, replacing problematic characters and ensuring they do not exceed a specified maximum length.
+
+### Inputs/Outputs
+- **Inputs**:
+  - Strings representing filenames, paths, and metadata.
+  - A `Metadata` object containing various properties such as content type, resource name, and embedded document paths.
+  - An optional default extension and maximum length for sanitized filenames.
+- **Outputs**:
+  - Normalized filenames.
+  - Sanitized filenames and paths.
+  - Extracted file extensions.
+
+### Dependencies
+- **Apache Commons IO**: Used for some utility methods, specifically `FilenameUtils.getPrefixLength`.
+- **Apache Tika**: Provides access to metadata, MIME types, and utilities for handling embedded documents.
+- **Java Standard Library**: Utilizes classes like `String`, `Pattern`, `Matcher`, and `HashSet`.
+
+This class is designed to handle and sanitize filenames and paths that might be extracted from embedded documents, ensuring they are safe and usable across different environments.

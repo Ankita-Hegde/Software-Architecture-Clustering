@@ -1,0 +1,27 @@
+### Semantic Summary
+
+#### Key Functionality
+The `BodyContentHandler` class is a decorator for the `ContentHandler` interface in Apache Tika. Its primary function is to filter out all XML content outside of the `<body>` tag within an XHTML document, ensuring only the content inside the `<body>` tag is passed through to the underlying content handler.
+
+#### Core Logic
+1. **XPath Parsing**: The class uses an `XPathParser` to define an XPath expression that matches all nodes within the `<body>` tag of an XHTML document.
+2. **Content Filtering**: It wraps another `ContentHandler` (or a `WriteOutContentHandler`) and selectively forwards events based on whether they are within the `<body>` tag as defined by the XPath expression.
+3. **Decorative Pattern**: This follows the Decorator design pattern, where the `BodyContentHandler` enhances the behavior of the underlying `ContentHandler`.
+
+#### Inputs/Outputs
+- **Inputs**:
+  - A `ContentHandler` instance (or a `WriteOutContentHandler` instance) that will receive the filtered content.
+  - Optionally, a `Writer` for direct output of the filtered content.
+  - An integer `writeLimit` (defaulted to -1, meaning no limit) which bounds the number of characters written to the internal buffer before throwing a `SAXException`.
+  
+- **Outputs**:
+  - The filtered content inside the `<body>` tag of an XHTML document, passed to the underlying `ContentHandler`.
+  - Alternatively, the filtered content can be written directly to a `Writer` or stored in an internal string buffer if a `WriteOutContentHandler` is used.
+
+#### Dependencies
+- **Apache Tika**: The class is part of the Apache Tika project, specifically within the `org.apache.tika.sax` package.
+- **Java Standard Library**: Uses standard Java classes like `Writer` and `ContentHandler`.
+- **XPath Parser**: Utilizes `XPathParser` and `Matcher` from the `org.apache.tika.sax.xpath` package to define and apply the XPath expression.
+- **Content Handler Decorator**: Extends `ContentHandlerDecorator` to implement the decorator pattern.
+
+This class is particularly useful in scenarios where only the content within the `<body>` tag of an HTML document needs to be processed or extracted, such as when dealing with web scraping or content extraction tasks.

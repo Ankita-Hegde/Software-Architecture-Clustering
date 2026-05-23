@@ -1,0 +1,29 @@
+### Semantic Summary
+
+#### Key Functionality
+The `EmptyParser` class is a dummy parser designed to handle unknown document types. It does not attempt to parse any input data but instead generates an empty XHTML document.
+
+#### Core Logic
+- **getSupportedTypes**: This method returns an empty set, indicating that this parser does not support any specific media types.
+- **parse**: This method is responsible for generating an empty XHTML document. It creates an instance of `XHTMLContentHandler`, starts and ends the document, effectively producing no content.
+
+#### Inputs/Outputs
+- **Inputs**:
+  - `TikaInputStream tis`: A stream of the input document.
+  - `ContentHandler handler`: An object that can handle the output of the parsing process.
+  - `Metadata metadata`: Metadata associated with the input document.
+  - `ParseContext context`: Additional context for the parsing process.
+  
+- **Outputs**:
+  - Generates an empty XHTML document using the `XHTMLContentHandler`.
+
+#### Dependencies
+- **org.apache.tika.config.TikaComponent**: Used to mark the class as a Tika component.
+- **java.util.Collections**: Used to create an empty set in `getSupportedTypes`.
+- **org.xml.sax.ContentHandler**: Interface used to handle the output of the parsing process.
+- **org.apache.tika.io.TikaInputStream**: Stream wrapper for handling input streams.
+- **org.apache.tika.metadata.Metadata**: Class for storing metadata about the input document.
+- **org.apache.tika.mime.MediaType**: Represents MIME media types.
+- **org.apache.tika.sax.XHTMLContentHandler**: Used to generate XHTML content.
+
+This parser is particularly useful as a placeholder or sentinel when dealing with unknown or unsupported document types, ensuring that the system can gracefully handle such cases without attempting to parse invalid or unsupported formats.

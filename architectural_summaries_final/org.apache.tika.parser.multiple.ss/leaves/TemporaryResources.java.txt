@@ -1,0 +1,27 @@
+### Semantic Summary
+
+#### Key Functionality
+The `TemporaryResources` class provides utilities for managing a collection of temporary resources, such as files, ensuring they are properly closed or disposed of when no longer needed.
+
+#### Core Logic
+1. **Resource Tracking**: It maintains a list of resources (e.g., files) that need to be closed or deleted.
+2. **Temporary File Creation**: It allows creating temporary files that are automatically deleted when the `TemporaryResources` instance is closed.
+3. **Resource Management**: It ensures that all tracked resources are closed in reverse order of their addition, handling any exceptions that occur during closure.
+
+#### Inputs/Outputs
+- **Inputs**:
+  - `Path tempFileDir`: A directory for storing temporary files.
+  - `String suffix`: A file suffix for creating temporary files.
+  - `Metadata metadata`: Metadata to determine the file suffix.
+  
+- **Outputs**:
+  - `Path`: A path to a newly created temporary file.
+  - `File`: A file object representing a newly created temporary file.
+
+#### Dependencies
+- **Java Standard Library**: Uses classes like `LinkedList`, `Files`, `Path`, `File`, and `IOException`.
+- **Apache Commons IO**: Utilizes `FilenameUtils.getSuffixFromPath` for determining file suffixes.
+- **Apache Tika**: Depends on `Metadata`, `TikaCoreProperties`, and `StringUtils` for handling metadata and string operations.
+- **SLF4J**: For logging purposes, using `Logger` and `LoggerFactory`.
+
+This class is particularly useful in scenarios where temporary files need to be created and managed within a larger application, ensuring that these files are cleaned up properly to avoid resource leaks.

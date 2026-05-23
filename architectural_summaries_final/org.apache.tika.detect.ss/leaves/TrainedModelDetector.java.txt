@@ -1,0 +1,32 @@
+### Semantic Summary
+
+#### Key Functionality
+The `TrainedModelDetector` class is part of the Apache Tika project, which is designed to detect the MIME type of files based on machine learning models. This detector uses a trained model to analyze the byte content of a file and determine its most likely MIME type.
+
+#### Core Logic
+1. **Model Loading**: The constructor loads default models using the class loader.
+2. **Histogram Calculation**: Converts the input stream into a byte frequency histogram.
+3. **Prediction**: Uses the trained models to predict the MIME type based on the histogram.
+4. **Thresholding**: If no model provides a high enough probability, it defaults to `MediaType.OCTET_STREAM`.
+
+#### Inputs/Outputs
+- **Inputs**:
+  - `TikaInputStream tis`: An input stream to read the file content.
+  - `Metadata metadata`: Metadata associated with the file.
+  - `ParseContext parseContext`: Context for parsing operations.
+  - `InputStream input`: Input stream for reading file content.
+  - `Path modelFile`: File path for loading model data.
+  - `File modelFile`: File object for loading model data.
+  - `ClassLoader classLoader`: Class loader for loading model data.
+
+- **Outputs**:
+  - `MediaType maxType`: The predicted MIME type of the file.
+
+#### Dependencies
+- **Apache Tika Libraries**: For handling file streams, metadata, and MIME types.
+- **Java NIO (New I/O)**: For efficient file and network I/O operations.
+- **Apache Commons IO**: For temporary file creation.
+- **Apache Commons Lang**: For string manipulation and other utility functions.
+- **Apache Commons Codec**: For character encoding support.
+
+This class is designed to be extended by specific implementations that provide the actual machine learning models and their prediction logic.

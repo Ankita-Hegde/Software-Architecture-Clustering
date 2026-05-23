@@ -1,0 +1,31 @@
+### Semantic Summary
+
+#### Key Functionality
+The `ParserContainerExtractor` class is designed to extract embedded resources from container files using Tika's parsing capabilities. It leverages the `AutoDetectParser` and `DefaultDetector` by default but can be configured with custom parsers and detectors.
+
+#### Core Logic
+1. **Initialization**: The constructor initializes the parser and detector. It supports both default and custom configurations.
+2. **Support Check**: The `isSupported` method checks if the given input stream is of a type that the parser can handle.
+3. **Extraction Process**:
+   - The `extract` method initiates the extraction process.
+   - It sets up a recursive parser to handle nested container files.
+   - It uses a `RecursiveParser` to parse the content and detect embedded resources.
+   - If no `recurseExtractor` is provided, it handles the embedded resource directly using the `EmbeddedResourceHandler`.
+   - If a `recurseExtractor` is provided, it temporarily writes the content to a file, processes it, and then recursively extracts any further nested resources.
+
+#### Inputs/Outputs
+- **Inputs**:
+  - `TikaInputStream`: The input stream to be processed.
+  - `ContainerExtractor`: A reference to another extractor for nested resources.
+  - `EmbeddedResourceHandler`: A handler to manage how embedded resources are processed.
+  - `ParseContext`: A context object to store parsing-related information.
+- **Outputs**:
+  - The method does not return a value but processes the input stream to extract and handle embedded resources.
+
+#### Dependencies
+- **Apache Tika Libraries**: The code relies heavily on various classes from the Apache Tika library, including `TikaInputStream`, `Metadata`, `Parser`, `Detector`, and `ContentHandler`.
+- **Other Classes**:
+  - `AutoDetectParser` and `DefaultDetector` are used by default but can be customized.
+  - `RecursiveParser` is a nested class that extends `StatefulParser` to handle recursive extraction.
+  - `EmbeddedResourceHandler` is expected to be implemented by the user to define how embedded resources should be handled.
+- **External Libraries**: The code depends on the Apache Tika project, which includes dependencies like XML parsing libraries and other utilities for handling file streams and metadata.

@@ -1,0 +1,28 @@
+### Key Functionality
+The `AbstractMultipleParser` class serves as an abstract base class for creating parser wrappers that can process a given input stream multiple times, merging the results from various parsers into a single output. This allows for more robust parsing by leveraging the strengths of different parsers.
+
+### Core Logic
+1. **Initialization**: The constructor initializes the parsers and computes the supported media types based on the intersection of types supported by each parser.
+2. **Metadata Handling**: It manages metadata merging and conflict resolution using the specified `MetadataPolicy`.
+3. **Parsing Process**:
+   - The input stream is processed through each parser sequentially.
+   - Between parsers, the stream is reset to its initial state.
+   - Metadata from each parser is merged according to the defined policy.
+4. **Error Handling**: It records failures and handles exceptions appropriately, allowing for graceful fallbacks.
+
+### Inputs/Outputs
+- **Inputs**:
+  - `TikaInputStream tis`: The input stream to be parsed.
+  - `ContentHandler handler`: A handler for managing the parsed content.
+  - `Metadata metadata`: Metadata associated with the parsing process.
+  - `ParseContext context`: Contextual information for parsing.
+- **Outputs**:
+  - The parsed content is handled by the `ContentHandler`, and metadata is updated accordingly.
+
+### Dependencies
+- **Apache Tika Libraries**: The class relies on various classes from the Apache Tika library, including `Metadata`, `MediaType`, `ParseContext`, and `ContentHandler`.
+- **SAX Parsing**: Uses `org.xml.sax.ContentHandler` for handling XML content.
+- **Temporary Resources Management**: Utilizes `TemporaryResources` for managing temporary resources during parsing.
+
+### Summary
+The `AbstractMultipleParser` class provides a framework for combining the results of multiple parsers into a unified output. It supports configurable metadata handling policies and ensures that the parsing process can be customized and extended. Users can leverage this class to create more sophisticated parsing strategies by extending it and implementing specific behaviors for parser preparation and completion.

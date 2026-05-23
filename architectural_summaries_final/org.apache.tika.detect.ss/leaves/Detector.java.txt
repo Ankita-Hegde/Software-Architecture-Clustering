@@ -1,0 +1,24 @@
+### Semantic Summary of the Provided Source Code
+
+#### Key Functionality
+The provided code defines an interface named `Detector` which is part of the Apache Tika library. This interface is used to detect the content type (e.g., MIME type) of a document based on its metadata or the first few bytes of the document's stream.
+
+#### Core Logic
+1. **Detection Mechanism**: The core logic involves implementing methods that analyze the input document to determine its content type. This can be done using metadata associated with the document or by examining the initial bytes of the document's stream.
+2. **Stream Handling**: The method `detect` allows the detector to read the beginning of the document stream to assist in determining the content type. It ensures that the stream is properly marked, read, and reset before returning.
+
+#### Inputs/Outputs
+- **Inputs**:
+  - `TikaInputStream tis`: A document input stream, which might be `null` if the stream is not available.
+  - `Metadata metadata`: Input metadata for the document, which is read but not modified by the detector.
+  - `ParseContext parseContext`: A context object for parsing operations.
+- **Output**:
+  - `MediaType`: The detected media type of the document. If the type cannot be determined, it returns `application/octet-stream`.
+
+#### Dependencies
+- **Apache Tika Library**: The `Detector` interface is part of the Apache Tika library, which provides tools for detecting and extracting metadata from various types of documents.
+- **Java Standard Libraries**: The code uses standard Java classes such as `IOException`, `Serializable`, and interfaces like `SelfConfiguring`.
+- **Apache Tika Metadata**: The `Metadata` class from the Tika library is used to pass metadata about the document to the detector.
+- **Apache Tika MIME Types**: The `MediaType` class from the Tika library is used to represent the detected content type.
+
+This interface is designed to be implemented by different detectors that can use various strategies to identify the content type of a document, making it a flexible and extensible component of the Tika library.

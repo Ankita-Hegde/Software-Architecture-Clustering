@@ -1,0 +1,39 @@
+### Semantic Summary of the Provided Source Code
+
+#### Key Functionality
+This Java interface defines properties related to external processes, particularly focusing on capturing metadata from standard output (stdout), standard error (stderr), and the process itself.
+
+#### Core Logic
+The core logic involves defining constants (properties) that represent various aspects of an external process's execution, such as the content of stdout and stderr, whether these outputs were truncated, their lengths, the exit value of the process, and whether the process timed out.
+
+#### Inputs/Outputs
+- **Inputs**: None directly specified in the code. This interface is used to define how metadata should be extracted from an external process.
+- **Outputs**: Metadata properties like `STD_OUT`, `STD_ERR`, `STD_OUT_IS_TRUNCATED`, `STD_ERR_IS_TRUNCATED`, `STD_OUT_LENGTH`, `STD_ERR_LENGTH`, `EXIT_VALUE`, and `IS_TIMEOUT`.
+
+#### Dependencies
+- **Apache Tika Core Properties**: The prefix for the property names (`PREFIX_EXTERNAL_META`) is derived from `TikaCoreProperties`. This suggests that the `TikaCoreProperties` class is a dependency, likely providing namespace prefixes for metadata properties.
+- **Property Class**: The `Property` class is used to define each metadata property. This class is assumed to be part of the same package or another dependency within the Tika project.
+
+### Detailed Explanation
+
+1. **Constants (Properties)**:
+   - `STD_OUT`: Represents the standard output of the external process.
+   - `STD_ERR`: Represents the standard error of the external process.
+   - `STD_OUT_IS_TRUNCATED`: Indicates whether the standard output was truncated during the process.
+   - `STD_ERR_IS_TRUNCATED`: Indicates whether the standard error was truncated during the process.
+   - `STD_OUT_LENGTH`: The length of the standard output, considering truncation.
+   - `STD_ERR_LENGTH`: The length of the standard error, considering truncation.
+   - `EXIT_VALUE`: The exit value of the external process.
+   - `IS_TIMEOUT`: Indicates whether the process timed out.
+
+2. **Prefix Definition**:
+   - `PREFIX_EXTERNAL_META`: A prefix used to uniquely identify these properties when they are stored or retrieved.
+
+3. **Usage Context**:
+   - These properties are intended to be used in a system where external processes are executed, and their outputs need to be captured and analyzed. For example, this could be useful in a document processing pipeline where certain actions are performed using external tools, and the results need to be recorded.
+
+4. **Dependencies**:
+   - The `TikaCoreProperties` class is referenced to ensure that the property names are consistent with other parts of the Tika project.
+   - The `Property` class is used to encapsulate the metadata properties, providing a standardized way to handle these values.
+
+In summary, this interface provides a structured way to capture and manage metadata from external processes, which can be crucial for debugging, logging, or further processing in a document analysis system.

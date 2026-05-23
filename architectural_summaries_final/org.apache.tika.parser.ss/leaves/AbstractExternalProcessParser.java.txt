@@ -1,0 +1,25 @@
+### Semantic Summary
+
+#### Key Functionality
+The `AbstractExternalProcessParser` class serves as an abstract base class for parsers that interact with external processes. Its primary function is to manage the lifecycle of these external processes, ensuring they are properly registered and cleaned up when the JVM shuts down.
+
+#### Core Logic
+1. **Process Management**: The class maintains a map (`PROCESS_MAP`) that associates unique identifiers (UUIDs) with `Process` objects. This allows tracking and managing multiple external processes.
+2. **Shutdown Hook**: A shutdown hook is added to the runtime environment. When the JVM is shutting down, this hook ensures that all registered processes are forcefully terminated using the `destroyForcibly` method.
+3. **Registration and Release**: The class provides methods to register a process with a unique identifier and to release (remove) a process by its identifier.
+
+#### Inputs/Outputs
+- **Inputs**:
+  - `Process` objects: These are the external processes that need to be managed.
+  - `String` (UUID): Used as a unique identifier for each process.
+  
+- **Outputs**:
+  - `String`: The unique identifier assigned to a registered process.
+  - `Process`: The process object associated with a given identifier when it is released.
+
+#### Dependencies
+- **Java Concurrency Utilities**: The class uses `ConcurrentHashMap` for thread-safe operations on the process map.
+- **Java Runtime Environment**: The class relies on the `Runtime` class to add a shutdown hook.
+- **Apache Tika Framework**: The class is part of the Apache Tika project, specifically within the `org.apache.tika.parser` package. It is designed to be used in the context of document parsing where external processes might be involved.
+
+This class helps in managing external processes in a way that minimizes the risk of orphaned processes when the JVM is shut down, thereby improving the stability and reliability of the application.

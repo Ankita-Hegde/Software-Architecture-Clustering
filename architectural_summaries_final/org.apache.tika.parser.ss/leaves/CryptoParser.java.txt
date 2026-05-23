@@ -1,0 +1,32 @@
+### Semantic Summary
+
+#### Key Functionality
+The `CryptoParser` class is designed to decrypt an incoming document stream using a specified cryptographic transformation and then delegate the parsing of the decrypted content to another parser instance.
+
+#### Core Logic
+1. **Initialization**: The constructor initializes the necessary parameters such as the cryptographic transformation, provider, and supported media types.
+2. **Decryption**: It uses the provided key and possibly additional parameters like `AlgorithmParameters` and `SecureRandom` to initialize a `Cipher` object in decryption mode.
+3. **Parsing**: After decrypting the input stream, it passes the decrypted content to a delegate parser for further processing.
+
+#### Inputs/Outputs
+- **Inputs**:
+  - `TikaInputStream tis`: The encrypted input stream to be decrypted.
+  - `ContentHandler handler`: An object that handles the parsed content.
+  - `Metadata metadata`: Metadata associated with the document.
+  - `ParseContext context`: A context object containing the decryption key, algorithm parameters, and secure random generator.
+- **Outputs**:
+  - The parsed content is handled by the `ContentHandler`.
+
+#### Dependencies
+- **Libraries and Packages**:
+  - `java.io.IOException`: For handling I/O exceptions.
+  - `java.security.AlgorithmParameters`, `java.security.GeneralSecurityException`, `java.security.Key`, `java.security.Provider`, `java.security.SecureRandom`: For cryptographic operations.
+  - `javax.crypto.Cipher`, `javax.crypto.CipherInputStream`: For encryption and decryption.
+  - `org.apache.tika.exception.EncryptedDocumentException`, `org.apache.tika.exception.TikaException`: Custom exceptions for handling errors.
+  - `org.apache.tika.io.TikaInputStream`: For managing input streams.
+  - `org.apache.tika.metadata.Metadata`: For storing metadata.
+  - `org.apache.tika.mime.MediaType`: For specifying media types.
+  - `org.apache.tika.parser.DelegatingParser`: Base class for this parser.
+  - `org.xml.sax.ContentHandler`, `org.xml.sax.SAXException`: For handling XML content.
+
+This class is part of the Apache Tika project, which is used for extracting metadata and text from various file formats.

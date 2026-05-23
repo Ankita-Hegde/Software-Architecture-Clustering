@@ -1,0 +1,30 @@
+### Semantic Summary of the Provided Source Code
+
+#### Key Functionality
+The `InputStreamDigester` class is designed to compute a cryptographic hash (digest) of an input stream using a specified algorithm and store the result in metadata. It ensures that the input stream can be rewound after the initial digest computation to allow for further processing.
+
+#### Core Logic
+1. **Initialization**: The constructor initializes the digest algorithm, metadata key, and encoder based on the provided parameters.
+2. **Content Length Handling**: Sets the content length in metadata if it's not already set.
+3. **Message Digest Creation**: Creates a `MessageDigest` instance using the specified algorithm and provider.
+4. **Stream Processing**:
+   - Enables rewinding on the `TikaInputStream`.
+   - Reads the input stream in chunks, updating the message digest with each chunk.
+   - Stores the total length of the stream in metadata.
+   - Encodes and stores the digest value in metadata using the specified encoder.
+   - Rewinds the stream for potential further processing.
+
+#### Inputs/Outputs
+- **Inputs**:
+  - `TikaInputStream tis`: The input stream to be digested.
+  - `Metadata metadata`: The metadata object where the digest will be stored.
+  - `ParseContext parseContext`: A context object for parsing, though it is not currently used in this implementation.
+- **Outputs**:
+  - The digest value is stored in the metadata under the specified key, encoded as per the provided encoder.
+
+#### Dependencies
+- **Java Security API**: Uses classes like `MessageDigest`, `Provider`, and `NoSuchAlgorithmException`.
+- **Apache Tika Libraries**: Relies on `TikaInputStream`, `Metadata`, and `ParseContext` from the Apache Tika library.
+- **Apache Commons Lang**: Utilizes `StringUtils` for handling strings.
+
+This class is particularly useful in scenarios where the integrity of a file needs to be verified or where a unique identifier is needed based on the content of a stream.

@@ -1,0 +1,25 @@
+### Semantic Summary of the Provided Source Code
+
+#### Key Functionality
+The provided code defines an interface named `ContainerExtractor` which is part of the Apache Tika library. This interface is designed to handle the extraction of embedded resources from container formats like `.zip`, `.doc`, etc.
+
+#### Core Logic
+1. **Support Check**: The `isSupported` method checks whether the container extractor can process a given container format.
+2. **Extraction Process**: The `extract` method processes a container file and extracts all embedded resources. It uses a callback mechanism (`EmbeddedResourceHandler`) to handle each embedded resource.
+
+#### Inputs/Outputs
+- **Inputs**:
+  - `TikaInputStream input`: A stream representing the container file.
+  - `ParseContext parseContext`: A context object that holds parsing-related information.
+  - `ContainerExtractor recurseExtractor`: An optional extractor to process nested containers.
+  - `EmbeddedResourceHandler handler`: A handler to process each embedded resource.
+- **Outputs**:
+  - The `extract` method does not return anything directly but processes the container and calls the `handler` for each embedded resource.
+
+#### Dependencies
+- **Apache Tika Library**: The code is part of the Apache Tika project, which provides tools for content analysis and metadata extraction from various file types.
+- **TikaInputStream**: A class from the Tika library used to wrap an input stream for reading.
+- **ParseContext**: A context object used to pass parsing-related information.
+- **EmbeddedResourceHandler**: An interface for handling embedded resources within a container.
+
+This interface allows for flexible and extensible handling of container formats, enabling developers to easily add support for new container types by implementing this interface.

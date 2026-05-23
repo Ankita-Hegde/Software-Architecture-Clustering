@@ -1,0 +1,26 @@
+### Key Functionality
+The `MediaType` class in this code is designed to represent and manipulate Internet media types, which are used to identify the format of data transmitted over the internet. This class provides methods to create, parse, and compare media types.
+
+### Core Logic
+1. **Parsing Media Types**: The class includes a `parse` method that can convert a string representing a media type into a `MediaType` object. It handles both standard and non-standard formats.
+2. **Creating Media Types**: Various constructors allow creating `MediaType` objects from different representations, including base types, subtypes, and parameters.
+3. **Parameter Handling**: The class manages parameters associated with media types, ensuring they are correctly formatted and stored.
+4. **Comparison and Equality**: Methods like `compareTo` and `equals` allow comparing and checking equality of `MediaType` objects.
+
+### Inputs/Outputs
+- **Inputs**:
+  - Strings representing media types (e.g., `"text/plain"`).
+  - Parameters for media types (e.g., `charset=utf-8`).
+  - Base types and subtypes (e.g., `"text"` and `"plain"`).
+
+- **Outputs**:
+  - `MediaType` objects representing parsed media types.
+  - Strings representing the canonical form of media types.
+  - Sorted maps of parameters associated with media types.
+
+### Dependencies
+- **Java Standard Library**: Uses classes like `Pattern`, `Matcher`, `HashMap`, `HashSet`, `TreeMap`, and `Locale`.
+- **Apache Tika**: The class is part of the Apache Tika project, which is a toolkit for extracting metadata and text from various documents and files.
+- **Custom Utilities**: The class includes utility methods for parsing and handling parameters, such as `unquote` and `union`.
+
+In summary, the `MediaType` class provides comprehensive functionality for managing and manipulating media types, making it a crucial component for handling document metadata and content types in the Apache Tika framework.

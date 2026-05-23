@@ -1,0 +1,26 @@
+### Semantic Summary
+
+#### Key Functionality
+The `OverrideEncodingDetector` class is designed to override the detected character encoding of a document with a specified charset. This is particularly useful when the actual encoding of a document is known beforehand and needs to be enforced.
+
+#### Core Logic
+The core logic of this class revolves around overriding the detected encoding with a predefined or user-specified charset. It achieves this by implementing the `EncodingDetector` interface and providing a method that returns a list of `EncodingResult` objects, each indicating the overridden charset.
+
+#### Inputs/Outputs
+- **Inputs:**
+  - `TikaInputStream tis`: A stream representing the input document.
+  - `Metadata metadata`: Metadata associated with the document.
+  - `ParseContext parseContext`: Context for parsing the document.
+  - `Config config`: Configuration object containing the charset.
+  - `JsonConfig jsonConfig`: JSON configuration object for deserialization.
+  - `Charset charset`: Explicitly provided charset.
+
+- **Outputs:**
+  - `List<EncodingResult>`: A list of `EncodingResult` objects, each containing the overridden charset and its confidence level.
+
+#### Dependencies
+- **Apache Tika Libraries:** The class relies on various components from the Apache Tika library, such as `TikaInputStream`, `Metadata`, and `ParseContext`.
+- **Jackson Library:** For JSON configuration deserialization, the class uses `JsonConfig` and `ConfigDeserializer`.
+- **Java NIO Charsets:** The class uses Java's `Charset` and `StandardCharsets` for handling character encodings.
+
+In essence, this class provides a mechanism to enforce a specific character encoding for documents, which can be particularly useful in scenarios where the encoding is known and needs to be standardized across different systems or processes.

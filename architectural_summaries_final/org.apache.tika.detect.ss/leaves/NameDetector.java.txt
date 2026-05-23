@@ -1,0 +1,26 @@
+### Semantic Summary of the Provided Source Code
+
+#### Key Functionality
+The `NameDetector` class is responsible for detecting the content type of a document based on its name. It uses a set of predefined regular expression patterns to match against the document's name, which can be a file name or a URL.
+
+#### Core Logic
+1. **Metadata Extraction**: The method `detect` retrieves the document name from the input metadata using the key `TikaCoreProperties.RESOURCE_NAME_KEY`.
+2. **Name Processing**:
+   - Removes URL query parameters and fragment identifiers.
+   - Strips leading and trailing slashes or backslashes.
+   - Decodes any URL-encoded characters.
+   - Trims any leading or trailing whitespace.
+3. **Pattern Matching**: The cleaned-up name is then matched against a set of predefined regular expression patterns. If a match is found, the corresponding media type is returned. If no match is found, the default media type `application/octet-stream` is returned.
+
+#### Inputs/Outputs
+- **Inputs**:
+  - `TikaInputStream tis`: Ignored in this method.
+  - `Metadata metadata`: Contains the document name in the `TikaCoreProperties.RESOURCE_NAME_KEY`.
+  - `ParseContext parseContext`: Not used in this method.
+- **Output**:
+  - `MediaType`: The detected media type of the document, either the matched type or `application/octet-stream`.
+
+#### Dependencies
+- **Apache Tika Libraries**: The class relies on several classes from the Apache Tika library, including `TikaInputStream`, `Metadata`, `TikaCoreProperties`, and `MediaType`.
+- **Java Standard Library**: Uses `java.io.UnsupportedEncodingException`, `java.net.URLDecoder`, `java.util.Map`, and `java.util.regex.Pattern`.
+- **Apache Commons Lang**: While not directly imported, the use of `URLDecoder` suggests a dependency on the Apache Commons Lang library for URL decoding utilities.

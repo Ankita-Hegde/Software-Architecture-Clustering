@@ -1,0 +1,21 @@
+### Semantic Summary of the Provided Source Code
+
+#### Key Functionality
+The provided code defines an interface named `EmbeddedDocumentExtractorFactory`. This interface is part of the Apache Tika project, which is used for extracting metadata and content from various types of documents.
+
+#### Core Logic
+The core logic of this interface is to provide a method that creates instances of `EmbeddedDocumentExtractor` objects. These extractors are responsible for extracting embedded documents from a given document, such as PDFs containing images or other files.
+
+#### Inputs/Outputs
+- **Inputs:**
+  - `Metadata metadata`: An object that holds metadata about the document being processed.
+  - `ParseContext parseContext`: A context object that provides additional information during the parsing process.
+  
+- **Output:**
+  - `EmbeddedDocumentExtractor`: An instance of the `EmbeddedDocumentExtractor` class, which will be used to extract embedded documents from the main document.
+
+#### Dependencies
+- **Apache Tika Metadata**: The `Metadata` class is imported from `org.apache.tika.metadata`, which is used to store and manipulate metadata associated with the document.
+- **Apache Tika Parse Context**: The `ParseContext` class is imported from `org.apache.tika.parser`, which provides a context for the parsing process, including handling callbacks and managing state during parsing.
+
+In summary, this interface serves as a contract for classes that need to create `EmbeddedDocumentExtractor` instances, ensuring that they can be instantiated with the necessary metadata and parsing context to perform their function effectively.

@@ -1,0 +1,26 @@
+### Semantic Summary of the Provided Source Code
+
+#### Key Functionality
+The `ParserUtils` class provides utility methods to help manage and manipulate `Parser` objects in Apache Tika, which is a framework for extracting metadata and text from various documents.
+
+#### Core Logic
+1. **Metadata Cloning**: The `cloneMetadata` method creates a deep copy of a `Metadata` object, ensuring that all single-valued and multi-valued properties are accurately copied.
+2. **Parser Classname Extraction**: The `getParserClassname` method determines the actual class name of a `Parser`, even if it's wrapped in a `ParserDecorator`.
+3. **Recording Parser Details**: The `recordParserDetails` methods log the class names of parsers used during document parsing into the `Metadata`. This helps track which parsers were involved in processing a document.
+4. **Recording Parser Failures**: The `recordParserFailure` method records details about a parser failure, including the exception stack trace and the parser class name, into the `Metadata`.
+
+#### Inputs/Outputs
+- **Inputs**:
+  - `Metadata`: Used for storing and retrieving metadata values.
+  - `Parser`: An object representing a document parser.
+  - `Throwable`: An exception object representing a failure.
+- **Outputs**:
+  - `Metadata`: Modified to include additional information about parsers and failures.
+
+#### Dependencies
+- **Apache Tika Core Properties**: The class uses constants defined in `TikaCoreProperties` for metadata keys.
+- **ExceptionUtils**: A utility class for getting stack traces from exceptions.
+- **Metadata and Property Classes**: From the `org.apache.tika.metadata` package, these classes are used for managing metadata and properties.
+- **Parser and ParserDecorator Classes**: From the `org.apache.tika.parser` package, these classes represent document parsers and their decorators.
+
+This utility class is designed to enhance the debugging and tracking capabilities of Apache Tika by providing methods to clone metadata, extract parser information, and record parsing failures.

@@ -1,0 +1,20 @@
+### Key Functionality and Core Logic
+
+The provided code defines a set of metadata properties and constants for the Apache Tika library. Tika is a powerful tool for extracting metadata and text content from various file formats. This interface (`TikaCoreProperties`) provides a standardized way to represent metadata properties across different file formats, ensuring consistency and ease of use.
+
+#### Core Logic
+- **Metadata Properties**: The code defines a series of metadata properties that are commonly found in different file formats. These properties cover a wide range of information such as title, author, creation date, and more.
+- **Embedded Files Handling**: Special properties are defined to handle metadata related to embedded files, including their paths, IDs, and parsing depth.
+- **Exception and Warning Handling**: Properties are included to store information about exceptions and warnings encountered during the parsing process.
+- **Custom Prefixes**: Metadata properties are prefixed with `X-TIKA` to distinguish them from other metadata properties.
+
+### Inputs/Outputs
+- **Inputs**: The code itself does not take any direct inputs. Instead, it provides a framework for defining metadata properties that can be used by various parsers and handlers.
+- **Outputs**: The properties defined here can be used to output metadata in a consistent and standardized manner, regardless of the file format.
+
+### Dependencies
+- **Apache Tika Libraries**: The code relies on several classes and interfaces from the Apache Tika library, such as `DublinCore`, `Office`, `XMP`, and `Geographic`.
+- **Java Standard Library**: The code uses standard Java classes like `String`, `Property`, and `Enum`.
+
+### Summary
+This code defines a set of metadata properties and constants for the Apache Tika library, providing a standardized way to represent metadata across different file formats. It includes properties for handling embedded files, managing parsing processes, and storing exceptions and warnings. The properties are designed to ensure consistency in metadata representation, making it easier for users to access and manipulate metadata uniformly across various file formats.

@@ -1,0 +1,28 @@
+### Semantic Summary of the Provided Source Code
+
+#### Key Functionality
+The `AutoDetectParser` class is designed to automatically detect the MIME type of a document and then parse it using the appropriate parser based on its detected type. It leverages a type detector to identify the document's content type and uses a composite parser approach to handle different types of documents.
+
+#### Core Logic
+1. **Type Detection**: The parser uses a `Detector` to determine the MIME type of the document.
+2. **Secure Parsing**: It ensures secure parsing by using `SecureContentHandler` to prevent potential security issues like zip bombs.
+3. **Embedded Document Handling**: It can extract and parse embedded documents within the main document.
+4. **Customization**: It supports custom configurations for handling zero-byte files and decorating content handlers.
+
+#### Inputs/Outputs
+- **Inputs**:
+  - `TikaInputStream tis`: A stream representing the document to be parsed.
+  - `ContentHandler handler`: An object that handles the content of the parsed document.
+  - `Metadata metadata`: Metadata associated with the document.
+  - `ParseContext context`: A context object containing various settings and configurations.
+  
+- **Outputs**:
+  - The parsed content is passed through the `ContentHandler`.
+  - Metadata about the parsed document is updated.
+
+#### Dependencies
+- **Apache Tika Libraries**: The code relies heavily on various classes from the Apache Tika library, such as `Detector`, `Metadata`, `MediaType`, `TikaInputStream`, `SecureContentHandler`, etc.
+- **Third-Party Libraries**: It depends on external libraries for handling secure content and digesting files.
+- **Configuration Classes**: It uses classes like `AutoDetectParserConfig` and `StandardExtractorFactory` for customizable behavior.
+
+This class is part of the Apache Tika project, which is a powerful toolkit for extracting metadata and text from various file formats.

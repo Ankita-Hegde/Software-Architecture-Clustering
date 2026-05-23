@@ -1,0 +1,26 @@
+### Semantic Summary
+
+#### Key Functionality
+The `CompositeDetector` class is designed to combine multiple content type detection mechanisms into a single detector. It can be configured to include or exclude certain detectors based on specified criteria.
+
+#### Core Logic
+1. **Initialization**: The constructor initializes the `CompositeDetector` with a `MediaTypeRegistry` and a list of `Detector` instances. It also allows for excluding certain detectors.
+2. **Detection Process**: The `detect` method iterates over each detector in the list, attempting to determine the content type of the input stream. It uses the `MediaTypeRegistry` to ensure that the detected types are valid and returns the most specific type found.
+3. **Override Handling**: The `detectOverrides` method checks if a content type has been overridden by the user or parser metadata before performing the actual detection.
+
+#### Inputs/Outputs
+- **Inputs**:
+  - `TikaInputStream tis`: An input stream to be detected.
+  - `Metadata metadata`: Metadata associated with the input stream.
+  - `ParseContext parseContext`: Context for parsing operations.
+  - `Collection<Class<? extends Detector>> excludeDetectors`: A collection of classes representing detectors to be excluded from the composite detector.
+  
+- **Outputs**:
+  - `MediaType`: The detected content type of the input stream.
+
+#### Dependencies
+- **Apache Tika Libraries**: The code relies on various classes from the Apache Tika library, such as `TikaInputStream`, `Metadata`, `MediaType`, `MediaTypeRegistry`, and `ParseContext`.
+- **Java Standard Library**: Uses standard Java classes like `ArrayList`, `Arrays`, `Collections`, and `String`.
+- **StringUtils**: A utility class from Apache Tika for string manipulation and validation.
+
+This summary provides a clear understanding of how the `CompositeDetector` works, its inputs and outputs, and the dependencies it has on other libraries and classes.

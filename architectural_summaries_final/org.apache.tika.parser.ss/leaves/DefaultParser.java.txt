@@ -1,0 +1,33 @@
+### Key Functionality
+The `DefaultParser` class is a composite parser that aggregates multiple `Parser` instances to handle different types of documents. It dynamically loads and manages these parsers using the Java Service Provider Interface (SPI).
+
+### Core Logic
+1. **Initialization**: The constructor initializes the parser with a `ServiceLoader` to find and load `Parser` implementations. It also allows specifying excluded parsers and custom `EncodingDetector` and `Renderer`.
+2. **Loading Parsers**: The `getDefaultParsers` method loads parsers statically and dynamically, ensuring that custom parsers have precedence over default ones.
+3. **Setting Detectors and Renderers**: The `setEncodingDetector` and `setRenderer` methods recursively configure these settings for all parsers.
+4. **Dynamic Parsing**: The `getParsers` and `getAllComponentParsers` methods extend the functionality of the superclass to include dynamically loaded parsers.
+
+### Inputs/Outputs
+- **Inputs**:
+  - `registry`: A `MediaTypeRegistry` instance.
+  - `loader`: A `ServiceLoader` instance.
+  - `excludeParsers`: A collection of classes to be excluded from the parser.
+  - `encodingDetector`: An `EncodingDetector` instance.
+  - `renderer`: A `Renderer` instance.
+- **Outputs**:
+  - The parser itself, which can be used to parse documents.
+  - A map of `MediaType` to `Parser` for dynamic parsing.
+  - A list of all component parsers, including both statically and dynamically loaded ones.
+
+### Dependencies
+- **Apache Tika Components**:
+  - `org.apache.tika.config.ServiceLoader`
+  - `org.apache.tika.config.TikaComponent`
+  - `org.apache.tika.detect.EncodingDetector`
+  - `org.apache.tika.mime.MediaType`
+  - `org.apache.tika.mime.MediaTypeRegistry`
+  - `org.apache.tika.renderer.CompositeRenderer`
+  - `org.apache.tika.renderer.Renderer`
+  - `org.apache.tika.utils.ServiceLoaderUtils`
+- **Java SPI**: Utilizes the Java Service Provider Interface to discover and load `Parser` implementations.
+- **Other Apache Tika Classes**: Various utility and configuration classes from the Tika library.

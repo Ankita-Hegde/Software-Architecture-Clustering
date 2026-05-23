@@ -1,0 +1,33 @@
+### Key Functionality
+The `ParseContext` class in Apache Tika is designed to manage and store context information that is passed to Tika parsers. It primarily handles two types of data: typed objects and JSON configurations.
+
+### Core Logic
+1. **Typed Objects Management**:
+   - The class maintains a map (`context`) where keys are fully-qualified class names and values are objects implementing those interfaces.
+   - Methods like `set`, `get`, and `getOrDefault` allow adding, retrieving, and checking for the presence of typed objects.
+
+2. **JSON Configurations**:
+   - Another map (`jsonConfigs`) stores JSON configurations for components, which are used for round-trip serialization.
+   - Methods like `setJsonConfig`, `getJsonConfig`, and `hasJsonConfig` manage these configurations.
+   - A transient map (`resolvedConfigs`) caches resolved objects from JSON configurations to avoid redundant deserialization.
+
+3. **Context Copying**:
+   - The `copyFrom` method allows copying all entries from another `ParseContext` instance, overwriting existing entries.
+
+4. **Metadata Handling**:
+   - The `newMetadata` method creates a new `Metadata` object with any configured limits applied, ensuring that limits are enforced from the start.
+
+### Inputs/Outputs
+- **Inputs**:
+  - The class accepts various inputs through methods like `set`, `setJsonConfig`, and `copyFrom`.
+  - It also takes a `String` for JSON configuration strings and a `JsonConfig` object.
+
+- **Outputs**:
+  - Outputs include typed objects retrieved via `get` methods, JSON configurations, and a new `Metadata` object with applied limits.
+
+### Dependencies
+- **Apache Tika Libraries**: The class relies on other classes within the Apache Tika library, such as `Metadata`, `JsonConfig`, and `MetadataWriteLimiterFactory`.
+- **Java Serialization**: The class uses Java's built-in serialization capabilities, which are managed through the `Serializable` interface.
+- **Metadata Interface**: The `Metadata` class is used for handling metadata, and its methods are called to create new instances with applied limits.
+
+In summary, the `ParseContext` class serves as a container for managing context-specific information and configurations that are crucial for the operation of Tika parsers, ensuring that the parser environment is correctly set up for each parsing task.

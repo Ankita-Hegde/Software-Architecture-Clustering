@@ -1,0 +1,26 @@
+### Key Functionality
+The `ProbabilisticMimeDetectionSelector` class is designed to determine the MIME type of a file by combining the results from three different detection methods: magic bytes, file extension, and metadata content type. It uses a probabilistic approach to weight these methods and select the most likely MIME type.
+
+### Core Logic
+1. **Initialization**: The class initializes probability parameters for each detection method (magic bytes, file extension, and metadata content type).
+2. **Detection Methods**:
+   - **Magic Bytes**: Reads the file's magic bytes to infer the MIME type.
+   - **File Extension**: Uses the file's extension to infer the MIME type.
+   - **Metadata Content Type**: Uses the `Content-Type` metadata to infer the MIME type.
+3. **Probability Calculation**: Combines the results from the three methods using Bayesian probability to calculate the likelihood of each MIME type.
+4. **Selection**: Chooses the MIME type with the highest probability, considering the decay of trust for subsequent magic bytes matches.
+
+### Inputs/Outputs
+- **Inputs**:
+  - `TikaInputStream tis`: A stream of the file to be analyzed.
+  - `Metadata metadata`: Metadata associated with the file.
+  - `ParseContext parseContext`: Context for parsing the file.
+- **Outputs**:
+  - `MediaType`: The determined MIME type of the file.
+
+### Dependencies
+- **Apache Tika Libraries**: The class relies on various classes from the Apache Tika library, such as `Detector`, `TikaInputStream`, `Metadata`, and `MimeType`.
+- **Java Standard Library**: Utilizes standard Java classes like `List`, `Float`, `URI`, and `IOException`.
+
+### Summary
+The `ProbabilisticMimeDetectionSelector` class provides a robust mechanism for determining the MIME type of a file by integrating multiple detection methods and applying a probabilistic model to combine their results. This approach enhances accuracy by leveraging different sources of information and adjusting the confidence levels dynamically.

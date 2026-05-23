@@ -1,0 +1,25 @@
+### Semantic Summary of the Provided Source Code
+
+#### Key Functionality
+The `DigestHelper` class provides utility methods for computing digests on streams, particularly within the context of document parsing using Apache Tika. It leverages a `DigesterFactory` to determine which digest algorithms to apply and whether to skip certain parts of the document.
+
+#### Core Logic
+1. **Check for Configuration**: The method `maybeDigest` first checks if a `DigesterFactory` is available in the `ParseContext`. If not, it returns without performing any digest operations.
+2. **Determine Skip Condition**: It then determines whether to skip the current document based on the `skipContainerDocumentDigest` setting from the `DigesterFactory` or a marker in the `ParseContext`.
+3. **Compute Digests**: If not skipped, it creates a `Digester` instance and computes the digest on the input stream (`TikaInputStream`). It also handles the case where embedded streams need to be translated (e.g., for OLE2 objects).
+4. **Translate and Digest Embedded Streams**: If embedded streams need to be translated, it temporarily writes them to a file, translates them, and then digests the translated stream.
+
+#### Inputs/Outputs
+- **Inputs**:
+  - `TikaInputStream tis`: The input stream to compute digests on.
+  - `Metadata metadata`: Metadata object used to store and retrieve various properties, including the depth of embedded content.
+  - `ParseContext context`: Contains configuration settings like the `DigesterFactory` and markers for skipping certain parts of the document.
+- **Outputs**:
+  - The method modifies the `Metadata` object by adding digest values as metadata entries.
+
+#### Dependencies
+- **Apache Tika Libraries**: The code relies on several classes from the Apache Tika library, such as `TikaInputStream`, `Metadata`, `ParseContext`, and `TemporaryResources`.
+- **Digest Algorithms**: The `DigesterFactory` is expected to provide the necessary digest algorithms.
+- **Embedded Stream Handling**: The `DefaultEmbeddedStreamTranslator` is used to handle embedded streams, especially those that require special handling (like OLE2 objects).
+
+This summary provides a clear understanding of what the code does, how it works, and its dependencies, making it easier to integrate or modify the code in a project.

@@ -1,0 +1,26 @@
+### Semantic Summary
+
+#### Key Functionality
+The `RegexUtils` class provides a utility method to extract URLs from plain text using regular expressions.
+
+#### Core Logic
+1. **Pattern Definition**: Defines a regular expression (`LINKS_REGEX`) to match URLs in various formats.
+2. **Pattern Compilation**: Compiles the regex pattern into a `Pattern` object for efficient matching.
+3. **URL Extraction**: The `extractLinks` method uses the compiled pattern to find all matches in the given text and returns them as a list of strings.
+
+#### Inputs/Outputs
+- **Input**:
+  - A `String` representing the plain text content from which URLs need to be extracted.
+- **Output**:
+  - A `List<String>` containing all the URLs found within the input text. If no URLs are found, an empty list is returned.
+
+#### Dependencies
+- **Java Standard Library**:
+  - `java.util.ArrayList`: Used to create a list to store the extracted URLs.
+  - `java.util.Collections`: Used to provide static methods for operations on lists.
+  - `java.util.List`: Interface that `ArrayList` implements.
+  - `java.util.regex.Matcher`: Used to find matches of the regex pattern in the input text.
+  - `java.util.regex.Pattern`: Used to compile and represent the regex pattern.
+- **Apache Tika Framework**: The class is part of the `org.apache.tika.utils` package, indicating it might be used within the Apache Tika framework for document analysis and metadata extraction.
+
+This class is designed to help in extracting URLs from plain text, which can be useful in various applications such as web scraping, link analysis, or content processing.

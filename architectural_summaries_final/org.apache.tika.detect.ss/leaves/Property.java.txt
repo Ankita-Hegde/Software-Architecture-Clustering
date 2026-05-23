@@ -1,0 +1,22 @@
+### Key Functionality
+The `Property` class in this code is designed to manage metadata properties, particularly those used in XMP (Extensible Metadata Platform) format. It encapsulates various metadata properties such as names, types, and value types, and provides methods to manipulate and retrieve these properties.
+
+### Core Logic
+1. **Property Definition**: The class defines a metadata property with attributes like name, internal/external status, property type, value type, and available choices.
+2. **Static Lookup Table**: A static map (`PROPERTIES`) is used to store and quickly retrieve property instances based on their names.
+3. **Property Types and Value Types**: Enumerations `PropertyType` and `ValueType` are used to categorize and classify the properties and their values.
+4. **Composite Properties**: Support for creating composite properties, which can have a primary property and multiple secondary properties.
+
+### Inputs/Outputs
+- **Inputs**:
+  - Property name, internal/external status, property type, value type, and choices (if any).
+- **Outputs**:
+  - Property instances, property types, value types, and choices.
+
+### Dependencies
+- **Java Standard Library**: Uses standard Java classes and collections like `String`, `HashSet`, `ConcurrentHashMap`, `SortedSet`, and `TreeSet`.
+- **Apache Commons Collections**: Uses `ConcurrentHashMap` for thread-safe storage.
+- **Custom Enums**: Uses custom enums `PropertyType` and `ValueType` to define different types of properties and value types.
+
+### Summary
+The `Property` class is a utility for managing metadata properties in the context of XMP. It allows defining and retrieving properties with specific attributes and supports composite properties. The class uses a static map for efficient lookups and includes methods to create and manipulate property instances.

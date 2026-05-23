@@ -1,0 +1,29 @@
+### Key Functionality
+The `ExternalEmbedder` class is designed to embed metadata and text content into documents using an external program (such as `sed` or `exiftool`). It allows users to define how metadata should be embedded via command-line arguments.
+
+### Core Logic
+1. **Initialization**: The class initializes temporary resources and sets up the command to be executed.
+2. **Command Configuration**: Users can configure the command, metadata mapping, and other settings.
+3. **Execution**:
+   - The class constructs the command based on the configuration.
+   - It executes the command, handling input and output streams appropriately.
+   - If necessary, it creates a temporary file to capture the output.
+4. **Error Handling**: If the command fails, it throws a `TikaException`.
+
+### Inputs/Outputs
+- **Inputs**:
+  - `Metadata`: Metadata to be embedded into the document.
+  - `InputStream`: The document stream to be processed.
+  - `OutputStream`: The output stream where the modified document will be written.
+  - `ParseContext`: Additional context for parsing.
+
+- **Outputs**:
+  - The modified document with embedded metadata is written to the `OutputStream`.
+
+### Dependencies
+- **Apache Commons IO**: For handling file operations and streams.
+- **Apache Tika**: Provides utilities for working with metadata and MIME types.
+- **Java Standard Libraries**: For basic I/O operations and process management.
+
+### Summary
+The `ExternalEmbedder` class provides a flexible mechanism to embed metadata and text content into documents using an external program. It supports custom configurations for the command, metadata mapping, and handling of input/output streams. The class ensures that the external command is executed correctly and handles errors gracefully.

@@ -1,0 +1,27 @@
+### Key Functionality
+The `CompositeEncodingDetector` class is designed to combine multiple encoding detection strategies to determine the character encoding of a given input stream. It supports both traditional first-match-wins behavior and a collect-all mode where multiple detectors contribute to the final decision.
+
+### Core Logic
+1. **Initialization**: The constructor initializes a list of `EncodingDetector` instances and partitions them into two categories: `baseDetectors` and `metaDetector`. If a `MetaEncodingDetector` is found, it is used to arbitrate the results from other detectors.
+
+2. **Detection Process**:
+   - **First-Match-Wins Mode**: If no `MetaEncodingDetector` is present, the first detector that provides a non-empty list of results is chosen.
+   - **Collect-All Mode**: If a `MetaEncodingDetector` is present, all base detectors are run, and their results are collected. The meta detector then makes the final decision based on these results.
+
+3. **Metadata Handling**: The detected encoding is stored in the `Metadata` object, along with information about which detector(s) were involved in the process.
+
+### Inputs/Outputs
+- **Inputs**:
+  - `TikaInputStream tis`: The input stream to be analyzed.
+  - `Metadata metadata`: Metadata associated with the input stream.
+  - `ParseContext parseContext`: Context for parsing operations.
+
+- **Outputs**:
+  - `List<EncodingResult>`: A list of encoding results, which includes the detected character set and other relevant information.
+
+### Dependencies
+- **Apache Tika Libraries**: The code relies on various classes from the Apache Tika library, such as `TikaInputStream`, `Metadata`, `TikaCoreProperties`, and `ParseContext`.
+- **SLF4J Logging**: For logging purposes, the code uses SLF4J via `LoggerFactory`.
+- **Java Standard Library**: Utilizes standard Java collections like `ArrayList`, `Collections`, and `Charset`.
+
+This class is particularly useful in scenarios where multiple encoding detection methods need to be combined to achieve more accurate results, especially when dealing with complex or ambiguous encoding situations.

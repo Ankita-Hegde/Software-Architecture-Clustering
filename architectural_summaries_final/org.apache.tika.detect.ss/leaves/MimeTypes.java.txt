@@ -1,0 +1,32 @@
+### Key Functionality
+The `MimeTypes` class is a comprehensive MIME type repository that provides functionalities to detect and manage MIME types for various files and streams. It includes methods to determine the MIME type based on file names, magic sequences, and metadata.
+
+### Core Logic
+1. **Initialization**: The class initializes a set of default MIME types and maintains a registry of media types, their aliases, and associated patterns.
+2. **Detection Methods**:
+   - **getMimeType(String name)**: Determines the MIME type based on the file name.
+   - **getMimeType(File file)**: Determines the MIME type based on the file content.
+   - **getMimeType(byte[] data)**: Determines the MIME type based on the first few bytes of a document stream.
+   - **detect(TikaInputStream tis, Metadata metadata, ParseContext parseContext)**: Detects the MIME type using magic markers and metadata hints.
+3. **Pattern Matching**: Uses patterns to match file names and content to MIME types.
+4. **Magic Detection**: Utilizes magic numbers to identify file types.
+5. **XML Handling**: Specializes XML detection by extracting root elements and matching them against known types.
+
+### Inputs/Outputs
+- **Inputs**:
+  - **String name**: File name for MIME type detection.
+  - **File file**: File object for MIME type detection.
+  - **byte[] data**: First few bytes of a document stream for MIME type detection.
+  - **TikaInputStream tis**: Document stream for MIME type detection.
+  - **Metadata metadata**: Metadata hints for MIME type detection.
+  - **ParseContext parseContext**: Context for parsing operations.
+- **Outputs**:
+  - **MimeType**: The determined MIME type.
+
+### Dependencies
+- **Apache Tika**: Provides core functionalities such as `TikaInputStream`, `Metadata`, and `ParseContext`.
+- **Apache Commons Lang**: Used for string manipulation and normalization.
+- **Java I/O**: Utilizes `InputStream`, `File`, and other I/O classes.
+- **Apache Tika Config**: Manages configuration and components.
+- **Apache Tika Parser**: Handles parsing and detection logic.
+- **Java Utilities**: Uses standard Java collections (`List`, `Map`) and utilities (`Locale`, `QName`).

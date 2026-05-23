@@ -1,0 +1,23 @@
+### Semantic Summary
+
+#### Key Functionality
+The `SelfConfiguring` interface is a marker interface in Apache Tika's configuration system. It indicates that a component should read its configuration from the `ParseContext`'s `jsonConfigs` at runtime rather than having it automatically resolved by `ParseContextUtils`.
+
+#### Core Logic
+- **Marker Interface**: The interface itself does not contain any methods; it serves as a flag to indicate that a component needs to handle its own configuration.
+- **Configuration Handling**: Components implementing this interface must manually retrieve and apply their configuration from the `ParseContext`'s `jsonConfigs`. They are responsible for reading and merging their configuration with default values.
+
+#### Inputs/Outputs
+- **Inputs**:
+  - `ParseContext`: The context object where the component can find its configuration.
+  - `jsonConfigs`: A JSON-based configuration stored in the `ParseContext`.
+  - `defaultConfig`: A default configuration object that the component can fall back to if no specific configuration is found in `jsonConfigs`.
+- **Outputs**:
+  - The component applies its configuration based on the data retrieved from `jsonConfigs` and uses it during its execution.
+
+#### Dependencies
+- **Apache Tika Framework**: The `SelfConfiguring` interface is part of the Apache Tika framework, specifically within the `org.apache.tika.config` package.
+- **ParseContext**: The `ParseContext` object is crucial as it holds the configuration data that the component needs to access.
+- **ParseContextConfig**: The `ParseContextConfig` utility class is used to retrieve configurations from `ParseContext` using a key and a class type.
+
+This interface is particularly useful for components like parsers that require fine-grained control over their configuration loading process.

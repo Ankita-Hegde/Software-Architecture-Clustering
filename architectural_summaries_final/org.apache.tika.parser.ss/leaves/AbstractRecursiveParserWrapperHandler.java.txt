@@ -1,0 +1,28 @@
+### Semantic Summary
+
+#### Key Functionality
+The `AbstractRecursiveParserWrapperHandler` class is designed to handle the parsing of embedded documents within a larger document structure. It provides a framework for subclasses to customize the handling of these embedded documents while maintaining a limit on the depth of nested embedded documents.
+
+#### Core Logic
+- **Initialization**: The constructor initializes the `ContentHandlerFactory` which is used to create handlers for parsing embedded documents.
+- **Tracking Depth**: The class maintains a counter (`embeddedDepth`) to track the depth of nested embedded documents. If the depth exceeds a predefined maximum (`MAX_DEPTH`), a `SAXException` is thrown.
+- **Handling Embedded Documents**: The class provides methods to start and end the parsing of each embedded document, allowing subclasses to implement custom behavior.
+- **Metadata Management**: Metadata related to the depth of embedded documents is managed and set appropriately during parsing.
+
+#### Inputs/Outputs
+- **Inputs**:
+  - `ContentHandlerFactory`: A factory for creating `ContentHandler` instances to parse embedded documents.
+  - `Metadata`: Metadata associated with the current document or embedded document being processed.
+- **Outputs**:
+  - None directly; the class modifies the `Metadata` object to include information about the depth of embedded documents.
+
+#### Dependencies
+- **org.xml.sax.ContentHandler**: Used to handle the parsing of XML content.
+- **org.xml.sax.SAXException**: Thrown when there is an error during parsing.
+- **org.xml.sax.helpers.DefaultHandler**: Extends this class to provide default handling for SAX events.
+- **org.apache.tika.metadata.Metadata**: Used to store metadata about the document and its embedded parts.
+- **org.apache.tika.metadata.Property**: Defines properties for storing metadata.
+- **org.apache.tika.metadata.TikaCoreProperties**: Provides core properties for metadata management.
+- **ContentHandlerFactory**: A custom factory for creating `ContentHandler` instances.
+
+This class is particularly useful in scenarios where a document contains multiple levels of embedded documents, and fine-grained control over their parsing is needed.

@@ -1,0 +1,23 @@
+### Semantic Summary
+
+#### Key Functionality
+The `OverrideDetector` class is designed to override the detected media type of a document based on user or parser-specific overrides stored in the metadata.
+
+#### Core Logic
+1. **Metadata Check**: The method `detect` checks the metadata for two specific keys: `TikaCoreProperties.CONTENT_TYPE_USER_OVERRIDE` and `TikaCoreProperties.CONTENT_TYPE_PARSER_OVERRIDE`.
+2. **Type Retrieval**: If either of these keys contains a value, it attempts to parse that value as a `MediaType`.
+3. **Default Value**: If no override is found, it returns `MediaType.OCTET_STREAM`, indicating that the content type is unknown or should be treated as binary data.
+
+#### Inputs/Outputs
+- **Inputs**:
+  - `TikaInputStream tis`: A stream representing the input document.
+  - `Metadata metadata`: An object containing various metadata properties, including the content type overrides.
+  - `ParseContext parseContext`: A context object used during parsing.
+- **Output**:
+  - `MediaType`: The detected or overridden media type of the document.
+
+#### Dependencies
+- **Apache Tika Libraries**: The class relies on several classes from the Apache Tika library, such as `TikaInputStream`, `Metadata`, `TikaCoreProperties`, and `MediaType`.
+- **Java Standard Library**: It uses standard Java classes like `IOException` and `String`.
+
+This class is deprecated and its functionality has been moved to the `CompositeDetector` in version 2.5.0.

@@ -1,0 +1,21 @@
+### Semantic Summary
+
+#### Key Functionality
+The provided code defines an interface named `WriteLimiter` within the `org.apache.tika.sax` package. This interface is part of a larger system that manages the rate at which data can be written, likely used in scenarios where controlling the output rate is necessary, such as when writing to a network stream or a file.
+
+#### Core Logic
+The core logic of the `WriteLimiter` interface revolves around two key methods:
+1. **`getWriteLimit()`**: This method returns the maximum number of bytes that can be written before the limit is reached.
+2. **`isThrowOnWriteLimitReached()`**: This method determines whether an exception should be thrown if the write limit is exceeded.
+
+#### Inputs/Outputs
+- **Inputs**: The interface does not take any inputs directly. It relies on the implementation classes to provide the necessary logic for determining the write limit and handling exceptions.
+- **Outputs**: The methods return:
+  - An integer value representing the write limit.
+  - A boolean value indicating whether to throw an exception upon reaching the write limit.
+
+#### Dependencies
+- The `WriteLimiter` interface depends on the context in which it is implemented and used. Typically, it would be implemented by classes that need to control the rate of data writing, such as a writer class that writes content to a file or a network socket.
+- There are no external dependencies mentioned in the provided code snippet itself; however, it is part of the Apache Tika project, which means it relies on the broader Tika framework and its dependencies.
+
+In summary, the `WriteLimiter` interface provides a way to define and enforce a write limit, ensuring that the amount of data written does not exceed a specified threshold, and optionally throwing an exception if the limit is breached.

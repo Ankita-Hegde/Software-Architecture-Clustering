@@ -1,0 +1,27 @@
+### Semantic Summary
+
+#### Key Functionality
+The `DefaultProbDetector` class is a specialized detector designed to handle the detection of file types using probabilistic methods. It blends the results from multiple underlying detectors to provide a more accurate and reliable file type detection.
+
+#### Core Logic
+1. **Initialization**: The constructor initializes the detector with a `ProbabilisticMimeDetectionSelector` and a `ServiceLoader` or `ClassLoader`. This setup allows the detector to load and manage various file type detection services dynamically.
+2. **Detector Selection**: The `getDefaultDetectors` method loads all available `Detector` implementations and adds a `ProbabilisticMimeDetectionSelector` to them. This selector uses statistical techniques to combine the results from different detectors.
+3. **Dynamic Loading**: The `getDetectors` method returns a list of detectors, including both statically loaded and dynamically loaded ones. This ensures that the detector can adapt to changes in the available services.
+
+#### Inputs/Outputs
+- **Inputs**:
+  - `ProbabilisticMimeDetectionSelector`: A selector that uses statistical methods to blend the results of different detectors.
+  - `ServiceLoader` or `ClassLoader`: Used to load and manage the available `Detector` implementations.
+  - `MimeTypes`: Optional parameter to specify the MIME types used by the detector.
+  
+- **Outputs**:
+  - A list of `Detector` objects that can be used to detect the MIME type of a file.
+
+#### Dependencies
+- **Apache Tika Framework**: The code is part of the Apache Tika project, which provides utilities for detecting and extracting metadata from files.
+- **ServiceLoader**: A utility class from Java that helps in loading service providers dynamically.
+- **MimeTypes**: A class from the Tika framework that defines MIME types.
+- **Detector Interface**: The `Detector` interface is used to define the behavior of file type detection services.
+- **ProbabilisticMimeDetectionSelector**: A class that implements the `Detector` interface and uses statistical methods to combine the results of other detectors.
+
+This class is particularly useful in scenarios where multiple file type detection services are available, and a more robust and accurate detection mechanism is needed.

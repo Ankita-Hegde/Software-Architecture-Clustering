@@ -1,0 +1,27 @@
+### Key Functionality
+The `MagicDetector` class is designed to detect the media type of a document based on specific patterns of bytes (magic numbers) located at the beginning of the document's input stream. It supports both exact byte pattern matching and regular expression-based matching.
+
+### Core Logic
+1. **Initialization**: The constructor initializes the detector with a media type, a byte pattern, and optional parameters like a bitmask, offset range, and whether the pattern is a regular expression or case-insensitive.
+2. **Pattern Matching**:
+   - **Exact Byte Matching**: Compares a fixed sequence of bytes from the input stream against the provided pattern.
+   - **Regular Expression Matching**: Uses Java's `Pattern` and `Matcher` classes to find a match within the input stream.
+3. **Buffer Handling**: Reads and processes a buffer of bytes from the input stream to perform the matching operation.
+4. **Offset Range**: Allows specifying a range within the input stream where the pattern should be searched.
+
+### Inputs/Outputs
+- **Inputs**:
+  - `TikaInputStream tis`: The input stream from which to read the document.
+  - `Metadata metadata`: Metadata associated with the document (though it is currently ignored).
+  - `ParseContext parseContext`: Context for parsing operations.
+  - `byte[] data`: A pre-read byte array to check against the pattern.
+- **Outputs**:
+  - `MediaType`: The detected media type if a match is found.
+  - `boolean`: Whether the byte array matches the pattern.
+
+### Dependencies
+- **Apache Tika Libraries**: The class relies on various components from the Apache Tika library, such as `TikaInputStream`, `Metadata`, `MediaType`, and `ParseContext`.
+- **Java Standard Libraries**: Utilizes standard Java libraries for handling byte arrays, character encoding, and regular expressions.
+- **Apache Commons Lang**: Used for some utility methods, though not directly imported in the provided code snippet.
+
+This class provides a flexible mechanism for content type detection based on predefined byte patterns, making it suitable for scenarios where specific file formats can be identified by their initial byte sequences.

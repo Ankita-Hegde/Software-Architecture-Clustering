@@ -1,0 +1,25 @@
+### Semantic Summary
+
+#### Key Functionality
+The `ParsingEmbeddedDocumentExtractor` class is designed to handle the extraction of embedded documents within compound document formats such as ZIP, PDF, or Office documents. It provides a mechanism to parse these embedded documents while respecting certain limits on the number and depth of embedded documents.
+
+#### Core Logic
+1. **Initialization**: The class is initialized with a `ParseContext` which contains various configurations and settings for parsing.
+2. **Limit Checking**: Before parsing an embedded document, the class checks if the document should be parsed based on embedded limits (count and depth). If the limits are exceeded, it throws an `EmbeddedLimitReachedException`.
+3. **Parsing**: If the document should be parsed, it uses a `DelegatingParser` to parse the embedded document. The parsing process is wrapped in a `try-catch` block to handle exceptions like `EncryptedDocumentException`, `CorruptedFileException`, and `TikaException`.
+
+#### Inputs/Outputs
+- **Inputs**:
+  - `TikaInputStream tis`: A stream representing the embedded document.
+  - `ContentHandler handler`: An object that handles the SAX events generated during parsing.
+  - `Metadata metadata`: Metadata associated with the embedded document.
+  - `ParseContext parseContext`: A context containing various configurations and settings.
+  - `boolean outputHtml`: A flag indicating whether HTML tags should be added around the parsed content.
+- **Outputs**:
+  - The parsed content is passed through the `ContentHandler` as SAX events.
+  - If `outputHtml` is `true`, HTML tags are added around the parsed content.
+
+#### Dependencies
+- **Apache Tika Libraries**: The class relies on several classes from the Apache Tika library, including `TikaInputStream`, `Metadata`, `ParseContext`, `Parser`, `BodyContentHandler`, and `SAXOutputConfig`.
+- **Other Classes**: It also depends on classes like `DelegatingParser`, `EmbeddedContentHandler`, and `AttributesImpl` from the Tika library.
+- **Exceptions**: The class handles exceptions from the Tika library, such as `EncryptedDocumentException`, `CorruptedFileException`, and `TikaException`.

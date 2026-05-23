@@ -1,0 +1,25 @@
+### Semantic Summary of the Provided Source Code
+
+#### Key Functionality
+The provided code defines an interface `EmbeddedDocumentExtractor` which is part of the Apache Tika project. This interface is used to extract and process embedded documents within larger files (like PDFs or Office documents that contain multiple files).
+
+#### Core Logic
+1. **Determining Parsing**: The `shouldParseEmbedded` method checks whether an embedded document should be parsed based on its metadata. If a limit is exceeded and throwing is configured, it can throw an `EmbeddedLimitReachedException`.
+2. **Processing Embedded Resources**: The `parseEmbedded` method processes the embedded resource by passing it to a parser. It takes into account the input stream, content handler, metadata, parse context, and a flag indicating whether HTML output is needed.
+
+#### Inputs/Outputs
+- **Inputs**:
+  - `Metadata`: Contains information about the embedded document.
+  - `TikaInputStream`: Represents the embedded resource to be processed.
+  - `ContentHandler`: Used to handle the parsed content.
+  - `ParseContext`: Provides additional context for parsing.
+  - `boolean outputHtml`: Indicates whether HTML output is required.
+- **Outputs**:
+  - The method does not return any value but processes the embedded resource and outputs the parsed content through the `ContentHandler`.
+
+#### Dependencies
+- **Apache Tika Libraries**: The code relies on classes from the Apache Tika library such as `TikaInputStream`, `Metadata`, `ContentHandler`, and `ParseContext`.
+- **XML SAX API**: The `ContentHandler` interface is part of the XML SAX API, which is used for parsing XML documents.
+- **Apache Commons Lang**: The exception `EmbeddedLimitReachedException` is assumed to be defined in the Apache Commons Lang library, though it's not explicitly imported in the snippet.
+
+This interface helps in managing the extraction and parsing of embedded documents in a structured way, ensuring that only relevant documents are processed and providing flexibility in how the parsed content is handled.

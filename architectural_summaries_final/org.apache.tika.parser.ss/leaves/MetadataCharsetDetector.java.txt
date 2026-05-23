@@ -1,0 +1,35 @@
+### Semantic Summary
+
+#### Key Functionality
+The `MetadataCharsetDetector` class is designed to extract the character set (encoding) from metadata associated with a document without needing to read any bytes from the stream. It primarily looks for the charset specified in the `Content-Type` and `Content-Encoding` metadata fields.
+
+#### Core Logic
+1. **Metadata Extraction**: The method `detect` retrieves the `Metadata` object containing various metadata fields.
+2. **Charset Lookup**:
+   - First, it checks the `Content-Type` field for a charset parameter.
+   - If no charset is found there, it then checks the `Content-Encoding` field.
+3. **Normalization**: If a charset is found, it applies normalization rules to ensure compatibility, particularly for `ISO-8859-1` and `US-ASCII`, which are mapped to `windows-1252`.
+
+#### Inputs/Outputs
+- **Inputs**:
+  - `TikaInputStream tis`: A stream to process.
+  - `Metadata metadata`: Metadata associated with the stream.
+  - `ParseContext context`: Context for parsing operations.
+- **Outputs**:
+  - A list of `EncodingResult` objects, each containing the detected charset and its confidence level. If no charset is found, an empty list is returned.
+
+#### Dependencies
+- **Apache Tika Components**:
+  - `TikaInputStream`: For handling input streams.
+  - `Metadata`: For storing and retrieving metadata.
+  - `MediaType`: For parsing and interpreting the `Content-Type` metadata.
+  - `Charset`: For representing character sets.
+  - `ParseContext`: For managing parsing context.
+- **Java Standard Libraries**:
+  - `java.io.IOException`: For handling I/O exceptions.
+  - `java.nio.charset.Charset` and `java.nio.charset.StandardCharsets`: For working with character sets.
+  - `java.util.Collections`: For creating an empty list.
+  - `java.util.List`: For returning results as a list.
+- **Apache Tika Configuration**: The class is annotated with `@TikaComponent` to be part of the Tika component system, allowing it to be loaded via SPI (Service Provider Interface).
+
+This summary provides a clear understanding of how the `MetadataCharsetDetector` works, its inputs and outputs, and its dependencies within the Apache Tika framework.

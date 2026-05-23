@@ -1,0 +1,23 @@
+### Semantic Summary
+
+#### Key Functionality
+This code defines a custom exception class named `CorruptedFileException` that is part of the Apache Tika project. The primary purpose of this exception is to signal that the parsing process of a document must be terminated immediately due to corruption or an unrecoverable error.
+
+#### Core Logic
+The core logic of this class involves extending the base `TikaException` class, which is a standard exception type used within the Tika framework. The `CorruptedFileException` class provides two constructors:
+1. A constructor that takes a message string to provide a description of the error.
+2. A constructor that takes both a message string and a `Throwable` object as the cause of the exception, allowing for detailed error tracking.
+
+#### Inputs/Outputs
+- **Inputs**: 
+  - The constructors accept a message string (`msg`) to describe the error.
+  - An optional `Throwable` object can be passed to indicate the underlying cause of the exception.
+  
+- **Outputs**: 
+  - The exception itself, which is thrown when a document cannot be parsed due to corruption or other critical issues.
+
+#### Dependencies
+- **Apache Tika Framework**: The `CorruptedFileException` class is part of the Apache Tika library, which is responsible for detecting and extracting metadata and text content from various types of files.
+- **Java Standard Library**: The class uses standard Java exception handling mechanisms, such as the `Exception` class hierarchy.
+
+In summary, this code snippet provides a specialized exception for handling cases where a document's content is corrupted or otherwise invalid, ensuring that the parsing process can be halted gracefully.

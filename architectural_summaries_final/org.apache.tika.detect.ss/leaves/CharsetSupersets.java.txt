@@ -1,0 +1,20 @@
+### Semantic Summary
+
+#### Key Functionality
+The `CharsetSupersets` class provides a mapping of character set encodings to their safer superset encodings. This helps in ensuring that when a document contains characters beyond the range of the detected encoding, they can still be correctly decoded without causing "mojibake" (incorrect character representation).
+
+#### Core Logic
+1. **Mapping**: A static map (`SUPERSET_MAP`) is defined that maps each detected character set to its corresponding safer superset character set.
+2. **Superset Determination**: The `supersetOf` method takes a detected character set and returns the corresponding superset character set if it exists in the map. If the detected character set does not have a defined superset, it returns `null`.
+
+#### Inputs/Outputs
+- **Inputs**:
+  - The method `supersetOf(Charset detected)` takes a single input parameter, which is a `Charset` object representing the detected character set.
+- **Outputs**:
+  - The method returns a `Charset` object representing the safer superset character set if one exists for the given detected character set. If no superset is defined, it returns `null`.
+
+#### Dependencies
+- **Java Standard Library**: The class uses standard Java classes such as `java.nio.charset.Charset` and `java.util.Map`.
+- **Apache Tika Metadata**: The class references a specific metadata property `TikaCoreProperties#DECODED_CHARSET`, indicating its integration with the Apache Tika framework for handling document metadata.
+
+In essence, this class is designed to enhance the robustness of character set detection and decoding in text processing applications, particularly within the context of the Apache Tika framework.

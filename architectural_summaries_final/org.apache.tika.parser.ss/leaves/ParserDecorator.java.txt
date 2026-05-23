@@ -1,0 +1,24 @@
+### Key Functionality
+The `ParserDecorator` class is a decorator pattern implementation for the `Parser` interface in Apache Tika. It allows for extending or modifying the behavior of a `Parser` without changing its core functionality.
+
+### Core Logic
+- **Decorator Pattern**: The class wraps another `Parser` instance and provides methods to delegate calls to the wrapped parser while adding additional behaviors.
+- **MIME Type Filtering**: It supports filtering the supported MIME types based on inclusion and exclusion criteria.
+- **Fallback Mechanism**: It includes a deprecated fallback mechanism that tries multiple parsers in a preferred order until one succeeds.
+
+### Inputs/Outputs
+- **Inputs**:
+  - `Parser`: The parser instance to be decorated.
+  - `TikaInputStream`, `ContentHandler`, `Metadata`, `ParseContext`: Parameters used in the `parse` method.
+  - `Set<MediaType>`: Sets of MIME types for filtering.
+- **Outputs**:
+  - `Set<MediaType>`: Supported MIME types after applying filters.
+  - `void`: No explicit output from the `parse` method; it modifies the `ContentHandler` and `Metadata`.
+
+### Dependencies
+- **Apache Tika Libraries**: The class depends on various classes from the Apache Tika library such as `TikaInputStream`, `Metadata`, `ParseContext`, `ContentHandler`, and `MediaType`.
+- **Java Standard Library**: Uses standard Java collections like `Set`, `HashSet`, and `Collections`.
+- **Apache Commons Lang**: For handling serializable versions (`serialVersionUID`).
+
+### Summary
+The `ParserDecorator` class is designed to enhance the functionality of a `Parser` by allowing it to support or exclude certain MIME types through decorators. It uses the decorator pattern to wrap a `Parser` instance and optionally apply MIME type filters. The class also includes a fallback mechanism to handle multiple parsers. The core logic involves delegating method calls to the wrapped parser while potentially altering the behavior based on the applied decorators.

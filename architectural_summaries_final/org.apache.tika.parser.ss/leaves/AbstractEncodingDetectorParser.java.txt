@@ -1,0 +1,34 @@
+### Semantic Summary
+
+#### Key Functionality
+This class serves as an abstract base class for parsers that utilize the `AutoDetectReader` and require an `EncodingDetector`. It provides a framework for child classes to implement parsing logic while handling the detection of character encodings automatically.
+
+#### Core Logic
+1. **Initialization**: The class initializes an `EncodingDetector`, which can be customized through a constructor or set later via a setter method.
+2. **Encoding Detection**: It allows for retrieving an `EncodingDetector` either from a `ParseContext` or using the default one set during initialization.
+3. **Dependency Management**: It manages dependencies on the `EncodingDetector` and ensures that the correct detector is used when parsing documents.
+
+#### Inputs/Outputs
+- **Inputs**:
+  - `ParseContext`: A context object that might contain an `EncodingDetector`.
+  - `EncodingDetector`: An optional parameter in the constructor to customize the encoding detection mechanism.
+  
+- **Outputs**:
+  - None directly; it primarily returns an `EncodingDetector` object.
+
+#### Dependencies
+- **Apache Tika Framework**: This class is part of the Apache Tika project, specifically within the `tika-parser` package.
+- **org.apache.tika.detect.EncodingDetector**: The core dependency for encoding detection.
+- **org.apache.tika.detect.DefaultEncodingDetector**: A specific implementation of `EncodingDetector` used by default.
+
+### Detailed Explanation
+
+- **Class Purpose**: The `AbstractEncodingDetectorParser` is designed to simplify the process of encoding detection for parsers that use the `AutoDetectReader`. It ensures that any subclass only needs to focus on the actual parsing logic without worrying about how the encoding is detected.
+  
+- **Constructor**: The class has two constructors. One initializes with a default `DefaultEncodingDetector`, and another allows for customizing the `EncodingDetector`.
+
+- **getEncodingDetector Method**: This method retrieves the `EncodingDetector` either from the `ParseContext` or uses the default one set during initialization. This flexibility allows for dynamic configuration based on the parsing context.
+
+- **setEncodingDetector Method**: Allows setting a custom `EncodingDetector` after the object has been instantiated.
+
+By providing these functionalities, the class supports a modular approach to document parsing where the encoding detection can be easily customized or overridden as needed.

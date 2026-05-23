@@ -1,0 +1,25 @@
+### Semantic Summary
+
+#### Key Functionality
+The `TextDetector` class is designed to determine whether a given document is a plain text document or not. It does this by examining the first few bytes of the document's content stream.
+
+#### Core Logic
+1. **Initialization**: The constructor allows setting the number of bytes to test from the beginning of the document. By default, it tests the first 512 bytes.
+2. **Control Byte Check**: It uses a predefined lookup table (`IS_CONTROL_BYTE`) to identify control bytes that are unlikely to appear in plain text documents.
+3. **Character Encoding Detection**: It checks if the document is mostly ASCII or looks like UTF-8 encoded text.
+4. **Decision Making**: Based on the analysis, it returns either `MediaType.TEXT_PLAIN` (indicating the document is a text document) or `MediaType.OCTET_STREAM` (indicating it is not).
+
+#### Inputs/Outputs
+- **Inputs**:
+  - `TikaInputStream tis`: A document input stream.
+  - `Metadata metadata`: Metadata associated with the document (though it is ignored in the `detect` method).
+  - `ParseContext context`: A context object used during parsing.
+- **Output**:
+  - `MediaType`: Returns either `MediaType.TEXT_PLAIN` or `MediaType.OCTET_STREAM` indicating whether the document is a text document or not.
+
+#### Dependencies
+- **Apache Tika Libraries**: The class depends on other classes within the Apache Tika library such as `TikaInputStream`, `Metadata`, `MediaType`, and `ParseContext`.
+- **TextStatistics Class**: Used internally to analyze the document content.
+- **Java Standard Library**: Uses standard Java classes and methods for handling streams and arrays.
+
+This summary provides a clear understanding of what the `TextDetector` class does, how it works, and its dependencies.

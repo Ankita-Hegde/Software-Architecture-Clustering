@@ -1,0 +1,27 @@
+### Semantic Summary
+
+#### Key Functionality
+The `CompositeDigester` class is designed to combine multiple `Digester` instances into a single entity that can process input streams and extract metadata. This allows for a flexible approach where different types of content can be processed using various digesting strategies.
+
+#### Core Logic
+The core logic of the `CompositeDigester` revolves around the `digest` method. This method iterates through each `Digester` instance stored in the `digesters` array and calls its `digest` method. Each `Digester` processes the input stream (`TikaInputStream`), updates the metadata (`Metadata` object), and operates within the context of a `ParseContext`.
+
+#### Inputs/Outputs
+- **Inputs:**
+  - `TikaInputStream tis`: An input stream that provides access to the data to be processed.
+  - `Metadata m`: A metadata object that holds information about the document being processed.
+  - `ParseContext parseContext`: A context object that provides additional information and settings for parsing.
+
+- **Outputs:**
+  - The `digest` method does not return any value directly but modifies the `Metadata` object with extracted information from the input stream.
+
+#### Dependencies
+- **Apache Tika Libraries:**
+  - `TikaInputStream`: Used to read the input stream.
+  - `Metadata`: Used to store metadata about the document.
+  - `ParseContext`: Provides context for parsing operations.
+
+- **Other Classes:**
+  - `Digester`: The base interface or abstract class that `CompositeDigester` extends, which defines the `digest` method.
+
+This summary provides a clear understanding of how the `CompositeDigester` works, its purpose, and the components it interacts with.

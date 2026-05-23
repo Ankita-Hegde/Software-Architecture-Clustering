@@ -1,0 +1,26 @@
+### Key Functionality
+The `CompositeParser` class is designed to handle the parsing of documents by delegating the task to different parsers based on the document's content type. It supports multiple parsers and includes a fallback parser to handle cases where no suitable parser is available.
+
+### Core Logic
+1. **Initialization**: The constructor initializes the `CompositeParser` with a `MediaTypeRegistry` and a list of parsers. It also allows for excluding certain parsers.
+2. **Parser Selection**: The `getParser` method selects the most appropriate parser based on the document's content type metadata. If no suitable parser is found, it falls back to the predefined fallback parser.
+3. **Parsing**: The `parse` method delegates the actual parsing to the selected parser. It handles various exceptions and wraps them into `TikaException` to maintain consistency with the `Parser` interface.
+4. **Metadata Handling**: It records the parsing process and any embedded metadata, warnings, or exceptions in the document's metadata.
+
+### Inputs/Outputs
+- **Inputs**:
+  - `TikaInputStream tis`: The input stream of the document to be parsed.
+  - `ContentHandler handler`: The handler to receive the parsed content.
+  - `Metadata metadata`: Metadata associated with the document.
+  - `ParseContext context`: Contextual information for the parsing process.
+- **Outputs**:
+  - The parsed content is sent to the `ContentHandler`.
+  - Metadata is updated with information about the parsing process, including any exceptions, warnings, and the list of parsers used.
+
+### Dependencies
+- **Apache Tika Libraries**: The `CompositeParser` relies on several classes from the Apache Tika library, such as `Parser`, `Metadata`, `MediaType`, `TikaInputStream`, and `ContentHandler`.
+- **Java Standard Library**: It uses standard Java collections like `List`, `Map`, and `Set`.
+- **Apache Commons Lang**: Used for utility methods like `isExcluded` and `assignableFrom`.
+- **Apache Commons Codec**: For handling character encodings and other utilities.
+- **Apache Commons IO**: For handling input streams and other I/O operations.
+- **Apache Commons Logging**: For logging purposes, though not directly used in the provided code snippet.

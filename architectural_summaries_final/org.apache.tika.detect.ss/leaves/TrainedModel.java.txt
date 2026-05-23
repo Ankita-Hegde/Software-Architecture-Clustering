@@ -1,0 +1,21 @@
+### Semantic Summary
+
+#### Key Functionality
+The `TrainedModel` class serves as an abstract base class for models that can make predictions based on input data. It provides a framework for implementing machine learning models that can process numerical inputs and produce numerical outputs.
+
+#### Core Logic
+- **Abstract Methods**: The class defines two abstract methods: `predict(double[])` and `predict(float[])`. These methods must be implemented by any subclass to provide the actual prediction logic.
+- **Prediction**: Both methods take an array of numbers (either `double` or `float`) as input and return a single numerical value as output. This suggests that the model is designed to handle vectorized input data and produce scalar outputs.
+
+#### Inputs/Outputs
+- **Inputs**:
+  - The `predict` methods accept arrays of either `double` or `float` values as input. These arrays represent feature vectors or input data points.
+- **Outputs**:
+  - Both methods return a single numerical value (either `double` or `float`). This output could represent a prediction score, classification label, or any other numerical result derived from the input data.
+
+#### Dependencies
+- **Apache Tika Project**: The class is part of the Apache Tika project, which is a toolkit for detecting and extracting metadata and text from various documents and files. This suggests that the `TrainedModel` might be used within the context of document analysis or content extraction tasks.
+- **Java Standard Library**: The class uses standard Java types (`double`, `float`, `abstract`, etc.), indicating it relies on the core Java libraries.
+- **Subclasses**: While not explicitly listed, the class depends on its subclasses to implement the abstract methods. These subclasses would contain the specific logic for different types of machine learning models.
+
+In summary, the `TrainedModel` class is a foundational component for creating machine learning models in the Apache Tika project, providing a standardized interface for making predictions based on numerical input data.

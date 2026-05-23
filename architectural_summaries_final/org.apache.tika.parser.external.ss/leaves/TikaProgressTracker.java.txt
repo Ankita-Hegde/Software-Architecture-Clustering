@@ -1,0 +1,42 @@
+### Semantic Summary of the Provided Source Code
+
+#### Key Functionality
+The `TikaProgressTracker` class is designed to track the progress of parsing operations, particularly useful for monitoring the progress of long-running tasks like Optical Character Recognition (OCR) processes. It helps in detecting stalled parsers by periodically updating its internal state.
+
+#### Core Logic
+1. **Initialization**: The `TikaProgressTracker` is initialized with the current time when a new instance is created.
+2. **Progress Updates**: Parsers can signal their progress by calling the `update()` method, which sets the current time as the last known progress update.
+3. **Monitoring**: A monitoring loop can check the `lastProgressMillis` field to determine if a parser has made any progress within a certain timeframe.
+
+#### Inputs/Outputs
+- **Inputs**:
+  - The `ParseContext` object, which is used to pass the `TikaProgressTracker` instance between different parts of the parsing process.
+- **Outputs**:
+  - The `lastProgressMillis` value, which represents the epoch milliseconds of the last progress update.
+
+#### Dependencies
+- **Java Util Concurrency**: Uses `AtomicLong` for thread-safe updates to the last progress timestamp.
+- **Apache Tika Parser Context**: The `ParseContext` class is used to store and pass the `TikaProgressTracker` instance during the parsing process.
+
+### Detailed Explanation
+
+1. **Class Definition and Initialization**:
+   - The `TikaProgressTracker` class is defined with a private `AtomicLong` field named `lastProgressMillis`, which stores the epoch milliseconds of the last progress update.
+   - The constructor initializes this field with the current time using `System.currentTimeMillis()`.
+
+2. **Static Update Method**:
+   - The `update(ParseContext context)` method is a static method that allows parsers to signal their progress.
+   - It checks if the `ParseContext` is non-null and retrieves the `TikaProgressTracker` instance associated with it.
+   - If such an instance exists, it calls the `update()` method on it.
+
+3. **Instance Update Method**:
+   - The `update()` method sets the `lastProgressMillis` field to the current time, indicating that the parser has made progress.
+
+4. **Get Last Progress Method**:
+   - The `getLastProgressMillis()` method returns the current value of `lastProgressMillis`, which indicates the last time the parser reported progress.
+
+5. **Usage Context**:
+   - This class is intended to be used in a multi-threaded environment where multiple parsers might be running concurrently.
+   - It is part of the Apache Tika library, specifically for managing the progress of parsing tasks, especially those involving external processes like OCR.
+
+This class provides a mechanism to monitor the progress of parsing tasks, helping to identify and handle stalled or slow parsers effectively.

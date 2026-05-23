@@ -1,0 +1,16 @@
+### Semantic Summary
+
+#### Key Functionality
+This Java code defines a custom exception class named `EncryptedDocumentException` that is part of the Apache Tika library. This exception is specifically designed to handle situations where a document being processed is found to be encrypted and cannot be decrypted or processed further.
+
+#### Core Logic
+The core logic of this class involves extending the base `TikaException` class, which is also part of the Apache Tika library. The `EncryptedDocumentException` class provides constructors to initialize instances of this exception with different levels of detail. Each constructor allows for the creation of an exception object with a message and optionally a nested exception (`Throwable`).
+
+#### Inputs/Outputs
+- **Inputs**: The constructors accept various inputs such as a string message (`info`) and a `Throwable` object representing another exception that might have caused the current exception.
+- **Outputs**: The outputs are instances of the `EncryptedDocumentException` class, which can be thrown when a document is detected as being encrypted during processing.
+
+#### Dependencies
+- **Apache Tika Library**: The `EncryptedDocumentException` class extends the `TikaException` class, which is part of the Apache Tika library. Therefore, this code relies on the Apache Tika library being available and correctly configured in the project environment.
+
+In summary, this code snippet is a specialized exception handling mechanism within the Apache Tika framework, designed to manage cases where documents are encrypted and thus cannot be processed.

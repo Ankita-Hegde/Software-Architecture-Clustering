@@ -1,0 +1,47 @@
+### Semantic Summary
+
+#### Key Functionality
+The `MediaTypeRegistry` class serves as a central repository for managing and querying Internet media types (MIME types). It provides functionalities to register, query, and manipulate media types, including handling type aliases and inheritance.
+
+#### Core Logic
+1. **Registration**: The class maintains two maps: one for storing canonical media types and their aliases (`registry`), and another for tracking type inheritance relationships (`inheritance`).
+2. **Normalization**: Media types can be normalized to their canonical form, which helps in standardizing the representation of media types.
+3. **Querying**: Various methods allow querying the registry for different types of information such as canonical types, aliases, child types, and checking type relationships.
+
+#### Inputs/Outputs
+- **Inputs**:
+  - `MediaType` objects representing media types.
+  - Strings representing media type strings.
+- **Outputs**:
+  - `SortedSet<MediaType>` containing sets of media types.
+  - `MediaType` objects representing individual media types.
+  - Boolean values indicating type relationships.
+
+#### Dependencies
+- **Java Standard Library**: Uses `java.io.Serializable`, `java.util.Map`, `java.util.SortedSet`, and `java.util.concurrent.ConcurrentHashMap`.
+- **Apache Tika Framework**: The class is part of the Apache Tika project, which is a framework for extracting metadata and text from various documents. It depends on the `MimeTypes` class from the same package to provide the default media type registry.
+
+### Detailed Explanation
+
+1. **Registry Management**:
+   - **Registry Map**: A `ConcurrentHashMap` named `registry` stores mappings from media types to their canonical forms and aliases.
+   - **Inheritance Map**: A `HashMap` named `inheritance` tracks the closest supertype for each media type.
+
+2. **Normalization**:
+   - The `normalize` method converts a media type to its canonical form, handling cases where the media type has parameters or needs to be simplified based on predefined rules.
+
+3. **Query Methods**:
+   - **getTypes()**: Returns a sorted set of all known canonical media types.
+   - **getAliases(MediaType)**: Returns a sorted set of all aliases for a given canonical media type.
+   - **getChildTypes(MediaType)**: Returns a sorted set of all child types for a given canonical media type.
+   - **addType(MediaType)**: Adds a new canonical media type to the registry.
+   - **addAlias(MediaType, MediaType)**: Adds an alias to a canonical media type.
+   - **addSuperType(MediaType, MediaType)**: Adds an inheritance relationship between a media type and its supertype.
+   - **isSpecializationOf(MediaType, MediaType)**: Checks if one media type is a specialization of another.
+   - **isInstanceOf(MediaType, MediaType)**: Checks if a media type is equal to or a specialization of another media type.
+   - **isInstanceOf(String, MediaType)**: Checks if a media type string is equal to or a specialization of another media type.
+
+4. **Supertype Determination**:
+   - The `getSupertype` method determines the closest supertype for a given media type, using a combination of explicit inheritance rules, parameterless base types, and heuristics.
+
+This class is essential for managing and querying media types in the context of document processing and metadata extraction, providing a robust framework for handling MIME types in a standardized manner.

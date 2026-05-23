@@ -1,0 +1,32 @@
+### Semantic Summary
+
+#### Key Functionality
+The `TextStatistics` class is designed to analyze a stream of bytes and provide statistics about the content, particularly focusing on determining if the content is likely to be plain text or UTF-8 encoded text.
+
+#### Core Logic
+1. **Histogram Calculation**: The class maintains a histogram of byte frequencies using an array (`counts`) where each index represents a byte value (0-255). It also keeps a running total of the number of bytes processed (`total`).
+
+2. **Data Addition**: The `addData` method updates the histogram and total count based on the provided byte array segment.
+
+3. **Text Quality Checks**:
+   - **isMostlyAscii**: Determines if the majority of the bytes are within the ASCII range (0x20 to 0x7e) and not too many are control characters (0x00 to 0x1f, excluding tab, CR, LF, page feed, and escape).
+   - **looksLikeUTF8**: Checks if the byte sequence follows the pattern typical of UTF-8 encoding, including the presence of valid continuation bytes and the absence of invalid sequences.
+
+4. **Counting Methods**: Various methods to count occurrences of specific byte ranges, such as control characters, safe ASCII, and eight-bit characters.
+
+#### Inputs/Outputs
+- **Inputs**:
+  - `byte[] buffer`: A segment of the byte stream to analyze.
+  - `int offset`: The starting index in the buffer.
+  - `int length`: The number of bytes to process from the buffer.
+  
+- **Outputs**:
+  - `boolean`: Results from `isMostlyAscii` and `looksLikeUTF8` methods.
+  - `int`: Counts of various byte occurrences returned by methods like `count`, `countControl`, etc.
+
+#### Dependencies
+- The class relies on basic arithmetic operations and array manipulations.
+- No external libraries are directly used; it operates purely within the Java standard library.
+- The class is part of the Apache Tika project, which suggests it might depend on other components of the Tika framework for broader functionality, but these dependencies are not explicitly shown in the provided code snippet.
+
+This summary provides a clear understanding of what the `TextStatistics` class does, how it processes data, and the methods available for querying its state.

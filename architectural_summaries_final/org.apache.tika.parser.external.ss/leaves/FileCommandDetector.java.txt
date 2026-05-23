@@ -1,0 +1,30 @@
+### Semantic Summary
+
+#### Key Functionality
+The `FileCommandDetector` class is designed to identify the MIME type of a file using the Unix `file` command. It can handle both `TikaInputStream` and regular `InputStream` types. For `TikaInputStream`, it uses the underlying `Path` if available; otherwise, it spools the entire file to disk and runs the `file` command. For other types of `InputStream`, it spools up to a specified number of bytes to disk before running the `file` command.
+
+#### Core Logic
+1. **Check for `file` Command Availability**: The class first checks if the `file` command is available on the system. If not, it logs a warning and returns `application/octet-stream`.
+2. **Detect MIME Type**:
+   - If the input is a `TikaInputStream`, it attempts to use the underlying `Path`. If no `Path` is available, it spools the file to disk.
+   - If the input is another type of `InputStream`, it spools up to a specified number of bytes to disk.
+3. **Run `file` Command**: The `file` command is executed with the appropriate arguments to determine the MIME type.
+4. **Set Metadata**: The detected MIME type is stored in the `Metadata` object. If configured, it also sets the MIME type as a property.
+5. **Handle Errors**: If the `file` command times out or fails, it logs an error and returns `application/octet-stream`.
+
+#### Inputs/Outputs
+- **Inputs**:
+  - `TikaInputStream tis`: Document input stream.
+  - `Metadata metadata`: Input metadata for the document.
+  - `ParseContext parseContext`: The parse context.
+  - `InputStream`: For non-TikaInputStream inputs, it spools up to a specified number of bytes to disk.
+- **Outputs**:
+  - `MediaType`: The detected MIME type.
+
+#### Dependencies
+- **Apache Tika Libraries**: The class relies on various components from the Apache Tika library, including `TikaInputStream`, `Metadata`, `ParseContext`, and `ProcessUtils`.
+- **Java NIO**: Used for handling file paths and streams.
+- **SLF4J**: For logging.
+- **Apache Commons Lang**: For string manipulation and checking.
+- **Apache Commons IO**: For file operations.
+- **System Command Execution**: Uses the `file` command to determine the MIME type.

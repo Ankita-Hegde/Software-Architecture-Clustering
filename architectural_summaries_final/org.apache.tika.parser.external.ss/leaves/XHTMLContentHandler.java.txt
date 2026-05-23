@@ -1,0 +1,25 @@
+### Key Functionality
+The `XHTMLContentHandler` class is a decorator for XML content handlers that simplifies the process of generating XHTML output from parsed content. It handles the creation of HTML tags, manages the document structure, and ensures proper formatting according to XHTML standards.
+
+### Core Logic
+1. **Namespace Management**: The class sets up and manages the XHTML namespace.
+2. **Document Structure**: It starts and ends the `<html>` and `<body>` tags, and optionally the `<frameset>` tag based on configuration.
+3. **Element Handling**: It handles the start and end of HTML elements, ensuring that certain elements are indented or followed by a newline as needed.
+4. **Metadata Integration**: It can integrate metadata into the `<head>` section of the document.
+5. **Character Handling**: It processes character data, ensuring it is properly formatted and escaped.
+
+### Inputs/Outputs
+- **Inputs**:
+  - A `ContentHandler` to which the XHTML events are delegated.
+  - A `Metadata` object containing document metadata.
+  - An optional `ParseContext` that can provide additional configuration settings.
+  
+- **Outputs**:
+  - XHTML content as a series of SAX events (startElement, endElement, characters).
+
+### Dependencies
+- **Apache Tika Core**: The class relies on various classes from the Apache Tika library, such as `Metadata`, `SAXOutputConfig`, and `TikaCoreProperties`.
+- **Java XML API**: It uses the Java XML API (`org.xml.sax.*`) for handling SAX events.
+- **Apache Commons Lang**: For creating immutable sets using `Collections.unmodifiableSet`.
+
+This class is particularly useful for transforming parsed content into a structured and well-formed XHTML format, making it easier to display or further process the content in web contexts.

@@ -1,0 +1,31 @@
+### Semantic Summary
+
+#### Key Functionality
+The `RegexCaptureParser` class is designed to parse text content using regular expressions to extract specific patterns and metadata. It can also optionally output the content as it is parsed.
+
+#### Core Logic
+1. **Initialization**: The constructor initializes the parser with configuration settings, including patterns for capturing and matching text.
+2. **Supported Types**: The method `getSupportedTypes` returns the supported media types, which in this case is only `TEXT_PLAIN`.
+3. **Parsing Logic**:
+   - Reads input text line by line using a `BufferedReader`.
+   - Uses compiled regular expression patterns to find matches and captures.
+   - Stores captured values and sets metadata based on matches.
+   - Optionally writes the content to a `ContentHandler`.
+
+#### Inputs/Outputs
+- **Inputs**:
+  - `TikaInputStream tis`: The input stream containing the text to be parsed.
+  - `ContentHandler handler`: A handler to which the parsed content can be written.
+  - `Metadata metadata`: Metadata object to store extracted information.
+  - `ParseContext context`: Context for parsing operations.
+- **Outputs**:
+  - Metadata: Extracted information stored in the `metadata` object.
+  - Content: If `writeContent` is true, the content is written to the `ContentHandler`.
+
+#### Dependencies
+- **Java Libraries**:
+  - `java.io.BufferedReader`, `java.io.InputStreamReader`, `java.nio.charset.StandardCharsets`, `java.util.*`, `java.util.regex.Pattern`.
+- **Apache Tika Libraries**:
+  - `org.apache.tika.config.ConfigDeserializer`, `org.apache.tika.config.JsonConfig`, `org.apache.tika.config.TikaComponent`, `org.apache.tika.exception.TikaException`, `org.apache.tika.io.TikaInputStream`, `org.apache.tika.metadata.Metadata`, `org.apache.tika.mime.MediaType`.
+- **Custom Configuration**:
+  - `RegexCaptureParserConfig`: A custom configuration class used to set up the parser's behavior.

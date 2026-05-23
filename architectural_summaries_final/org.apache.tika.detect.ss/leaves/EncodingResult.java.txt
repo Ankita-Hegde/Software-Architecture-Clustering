@@ -1,0 +1,38 @@
+### Semantic Summary
+
+#### Key Functionality
+The `EncodingResult` class is designed to encapsulate the outcome of character set (or encoding) detection in a document. It provides a structured way to store the detected character set along with a confidence score and the type of evidence used to determine the result.
+
+#### Core Logic
+1. **Result Types**: The class defines three types of evidence (`ResultType`) that can be used to determine the character set:
+   - **DECLARATIVE**: The document explicitly states its encoding (e.g., BOM, HTML `<meta charset>` tag).
+   - **STRUCTURAL**: The encoding is determined by the byte structure itself (e.g., ISO-2022 escape sequences, UTF-8 multibyte validation).
+   - **STATISTICAL**: The encoding is inferred using a statistical model.
+
+2. **Constructor Overloading**: The class provides multiple constructors to initialize an `EncodingResult` object based on different levels of detail:
+   - One constructor for a statistical result.
+   - Another for a statistical result with a custom label.
+   - A general constructor that allows specifying the result type explicitly.
+
+3. **Accessors**: Methods are provided to retrieve the character set, confidence score, and the type of evidence used.
+
+4. **String Representation**: The `toString` method provides a human-readable representation of the result, including the character set, confidence score, and the type of evidence.
+
+#### Inputs/Outputs
+- **Inputs**:
+  - `Charset`: The detected character set.
+  - `float confidence`: The confidence level of the detection.
+  - `String label`: An optional label provided by the detector.
+  - `ResultType resultType`: The type of evidence used to determine the result.
+
+- **Outputs**:
+  - `Charset`: The detected character set.
+  - `float confidence`: The confidence level of the detection.
+  - `ResultType resultType`: The type of evidence used to determine the result.
+  - `String label`: The original label provided by the detector.
+
+#### Dependencies
+- **Java NIO**: The class uses the `Charset` class from the `java.nio.charset` package, which is part of the Java standard library.
+- **Apache Tika**: The class is part of the Apache Tika project, specifically within the `org.apache.tika.detect` package. This implies that it depends on other classes and utilities within the Tika framework.
+
+This class is particularly useful in scenarios where accurate character set detection is crucial, such as in text processing and document analysis tools.

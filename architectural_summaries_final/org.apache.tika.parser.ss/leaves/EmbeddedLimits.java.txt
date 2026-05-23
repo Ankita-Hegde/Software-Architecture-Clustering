@@ -1,0 +1,31 @@
+### Semantic Summary
+
+#### Key Functionality
+The `EmbeddedLimits` class provides configuration settings for controlling the processing of embedded documents within a container document. It allows setting limits on the depth of nested embedded documents and the total number of embedded documents to process.
+
+#### Core Logic
+- **Configuration Settings**: The class contains properties to define the maximum depth (`maxDepth`) and the maximum count (`maxCount`) of embedded documents to process.
+- **Behavior on Limits**: 
+  - If `maxDepth` is reached, processing continues with siblings at the current level but stops with deeper levels.
+  - If `maxCount` is reached, processing stops entirely.
+- **Exception Handling**: 
+  - If `throwOnMaxDepth` or `throwOnMaxCount` is set to `true`, an exception is thrown when the respective limit is hit.
+  - If `false`, a flag is set in the `ParseContext` indicating the limit was reached.
+
+#### Inputs/Outputs
+- **Inputs**:
+  - `maxDepth`: Maximum nesting depth for embedded documents.
+  - `throwOnMaxDepth`: Boolean indicating whether to throw an exception when the depth limit is reached.
+  - `maxCount`: Maximum number of embedded documents to process.
+  - `throwOnMaxCount`: Boolean indicating whether to throw an exception when the count limit is reached.
+- **Outputs**:
+  - The class itself, which can be used to configure parsing behavior.
+  - Flags in the `ParseContext` (`X-TIKA-maxDepthReached` and `X-TIKA-maxEmbeddedCountReached`) when limits are hit and exceptions are not thrown.
+
+#### Dependencies
+- **Java Standard Library**: Uses `Serializable` interface for serialization.
+- **Apache Tika Framework**: 
+  - `ParseContext` class from the `org.apache.tika.parser` package, which is used to pass configuration settings during parsing.
+  - `TikaComponent` annotation from the `org.apache.tika.config` package, which is used for component registration in the Tika framework.
+
+This class is designed to be flexible and configurable, allowing users to control how deeply and how many embedded documents are processed during the parsing of a document.

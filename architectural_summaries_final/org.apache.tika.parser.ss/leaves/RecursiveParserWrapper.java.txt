@@ -1,0 +1,25 @@
+### Key Functionality
+The `RecursiveParserWrapper` class is designed to recursively parse documents and their embedded resources using a specified parser. It handles the parsing of multiple levels of embedded documents and ensures that metadata and content are correctly extracted and stored.
+
+### Core Logic
+1. **Initialization**: The constructor initializes the wrapper with a specified parser and an option to catch embedded exceptions.
+2. **Parsing**: The `parse` method sets up the necessary state and handlers to recursively parse the document and its embedded resources.
+3. **Handling Exceptions**: It catches and records exceptions related to embedded documents, ensuring that the parsing continues even if some parts fail.
+4. **Metadata Management**: It manages metadata for both the main document and embedded resources, storing relevant information such as parse times and exception details.
+
+### Inputs/Outputs
+- **Inputs**:
+  - `TikaInputStream`: The input stream of the document to be parsed.
+  - `ContentHandler`: A handler to which the parsed content is written.
+  - `Metadata`: Metadata associated with the document and its embedded resources.
+  - `ParseContext`: A context object containing various settings and state information.
+- **Outputs**:
+  - Metadata: Contains information about the parsed document and its embedded resources.
+  - Content: Extracted content from the document and its embedded resources.
+
+### Dependencies
+- **Apache Tika Libraries**: The code relies on several classes and utilities from the Apache Tika library, including `TikaInputStream`, `Metadata`, `ContentHandler`, and various exception classes.
+- **SAX Parsing**: Uses the Simple API for XML (SAX) for parsing XML content.
+- **Custom Classes**: Utilizes custom classes like `RecursiveParserWrapperHandler`, `SecureContentHandler`, and `ParserState` for managing the parsing process and state.
+
+This class is particularly useful for handling complex documents with nested or embedded resources, ensuring that all parts are parsed and metadata is accurately recorded.

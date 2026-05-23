@@ -1,0 +1,25 @@
+### Semantic Summary
+
+#### Key Functionality
+This Java class, `ZeroSizeFileDetector`, is part of the Apache Tika project, which is used for content analysis and metadata extraction from various types of files. The primary function of this detector is to identify files that have zero length (i.e., empty files) and classify them as `application/x-zerovalue`.
+
+#### Core Logic
+The core logic of the `detect` method involves checking whether the input stream (`TikaInputStream`) is null. If it's not null, the method attempts to read a single byte from the stream. If reading returns `-1`, it means the stream is empty, and the method returns `MediaType.EMPTY`. Otherwise, it resets the stream and returns `MediaType.OCTET_STREAM`, indicating that the file is not empty.
+
+#### Inputs/Outputs
+- **Inputs:**
+  - `TikaInputStream tis`: An input stream representing the file to be detected.
+  - `Metadata metadata`: Metadata associated with the file.
+  - `ParseContext parseContext`: A context object for parsing operations.
+  
+- **Output:**
+  - `MediaType`: This can either be `MediaType.EMPTY` if the file is empty or `MediaType.OCTET_STREAM` if the file is not empty.
+
+#### Dependencies
+- **Apache Tika Libraries:**
+  - `org.apache.tika.io.TikaInputStream`: Used for handling file streams.
+  - `org.apache.tika.metadata.Metadata`: Represents metadata associated with the file.
+  - `org.apache.tika.mime.MediaType`: Represents media types, including `EMPTY` and `OCTET_STREAM`.
+  - `org.apache.tika.parser.ParseContext`: Context for parsing operations.
+
+This detector is particularly useful in scenarios where it's necessary to distinguish between non-existent or empty files and regular files during content analysis processes.

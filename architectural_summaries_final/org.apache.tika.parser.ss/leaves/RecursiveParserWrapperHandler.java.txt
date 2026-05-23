@@ -1,0 +1,38 @@
+### Semantic Summary
+
+#### Key Functionality
+The `RecursiveParserWrapperHandler` class is designed to handle the parsing of nested documents within a larger document structure. It extracts metadata and content from these nested documents and stores them in a list of `Metadata` objects.
+
+#### Core Logic
+1. **Initialization**: The constructor initializes the handler with a `ContentHandlerFactory`.
+2. **Handling Embedded Documents**:
+   - `startEmbeddedDocument`: Called before parsing an embedded document.
+   - `endEmbeddedDocument`: Called after parsing an embedded document. It adds the content and metadata of the embedded document to the `metadataList`.
+3. **Handling Main Document**:
+   - `endDocument`: Called after parsing the main document. It adds the content and metadata of the main document to the `metadataList`.
+4. **Processing Metadata**:
+   - `writeFinalEmbeddedPaths`: Regenerates the final embedded resource paths based on the IDs of the embedded resources.
+5. **Returning Metadata**:
+   - `getMetadataList`: Returns the list of `Metadata` objects containing the extracted data.
+
+#### Inputs/Outputs
+- **Inputs**:
+  - `ContentHandlerFactory`: A factory for creating content handlers.
+  - `ContentHandler`: A local content handler used for parsing embedded documents.
+  - `Metadata`: Metadata associated with the embedded or main document.
+- **Outputs**:
+  - `List<Metadata>`: A list containing metadata for the main document and all embedded documents.
+
+#### Dependencies
+- **External Libraries**:
+  - `java.util.*`: For collections like `LinkedList`, `HashMap`, and `AtomicInteger`.
+  - `org.xml.sax.*`: For handling XML content.
+  - `org.apache.tika.metadata.*`: For metadata keys and values.
+  - `org.apache.tika.parser.RecursiveParserWrapper`: For recursive parsing.
+  - `org.apache.tika.utils.ParserUtils`: Utility methods for parsing.
+- **Internal Classes**:
+  - `AbstractRecursiveParserWrapperHandler`: Base class for handling recursive parsing.
+  - `ContentHandlerFactory`: Factory for creating content handlers.
+  - `DefaultHandler`: Default content handler used for XML parsing.
+  
+This handler is specifically designed to work with `RecursiveParserWrapper` and should not be used otherwise.

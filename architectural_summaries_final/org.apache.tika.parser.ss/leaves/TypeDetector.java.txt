@@ -1,0 +1,25 @@
+### Semantic Summary of the Provided Source Code
+
+#### Key Functionality
+This Java class, `TypeDetector`, is part of the Apache Tika library and is designed to detect the content type of a document based on a type hint provided in the input metadata.
+
+#### Core Logic
+The core logic of the `TypeDetector` class involves checking if there is a `CONTENT_TYPE` attribute in the input metadata. If such an attribute exists and contains a valid media type, it is returned as the detected content type. If no valid type hint is found, the default media type `application/octet-stream` is returned.
+
+#### Inputs/Outputs
+- **Inputs:**
+  - `TikaInputStream tis`: A stream representing the input document.
+  - `Metadata metadata`: Metadata associated with the input document, which may include a `CONTENT_TYPE` attribute.
+  - `ParseContext context`: A context object used during parsing.
+  
+- **Output:**
+  - `MediaType`: The detected media type of the input document. If a valid type hint is found, it returns that type; otherwise, it returns `application/octet-stream`.
+
+#### Dependencies
+- **Apache Tika Library**: The class relies on other components of the Apache Tika library, specifically:
+  - `org.apache.tika.io.TikaInputStream`: Used to handle the input stream.
+  - `org.apache.tika.metadata.Metadata`: Used to access and manipulate metadata.
+  - `org.apache.tika.mime.MediaType`: Used to represent and parse media types.
+  - `org.apache.tika.parser.ParseContext`: Used to pass context information during parsing.
+
+In essence, this class provides a simple mechanism for content type detection by leveraging a type hint present in the metadata of the input document.

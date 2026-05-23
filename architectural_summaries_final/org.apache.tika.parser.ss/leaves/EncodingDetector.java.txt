@@ -1,0 +1,28 @@
+### Semantic Summary of the Provided Source Code
+
+#### Key Functionality
+The provided code defines an interface `EncodingDetector` which is part of the Apache Tika project. This interface is used to detect the character encoding of a text document. It leverages various heuristics based on the document's metadata and the initial bytes of the document.
+
+#### Core Logic
+1. **Detection Mechanism**: The core logic involves analyzing the input metadata and the first few bytes of the document to determine the character encoding.
+2. **Ranking Results**: The method returns a list of `EncodingResult` objects, ranked in descending order of confidence. Each result includes a type (`DECLARATIVE`, `STRUCTURAL`, or `STATISTICAL`) indicating the nature of the evidence used to determine the encoding.
+3. **Handling Input**: The method can accept a `TikaInputStream` (which supports marking and resetting) or `null` if the document input stream is not available. It also accepts metadata and a parse context as inputs.
+
+#### Inputs/Outputs
+- **Inputs**:
+  - `TikaInputStream tis`: A text document input stream that supports marking and resetting. Can be `null`.
+  - `Metadata metadata`: Input metadata for the document.
+  - `ParseContext parseContext`: The parse context.
+- **Output**:
+  - `List<EncodingResult>`: A ranked list of encoding results, where each result contains a character encoding and its confidence level. The list is never `null`.
+
+#### Dependencies
+- **Apache Tika Project**: The code is part of the Apache Tika library, which provides tools for extracting metadata and parsing content from various file formats.
+- **Java Standard Library**: Uses standard Java classes like `List`, `Serializable`, and `IOException`.
+- **Specific Classes**:
+  - `TikaInputStream`: A specialized input stream class that supports marking and resetting.
+  - `Metadata`: A class for storing metadata associated with a document.
+  - `ParseContext`: A context object used during parsing operations.
+  - `EncodingResult`: A class representing the result of an encoding detection, including the encoding, confidence level, and evidence type.
+
+This interface is designed to be implemented by different encoding detection strategies, providing flexibility and extensibility within the Tika framework.

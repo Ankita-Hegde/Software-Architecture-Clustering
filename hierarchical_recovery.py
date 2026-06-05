@@ -1,48 +1,28 @@
 import os
+import csv
+import glob
 import torch
 from transformers import AutoTokenizer, AutoModelForCausalLM, BitsAndBytesConfig
 
-# ==========================================
-# 1. ENVIRONMENT, I/O & MODEL SETUP
-# ==========================================
+# dynamic path resolution for slurm execution
+script_dir = os.path.dirname(os.path.abspath(__file__))
+rsfs_dir = os.path.join(script_dir, "rsfs")
+tika_source_root = os.path.join(script_dir, "tika", "tika-core", "src", "main", "java")
+output_dir = os.path.join(script_dir, "architectural_summaries_final")
+
 model_name = "Qwen/Qwen2.5-72B-Instruct"
-ACDC_FILE_PATH = "./tika-acdc.rsf"       # Ensure this is in your HPC working directory
-TIKA_SOURCE_ROOT = "./tika/tika-core/src/main/java/"
-OUTPUT_DIR = "./architectural_summaries_final/"
-
 hf_token = os.environ.get('HF_TOKEN')
-if not hf_token:
-    print("WARNING: HF_TOKEN not found. Proceeding with open-weights model download.")
 
-def save_leaf_summary(cluster_name, filename, summary_text):
-    out_dir = os.path.join(OUTPUT_DIR, cluster_name, "leaves")
-    os.makedirs(out_dir, exist_ok=True)
-    with open(os.path.join(out_dir, f"{filename}.txt"), 'w', encoding='utf-8') as f:
-        f.write(summary_text)
+print(f"initializing pipeline in {script_dir}")
 
-def save_branch_summary(cluster_name, arch_summary_text):
-    out_dir = os.path.join(OUTPUT_DIR, cluster_name)
-    os.makedirs(out_dir, exist_ok=True)
-    with open(os.path.join(out_dir, f"{cluster_name}_ARCHITECTURE.txt"), 'w', encoding='utf-8') as f:
-        f.write(arch_summary_text)
-
-# ==========================================
-# 2. LOAD THE TOKENIZER
-# ==========================================
-print(f"Loading Tokenizer for {model_name}...")
 tokenizer = AutoTokenizer.from_pretrained(
     model_name,
     token=hf_token,
     trust_remote_code=True
 )
-
 tokenizer.pad_token = tokenizer.eos_token
 tokenizer.padding_side = "left"
 
-# ==========================================
-# 3. LOAD THE MODEL (WITH 4-BIT QUANTIZATION)
-# ==========================================
-print("Configuring 4-bit Quantization parameters...")
 quantization_config = BitsAndBytesConfig(
     load_in_4bit=True,
     bnb_4bit_compute_dtype=torch.bfloat16,
@@ -50,22 +30,19 @@ quantization_config = BitsAndBytesConfig(
     bnb_4bit_use_double_quant=True
 )
 
-print("Loading Model across 2x A100 GPUs with optimizations...")
+print("loading model weights...")
 model = AutoModelForCausalLM.from_pretrained(
     model_name,
     token=hf_token,
     trust_remote_code=True,
     quantization_config=quantization_config,
     device_map="auto",
-    low_cpu_mem_usage=True  # ⚠️ CRUCIAL: Prevents loading the uncompressed model into CPU RAM first
+    low_cpu_mem_usage=True
 )
 
-# ==========================================
-# 4. INFERENCE ENGINE
-# ==========================================
-def generate_response(prompt_text):
+def generate_response(prompt_text, max_tokens):
     messages = [
-        {"role": "system", "content": "You are a helpful software assistant. Your job is to explain the functionality of the provided code in simple terms."},
+        {"role": "system", "content": "You are a software architect. Strictly follow formatting and extraction constraints."},
         {"role": "user", "content": prompt_text}
     ]
 
@@ -76,10 +53,9 @@ def generate_response(prompt_text):
         return_tensors="pt"
     ).to(model.device)
 
-    # Temperature lowered from 0.9 to 0.2 to prevent hallucination during summarization
     outputs = model.generate(
         **inputs,
-        max_new_tokens=1024,
+        max_new_tokens=max_tokens,
         temperature=0.2,
         top_p=0.2,
         do_sample=True,
@@ -89,99 +65,113 @@ def generate_response(prompt_text):
     input_length = inputs['input_ids'].shape[1]
     return tokenizer.decode(outputs[0][input_length:], skip_special_tokens=True)
 
-# ==========================================
-# 5. PIPELINE EXECUTION
-# ==========================================
-def main():
-    if not os.path.exists(ACDC_FILE_PATH):
-        raise FileNotFoundError(f"Missing {ACDC_FILE_PATH}. Upload it to your HPC working directory.")
-
-    print(f"Parsing ACDC RSF File...")
-    with open(ACDC_FILE_PATH, 'r', encoding='utf-8') as f:
-        acdc_raw_text = f.read()
-
-    # Group all files by their cluster dynamically
-    clusters = {}
-    for line in acdc_raw_text.strip().split('\n'):
-        parts = line.split()
-        if len(parts) == 3 and parts[0] == "contain":
-            cluster_name = parts[1]
-            file_path = parts[2].replace('.', '/')
-            if '$' in file_path:
-                file_path = file_path.split('$')[0]
-            file_path += ".java"
-
-            if cluster_name not in clusters:
-                clusters[cluster_name] = []
-            if file_path not in clusters[cluster_name]:
-                clusters[cluster_name].append(file_path)
-
-    total_clusters = len(clusters)
-    print(f"Found {total_clusters} clusters to process.")
-
-    for idx, (cluster_name, java_files) in enumerate(clusters.items(), 1):
-        print(f"\n=======================================================")
-        print(f"PROCESSING CLUSTER {idx}/{total_clusters}: {cluster_name}")
-        print(f"=======================================================")
-
-        leaf_summaries = {}
-
-        for file_path in java_files:
-            full_path = os.path.join(TIKA_SOURCE_ROOT, file_path)
-            filename = os.path.basename(full_path)
-
-            if not os.path.exists(full_path):
-                print(f"  [!] Missing file: {full_path}")
-                continue
-
-            with open(full_path, 'r', encoding='utf-8') as f:
-                raw_code = f.read()
-
-            prompt = f"""Extract a semantic summary from the following raw source code file.
-Ensure the summary explicitly details the following:
-- Key functionality
-- Core logic
-- Inputs/Outputs
-- Dependencies
+def process_leaf(raw_code):
+    prompt = f"""Extract a semantic summary of the following Java source code.
+Your summary MUST explicitly detail these four points:
+1. Key functionality
+2. Core logic
+3. Inputs/Outputs
+4. Dependencies
 
 Source Code:
 {raw_code}"""
+    # 300 tokens gives the model enough room to answer the 4 points without bloating the context
+    return generate_response(prompt, max_tokens=300)
 
-            print(f"  -> Summarizing Leaf: {filename}")
-            try:
-                summary = generate_response(prompt)
-                save_leaf_summary(cluster_name, filename, summary)
-                leaf_summaries[filename] = summary
-            except Exception as e:
-                print(f"  [!] Error processing file {filename}: {str(e)}")
-                continue
+def process_branch(compiled_leaf_summaries):
+    prompt = f"""Below are the semantic summaries of files within a single architectural cluster.
+Based strictly on these summaries, generate a cluster-level architectural description.
 
-        if not leaf_summaries:
-            print(f"  [!] No valid leaves found for {cluster_name}. Skipping branch generation.")
-            continue
+Constraints:
+1. Provide a short, descriptive title.
+2. The description MUST be STRICTLY UNDER 150 WORDS.
+3. The description MUST explicitly state:
+   - Components and Interactions: How the distinct parts work together.
+   - Quality Attributes: Non-functional requirements achieved (e.g., scalability, security).
+   - Technology Used: Frameworks, languages, or tools identified.
 
-        compiled_text = ""
-        for fname, summ in leaf_summaries.items():
-            compiled_text += f"\n--- File: {fname} ---\n{summ}\n"
+Format your exact output as:
+TITLE: <title>
+DESCRIPTION: <description>
 
-        branch_prompt = f"""Below are the summaries of constituent files within a specific directory cluster.
+File Summaries:
+{compiled_leaf_summaries}"""
+    
+    response = generate_response(prompt, max_tokens=250)
+    
+    title = "Unknown"
+    description = response
+    
+    if "TITLE:" in response and "DESCRIPTION:" in response:
+        parts = response.split("DESCRIPTION:")
+        title = parts[0].replace("TITLE:", "").strip()
+        description = parts[1].strip()
+        
+    return title, description
 
-Based strictly on this list of summaries, generate:
-1. A title.
-2. A high-level descriptive summary explaining the module’s overall behaviour, architecture, and how the components interact within the cluster.
+def parse_rsf(filepath):
+    clusters = {}
+    with open(filepath, 'r', encoding='utf-8') as f:
+        for line in f:
+            parts = line.strip().split()
+            if len(parts) >= 3 and parts[0] == "contain":
+                cluster_name = parts[1]
+                # remove inner classes to align with arc
+                file_path = parts[2].split('$')[0].replace('.', '/') + ".java"
+                
+                if cluster_name not in clusters:
+                    clusters[cluster_name] = set()
+                clusters[cluster_name].add(file_path)
+    return clusters
 
-Constituent Summaries:
-{compiled_text}"""
+def main():
+    os.makedirs(output_dir, exist_ok=True)
+    rsf_files = glob.glob(os.path.join(rsfs_dir, "*.rsf"))
+    
+    if not rsf_files:
+        print("no rsf files found. exiting.")
+        return
 
-        print(f"  -> Generating Branch Architecture for: {cluster_name}...")
-        try:
-            arch_summary = generate_response(branch_prompt)
-            save_branch_summary(cluster_name, arch_summary)
-        except Exception as e:
-            print(f"  [!] Error generating branch summary for {cluster_name}: {str(e)}")
-
-    print("\n✅ PIPELINE COMPLETE. All clusters have been successfully summarized.")
+    for rsf_path in rsf_files:
+        filename = os.path.basename(rsf_path)
+        base_name = os.path.splitext(filename)[0]
+        
+        print(f"\n--- processing {filename} ---")
+        clusters = parse_rsf(rsf_path)
+        
+        csv_filename = os.path.join(output_dir, f"{base_name}.csv")
+        
+        with open(csv_filename, mode='w', newline='', encoding='utf-8') as csv_file:
+            writer = csv.writer(csv_file)
+            writer.writerow(['cluster_ID', 'files', 'title', 'description'])
+            
+            for cluster_name, file_paths in clusters.items():
+                print(f"summarizing {cluster_name} ({len(file_paths)} files)")
+                
+                compiled_leaves = ""
+                csv_file_list = []
+                
+                for file_path in file_paths:
+                    full_path = os.path.join(tika_source_root, file_path)
+                    java_filename = os.path.basename(full_path)
+                    csv_file_list.append(java_filename)
+                    
+                    if os.path.exists(full_path):
+                        with open(full_path, 'r', encoding='utf-8') as f:
+                            # 4000 char truncation for A100 memory safety
+                            raw_code = f.read()[:4000] 
+                        
+                        leaf_summary = process_leaf(raw_code)
+                        compiled_leaves += f"\n--- File: {java_filename} ---\n{leaf_summary}\n"
+                    else:
+                        print(f"warning: file missing -> {full_path}")
+                
+                title, description = process_branch(compiled_leaves)
+                
+                files_string = ", ".join(csv_file_list)
+                writer.writerow([cluster_name, files_string, title, description])
+                
+        print(f"saved output to {csv_filename}")
 
 if __name__ == "__main__":
     main()
-
